@@ -1,4 +1,4 @@
-private ["_playerHumanity","_infectedLifeLostPart","_bloodAmount","_humanityBool","_infectionChance","_humanityNegBool","_humanityNegAmount","_humanityAmount","_infectedLifeLost","_infectedLifeBool","_lastBloodbag","_bloodbagLastUsedTime","_bloodbagTime","_bloodbagUseTime","_bloodbagUsageTime"];
+private ["_inCombat","_timeout","_playerHumanity","_infectedLifeLostPart","_bloodAmount","_humanityBool","_infectionChance","_humanityNegBool","_humanityNegAmount","_humanityAmount","_infectedLifeLost","_infectedLifeBool","_lastBloodbag","_bloodbagLastUsedTime","_bloodbagTime","_bloodbagUseTime","_bloodbagUsageTime"];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Config Start-----------------------------------------------------------------------------------------------------------------------//
@@ -35,12 +35,14 @@ if(_playerHumanity >= 5000) then {
 
 _bloodbagTime = time - lastBloodbag; // Variable used for easy reference in determining the self bloodbag cooldown
 _bloodbagUsageTime = time;
+_timeout = player getVariable["combattimeout", 0];
+_inCombat = if (_timeout >= diag_tickTime) then { true } else { false };
 
 if(_bloodbagTime < _bloodbagLastUsedTime) exitWith { // If cooldown is not done then exit script
 	cutText [format["\n\nYou may not use Self Bloodbag this soon please wait %1!",(_bloodbagTime - _bloodbagLastUsedTime)], "PLAIN DOWN"]; //display text at bottom center of screen when players cooldown is not done
 };
 
-if (dayz_combat == 1) then { // Check if in combat
+if (_inCombat) then { // Check if in combat
 	cutText [format["\n\nYou are in Combat and cannot give yourself a Bloodbag"], "PLAIN DOWN"]; //display text at bottom center of screen when in combat
 } else {
 
