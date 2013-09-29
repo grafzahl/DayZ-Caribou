@@ -11,10 +11,12 @@ class GeoCache_DZ : StashSmall {
 };
 
 class SUV_WOODLAND_CBDZ: SUV_DZ {
+	displayname = "SUV (Woodland)";
 	hiddenSelections[] = {"Camo"};
 	hiddenSelectionsTextures[] = {"\dzcb_data\textures\suv\smd_veh_suv_army01.paa"};
 };
 class SUV_STONE_CBDZ: SUV_DZ {
+	displayname = "SUV (BW)";
 	hiddenSelections[] = {"Camo"};
 	hiddenSelectionsTextures[] = {"\dzcb_data\textures\suv\smd_veh_suv_stone01.paa"};
 };
@@ -40,7 +42,7 @@ class CH_47F_DZ: CH_47F_BAF
 class HMMWV_Armored;
 class HMMWV_Armored_DZ: HMMWV_Armored
 {
-	displayname = "HMMWV_M2_DZ";
+	displayname = "HMMWV (M240)";
 	typicalCargo[] = {};
 	hiddenselections[] = {};
 	scope = 2;

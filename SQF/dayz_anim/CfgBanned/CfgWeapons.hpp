@@ -87,9 +87,9 @@ class CfgWeapons {
 	class PKT_veh: FakeWeapon {};
 	class DT_veh: FakeWeapon {};
 	class TwinVickers: FakeWeapon {};
-	class M2: FakeWeapon {};
+	//class M2: FakeWeapon {};
 	class M3P: FakeWeapon {};
-	class DSHKM: FakeWeapon {};
+	//class DSHKM: FakeWeapon {};
 	class KORD: FakeWeapon {};
 	class KPVT: FakeWeapon {};
 	class M168: FakeWeapon {};

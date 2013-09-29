@@ -1,4 +1,3 @@
-	//class ksvk;											// External class reference
 	class RifleCore;									// External class reference
 	class ksvk;
 	class KSVK_DZ : ksvk 

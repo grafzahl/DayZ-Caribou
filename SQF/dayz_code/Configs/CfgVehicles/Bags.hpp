@@ -18,6 +18,41 @@ class Bag_Base_EP1 : ReammoBox_EP1 {
 	};
 };
 
+class DZ_RPG_Pack_EP1: Bag_Base_EP1
+{
+	scope = 2;
+	displayName = "RUST Pack";
+	descriptionShort = "RUST Pack";
+	picture = "\ca\weapons_e\data\icons\backpack_rpg_ca.paa";
+	icon = "\ca\weapons_e\data\icons\mapIcon_backpack_CA.paa";
+	mapSize = 2;
+	model = "\ca\weapons_e\AmmoBoxes\backpack_rpg.p3d";
+	transportMaxWeapons = 1;
+	transportMaxMagazines = 14;
+	class eventHandlers
+	{
+		init="[(_this select 0),'CfgVehicles','DZ_RPG_Pack_EP1'] execVM '\z\addons\dayz_code\init\object_BackpackAction.sqf';";
+	};	
+};
+
+class DZ_CMM_Pack_EP1: Bag_Base_EP1
+{
+	scope = 2;
+	displayName = "CMM Pack";
+	descriptionShort = "(C)ustom (M)ade (M)onster Pack - Backpack that is only available by crafting...";
+	picture = "\ca\weapons_e\data\icons\backpack_rpg_ca.paa";
+	icon = "\ca\weapons_e\data\icons\mapIcon_backpack_CA.paa";
+	mapSize = 2;
+	//model = "\ca\weapons_e\AmmoBoxes\backpack_us_AUV";
+	model = "\ca\weapons_e\AmmoBoxes\backpack_us_medical";
+	transportMaxWeapons = 3;
+	transportMaxMagazines = 40;
+	class eventHandlers
+	{
+		init="[(_this select 0),'CfgVehicles','DZ_CMM_Pack_EP1'] execVM '\z\addons\dayz_code\init\object_BackpackAction.sqf';";
+	};	
+};
+
 class DZ_Patrol_Pack_EP1: Bag_Base_EP1
 {
 	scope = 2;
@@ -49,23 +84,6 @@ class DZ_Assault_Pack_EP1: Bag_Base_EP1
 	class eventHandlers
 	{
 		init="[(_this select 0),'CfgVehicles','DZ_Assault_Pack_EP1'] execVM '\z\addons\dayz_code\init\object_BackpackAction.sqf';";
-	};	
-};
-
-class DZ_RPG_Pack_EP1: Bag_Base_EP1
-{
-	scope = 2;
-	displayName = "RUST Pack";
-	descriptionShort = "RUST Pack";
-	picture = "\ca\weapons_e\data\icons\backpack_rpg_ca.paa";
-	icon = "\ca\weapons_e\data\icons\mapIcon_backpack_CA.paa";
-	mapSize = 2;
-	model = "\ca\weapons_e\AmmoBoxes\backpack_rpg.p3d";
-	transportMaxWeapons = 1;
-	transportMaxMagazines = 14;
-	class eventHandlers
-	{
-		init="[(_this select 0),'CfgVehicles','DZ_RPG_Pack_EP1'] execVM '\z\addons\dayz_code\init\object_BackpackAction.sqf';";
 	};	
 };
 

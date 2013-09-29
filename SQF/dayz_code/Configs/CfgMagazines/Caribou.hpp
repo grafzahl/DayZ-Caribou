@@ -16,6 +16,25 @@ class ItemBloodbag: CA_Magazine {
 	};
 };
 
+class ItemGeocache : CA_Magazine {
+	scope = public;
+	count = 1;
+	type = (256 * 3);
+	displayName = "Geocache";
+	model = "\dayz_equip\models\tentbag_gear.p3d";
+	picture = "\dayz_equip\textures\equip_tentbag_ca.paa";
+	descriptionShort = $STR_EQUIP_DESC_20;
+
+	class ItemActions {
+		class Build {
+			text = "Deploy Geocache";
+			script = "spawn player_build; r_action_count = r_action_count + 1;";
+			require = "";
+			create = "GeoCache_DZ";
+		};
+	};
+};
+
 //Skins
 class Skin_Camo2_DZ : SkinBase {
 	usemodel = "Camo2_DZ";
