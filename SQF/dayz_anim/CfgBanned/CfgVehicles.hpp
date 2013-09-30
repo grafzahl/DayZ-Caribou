@@ -33,7 +33,7 @@ class CfgVehicles {
 	class ZU23_CDF: Banned {};
 	class ZU23_Gue: Banned {};
 	//class RHIB: Banned {};
-	class RHIB2Turret: Banned {};
+	//class RHIB2Turret: Banned {};
 	class Zodiac: Banned {};
 	//class PBX: Banned {};
 	class KORD: Banned {};

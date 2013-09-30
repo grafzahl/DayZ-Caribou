@@ -84,8 +84,8 @@ class CfgWeapons {
 	//class M240_veh_MG_Nest: FakeWeapon {};
 	class PKT: FakeWeapon {};
 	class PKT_MG_Nest: FakeWeapon {};
-	class PKT_veh: FakeWeapon {};
-	class DT_veh: FakeWeapon {};
+	//class PKT_veh: FakeWeapon {};
+	//class DT_veh: FakeWeapon {};
 	class TwinVickers: FakeWeapon {};
 	//class M2: FakeWeapon {};
 	class M3P: FakeWeapon {};

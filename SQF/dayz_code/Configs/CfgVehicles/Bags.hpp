@@ -58,8 +58,8 @@ class DZ_Medic_Pack_EP1: Bag_Base_EP1
 	scope = 2;
 	displayName = "Backpack (Medic)";
 	descriptionShort = "Backpack that has been used by Medics in earlier days, cant take any weapons";
-	picture = "\ca\weapons_e\data\icons\backpack_rpg_ca.paa";
-	icon = "\dzcb_data\icons\medic_backpack.paa";
+	picture = "\dzcb_data\icons\medic_backpack.paa";
+	icon = "\ca\weapons_e\data\icons\mapIcon_backpack_CA.paa";
 	mapSize = 2;
 	//model = "\ca\weapons_e\AmmoBoxes\backpack_us_AUV";
 	model = "\ca\weapons_e\AmmoBoxes\backpack_us_medical";
