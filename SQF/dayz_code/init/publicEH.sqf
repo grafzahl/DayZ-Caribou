@@ -69,6 +69,7 @@ if (isServer) then {
 	"PVDZ_plr_LoginRecord"	addPublicVariableEventHandler {_id = (_this select 1) spawn dayz_recordLogin};
 	//"dayzCharSave"		addPublicVariableEventHandler {_id = (_this select 1) call server_playerSync};
 	"PVDZ_obj_Delete"		addPublicVariableEventHandler {(_this select 1) spawn server_deleteObj};
+	"dayzCarBomb"	addPublicVariableEventHandler {[_this select 1] execVM "dayz_code\caribou\fn_carBombs.sqf";};
 
 	"PVDZ_send" addPublicVariableEventHandler {(_this select 1) spawn server_sendToClient};
 	

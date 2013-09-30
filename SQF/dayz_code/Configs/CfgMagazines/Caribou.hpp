@@ -1,3 +1,14 @@
+//Carbomb
+class ItemCarBomb : CA_Magazine {
+	scope = public;
+	count = 1;
+	type = (2*256);
+	displayName = "Car Bomb";
+	model = "\ca\weapons\explosive.p3d";
+	picture = "\dzcb_data\icons\carbomb.paa";
+	descriptionShort = "Can be attached to a vehicles engine and then automaticly explode when the engine is turned on!";
+};	
+
 //Bloodbag
 class ItemBloodbag: CA_Magazine {
 	scope=2;
