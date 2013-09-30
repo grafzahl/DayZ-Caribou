@@ -6,7 +6,8 @@ class CfgCrafting {
 		required[] = {}; //Items needed for but not consumed during crafting
 		failChance = 0;
 	};
-	//Completed
+	//Caribou
+	#include "Recipes\Caribou\Caribou.hpp"
 	//Weapons
 	#include "Recipes\Weapons\NailedBaseballBat.hpp"
 	#include "Recipes\Weapons\BaseBallBatBarbed.hpp"
@@ -39,5 +40,5 @@ class CfgCrafting {
 	#include "Recipes\Traps\TrapTripwireGrenade.hpp"
 	#include "Recipes\Traps\TrapTripwireSmoke.hpp"
 	
-	#include "Recipes\Caribou\Caribou.hpp"
+
 };
