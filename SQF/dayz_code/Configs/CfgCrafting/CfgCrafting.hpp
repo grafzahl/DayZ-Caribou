@@ -38,4 +38,6 @@ class CfgCrafting {
 	#include "Recipes\Traps\TrapTripwireFlare.hpp"
 	#include "Recipes\Traps\TrapTripwireGrenade.hpp"
 	#include "Recipes\Traps\TrapTripwireSmoke.hpp"
+	
+	#include "Recipes\Caribou\Caribou.hpp"
 };
