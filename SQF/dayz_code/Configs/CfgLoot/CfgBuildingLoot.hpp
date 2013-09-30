@@ -345,6 +345,7 @@ class CfgBuildingLoot {
 		//special
 			{"MedBox0","object",0.02},
 			{"MedBox1","object",0.03},
+			{"DZ_Medic_Pack_EP1","object",0.01},
 		//mags special
 		//bags
 		//multiple spawns
