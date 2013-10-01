@@ -266,9 +266,9 @@ if (!isNull _cursorTarget and !_inVehicle and (player distance _cursorTarget < 4
 		if (s_player_repair_crtl < 0) then {
 			dayz_myCursorTarget = _cursorTarget;
 			_menu = dayz_myCursorTarget addAction [localize "str_actions_rapairveh", "\z\addons\dayz_code\actions\repair_vehicle.sqf",_cursorTarget, 0, true, false, "",""];
-			//_menu1 = dayz_myCursorTarget addAction [localize "str_actions_salvageveh", "\z\addons\dayz_code\actions\salvage_vehicle.sqf",_cursorTarget, 0, true, false, "",""];
+			_menu1 = dayz_myCursorTarget addAction [localize "str_actions_salvageveh", "\z\addons\dayz_code\actions\salvage_vehicle.sqf",_cursorTarget, 0, true, false, "",""];
 			s_player_repairActions set [count s_player_repairActions,_menu];
-			//s_player_repairActions set [count s_player_repairActions,_menu1];
+			s_player_repairActions set [count s_player_repairActions,_menu1];
 			s_player_repair_crtl = 1;
 		} else {
 			{dayz_myCursorTarget removeAction _x} forEach s_player_repairActions;s_player_repairActions = [];
@@ -294,11 +294,12 @@ if (!isNull _cursorTarget and !_inVehicle and (player distance _cursorTarget < 4
 		player removeAction s_player_studybody;
 		s_player_studybody = -1;
 	};
+	private ["_hasCarBomb"];
 	_hasCarBomb = "ItemCarBomb" in magazines player;
 	//Carbomb
 	if (((cursorTarget isKindOf "Car") || (cursorTarget isKindOf "Air") || (cursorTarget isKindOf "Motorcycle")) and _hasCarBomb and _canDo) then {
 		if (s_player_attach_bomb < 0) then {
-			s_player_attach_bomb = player addAction ["Attach Carbomb", "\z\addons\dayz_code\actions\player_attach_bomb.sqf",cursorTarget, 3, true, true, "", ""];
+			s_player_attach_bomb = player addAction ["Attach Bomb", "\z\addons\dayz_code\actions\player_attachBomb.sqf",cursorTarget, 3, true, true, "", ""];
 		};
 	} else {
 		player removeAction s_player_attach_bomb;
@@ -351,4 +352,6 @@ if (!isNull _cursorTarget and !_inVehicle and (player distance _cursorTarget < 4
 	//Allow player o gather
 	player removeAction s_player_gather;
 	s_player_gather = -1;
+	player removeAction s_player_attach_bomb;
+	s_player_attach_bomb = -1;
 };
