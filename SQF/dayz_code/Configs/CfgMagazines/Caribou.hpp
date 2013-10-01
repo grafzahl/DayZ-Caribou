@@ -32,7 +32,7 @@ class ItemGeocache : CA_Magazine {
 	count = 1;
 	type = (256 * 3);
 	displayName = "Geocache";
-	model = "\dayz_equip\models\tentbag_gear.p3d";
+	model = "\rhnet\caribou_models\mdl\misc\rhnet_geoc";
 	picture = "\dayz_equip\textures\equip_tentbag_ca.paa";
 	descriptionShort = $STR_EQUIP_DESC_20;
 
