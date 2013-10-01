@@ -30,6 +30,7 @@ class CfgFaces {
 	class OW_Nope : Default {
 		identityTypes[] = {};
 	};
+/*
 	class Merc_Face1 : OW_Nope {};
 	class Merc_Face2 : OW_Nope {};
 	class Merc_Face3 : OW_Nope {};
@@ -67,8 +68,10 @@ class CfgFaces {
 	class Merc_Face31 : OW_Nope {};
 	class Merc_Face32 : OW_Nope {};
 	class Merc_Face33 : OW_Nope {};
+*/
 	};
 	
+/*
 class MaskBlack : Man {};
 class gas_mask_face : Man {};
 class gangsta_faces : Man {};
@@ -77,4 +80,5 @@ class gangsta_faces_mask : Man {};
 class HeadMaskWinter : Man {};
 class HeadMaskSnow : Man {};
 class HeadMaskSkull : Man {};
+*/
 };
