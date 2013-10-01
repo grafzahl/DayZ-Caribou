@@ -35,6 +35,40 @@ class DZ_RPG_Pack_EP1: Bag_Base_EP1
 	};	
 };
 
+class DZ_Medic_Pack_EP1: Bag_Base_EP1
+{
+	scope = 2;
+	displayName = "Backpack (Medic)";
+	descriptionShort = "Backpack that has been used by Medics in earlier days, cant take any weapons";
+	picture = "\dzcb_data\icons\medic_backpack.paa";
+	icon = "\ca\weapons_e\data\icons\mapIcon_backpack_CA.paa";
+	mapSize = 2;
+	model = "\ca\weapons_e\AmmoBoxes\backpack_us_medical";
+	transportMaxWeapons = 0;
+	transportMaxMagazines = 26;
+	class eventHandlers
+	{
+		init="[(_this select 0),'CfgVehicles','DZ_Medic_Pack_EP1'] execVM '\z\addons\dayz_code\init\object_BackpackAction.sqf';";
+	};	
+};
+
+class DZ_CM_Pack_EP1: Bag_Base_EP1
+{
+	scope = 2;
+	displayName = "CM Pack";
+	descriptionShort = "(C)ustom (M)ade Pack - Backpack that is only available by crafting...";
+	picture = "\ca\weapons_e\data\icons\staticy_ca.paa";
+	icon = "\ca\weapons_e\data\icons\mapIcon_backpack_CA.paa";
+	mapSize = 2;
+	model = "\ca\weapons_e\AmmoBoxes\StaticY";
+	transportMaxWeapons = 2;
+	transportMaxMagazines = 20;
+	class eventHandlers
+	{
+		init="[(_this select 0),'CfgVehicles','DZ_CM_Pack_EP1'] execVM '\z\addons\dayz_code\init\object_BackpackAction.sqf';";
+	};	
+};
+
 class DZ_CMM_Pack_EP1: Bag_Base_EP1
 {
 	scope = 2;
@@ -50,24 +84,6 @@ class DZ_CMM_Pack_EP1: Bag_Base_EP1
 	class eventHandlers
 	{
 		init="[(_this select 0),'CfgVehicles','DZ_CMM_Pack_EP1'] execVM '\z\addons\dayz_code\init\object_BackpackAction.sqf';";
-	};	
-};
-
-class DZ_Medic_Pack_EP1: Bag_Base_EP1
-{
-	scope = 2;
-	displayName = "Backpack (Medic)";
-	descriptionShort = "Backpack that has been used by Medics in earlier days, cant take any weapons";
-	picture = "\dzcb_data\icons\medic_backpack.paa";
-	icon = "\ca\weapons_e\data\icons\mapIcon_backpack_CA.paa";
-	mapSize = 2;
-	//model = "\ca\weapons_e\AmmoBoxes\backpack_us_AUV";
-	model = "\ca\weapons_e\AmmoBoxes\backpack_us_medical";
-	transportMaxWeapons = 0;
-	transportMaxMagazines = 26;
-	class eventHandlers
-	{
-		init="[(_this select 0),'CfgVehicles','DZ_Medic_Pack_EP1'] execVM '\z\addons\dayz_code\init\object_BackpackAction.sqf';";
 	};	
 };
 
