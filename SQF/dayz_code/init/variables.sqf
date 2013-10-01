@@ -34,26 +34,26 @@ SafeObjects = ["Land_Fire_DZ", "TentStorage", "Wire_cat1", "Sandbag1_DZ", "Hedge
 
 //Cooking
 meatraw = [
-    "FoodSteakRaw",
-    "FoodmeatRaw",
-    "FoodbeefRaw",
-    "FoodmuttonRaw",
-    "FoodchickenRaw",
-    "FoodrabbitRaw",
-    "FoodbaconRaw",
-    "FoodgoatRaw",
+	"FoodSteakRaw",
+	"FoodmeatRaw",
+	"FoodbeefRaw",
+	"FoodmuttonRaw",
+	"FoodchickenRaw",
+	"FoodrabbitRaw",
+	"FoodbaconRaw",
+	"FoodgoatRaw",
 	"FishRawTrout",
 	"FishRawSeaBass",
 	"FishRawTuna"
 ];
 meatcooked = [
-    "FoodSteakCooked",
-    "FoodmeatCooked",
-    "FoodbeefCooked",
-    "FoodmuttonCooked",
-    "FoodchickenCooked",
-    "FoodrabbitCooked",
-    "FoodbaconCooked",
+	"FoodSteakCooked",
+	"FoodmeatCooked",
+	"FoodbeefCooked",
+	"FoodmuttonCooked",
+	"FoodchickenCooked",
+	"FoodrabbitCooked",
+	"FoodbaconCooked",
 	"FoodgoatCooked",
 	"FishCookedTrout",
 	"FishCookedSeaBass",
@@ -71,10 +71,10 @@ no_output_food = [
 ]+meatcooked+meatraw;
 
 food_with_output=[
-    "FoodCanBakedBeans",
-    "FoodCanSardines",
-    "FoodCanFrankBeans",
-    "FoodCanPasta",
+	"FoodCanBakedBeans",
+	"FoodCanSardines",
+	"FoodCanFrankBeans",
+	"FoodCanPasta",
 	"FoodCanGriff",
 	"FoodCanBadguy",
 	"FoodCanBoneboy",
@@ -99,10 +99,10 @@ food_with_output=[
 ];
 
 food_output = [
-    "TrashTinCan",
-    "TrashTinCan",
-    "TrashTinCan",
-    "TrashTinCan",
+	"TrashTinCan",
+	"TrashTinCan",
+	"TrashTinCan",
+	"TrashTinCan",
 	"FoodCanGriffEmpty",
 	"FoodCanBadguyEmpty",
 	"FoodCanBoneboyEmpty",
@@ -129,37 +129,37 @@ food_output = [
 no_output_drink = ["ItemWaterbottle", "ItemWaterbottleBoiled"];
 
 drink_with_output = [
-    "ItemSoda",  //just to define item for ItemSodaEmpty
-    "ItemSodaCoke",
-    "ItemSodaPepsi",
-    "ItemSodaMdew",
-    "ItemSodaMtngreen",
-    "ItemSodaR4z0r",
-    "ItemSodaClays",
-    "ItemSodaSmasht",
-    "ItemSodaDrwaste",
-    "ItemSodaLemonade",
-    "ItemSodaLvg",
-    "ItemSodaMzly",
-    "ItemSodaRabbit"
+	"ItemSoda",  //just to define item for ItemSodaEmpty
+	"ItemSodaCoke",
+	"ItemSodaPepsi",
+	"ItemSodaMdew",
+	"ItemSodaMtngreen",
+	"ItemSodaR4z0r",
+	"ItemSodaClays",
+	"ItemSodaSmasht",
+	"ItemSodaDrwaste",
+	"ItemSodaLemonade",
+	"ItemSodaLvg",
+	"ItemSodaMzly",
+	"ItemSodaRabbit"
 ];
 drink_output = [
-    "ItemSodaEmpty",
-    "ItemSodaCokeEmpty",
-    "ItemSodaPepsiEmpty",
-    "ItemSodaMdewEmpty",
-    "ItemSodaMtngreenEmpty",
-    "ItemSodaR4z0rEmpty",
-    "ItemSodaClaysEmpty",
-    "ItemSodaSmashtEmpty",
-    "ItemSodaDrwasteEmpty",
-    "ItemSodaLemonadeEmpty",
-    "ItemSodaLvgEmpty",
-    "ItemSodaMzlyEmpty",
-    "ItemSodaRabbitEmpty"
+	"ItemSodaEmpty",
+	"ItemSodaCokeEmpty",
+	"ItemSodaPepsiEmpty",
+	"ItemSodaMdewEmpty",
+	"ItemSodaMtngreenEmpty",
+	"ItemSodaR4z0rEmpty",
+	"ItemSodaClaysEmpty",
+	"ItemSodaSmashtEmpty",
+	"ItemSodaDrwasteEmpty",
+	"ItemSodaLemonadeEmpty",
+	"ItemSodaLvgEmpty",
+	"ItemSodaMzlyEmpty",
+	"ItemSodaRabbitEmpty"
 ];
 boil_tin_cans = [
-    "TrashTinCan",
+	"TrashTinCan",
 	"FoodCanGriffEmpty",
 	"FoodCanBadguyEmpty",
 	"FoodCanBoneboyEmpty",
@@ -179,19 +179,19 @@ boil_tin_cans = [
 	"FoodCanRusPeasEmpty",
 	"FoodCanRusMilkEmpty",
 	"FoodCanRusCornEmpty",
-    "ItemSodaEmpty",
-    "ItemSodaCokeEmpty",
-    "ItemSodaPepsiEmpty",
-    "ItemSodaMdewEmpty",
-    "ItemSodaMtngreenEmpty",
-    "ItemSodaR4z0rEmpty",
-    "ItemSodaClaysEmpty",
-    "ItemSodaSmashtEmpty",
-    "ItemSodaDrwasteEmpty",
-    "ItemSodaLemonadeEmpty",
-    "ItemSodaLvgEmpty",
-    "ItemSodaMzlyEmpty",
-    "ItemSodaRabbitEmpty"
+	"ItemSodaEmpty",
+	"ItemSodaCokeEmpty",
+	"ItemSodaPepsiEmpty",
+	"ItemSodaMdewEmpty",
+	"ItemSodaMtngreenEmpty",
+	"ItemSodaR4z0rEmpty",
+	"ItemSodaClaysEmpty",
+	"ItemSodaSmashtEmpty",
+	"ItemSodaDrwasteEmpty",
+	"ItemSodaLemonadeEmpty",
+	"ItemSodaLvgEmpty",
+	"ItemSodaMzlyEmpty",
+	"ItemSodaRabbitEmpty"
 ];
 
 dayz_combatLog = "";
@@ -504,15 +504,15 @@ if(!isDedicated) then {
 	dayz_spawnZombies = 0;
 	dayz_swarmSpawnZombies = 0;
 //Max local
-	dayz_maxLocalZombies = 30; // max quantity of Z controlled by local gameclient, used by player_spawnCheck. Below this limit we can spawn Z
+	dayz_maxLocalZombies = 20; // max quantity of Z controlled by local gameclient, used by player_spawnCheck. Below this limit we can spawn Z
 //Current NearBy
 	dayz_CurrentNearByZombies = 0;
 //Max NearBy
-	dayz_maxNearByZombies = 60; // max quantity of Z controlled by local gameclient, used by player_spawnCheck. Below this limit we can spawn Z
+	dayz_maxNearByZombies = 40; // max quantity of Z controlled by local gameclient, used by player_spawnCheck. Below this limit we can spawn Z
 //Current total
 	dayz_currentGlobalZombies = 0;
 //Max global zeds.
-	dayz_maxGlobalZeds = 3000;
+	dayz_maxGlobalZeds = 2000;
 //Animals
 	dayz_currentGlobalAnimals =	0;
 	dayz_maxGlobalAnimals =		100;

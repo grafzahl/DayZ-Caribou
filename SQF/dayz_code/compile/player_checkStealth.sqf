@@ -84,28 +84,28 @@ _scaleLight = _scaleLight max 0;
 
 //Terrain Visibility
 if (["grass",dayz_surfaceType] call fnc_inString) then {
-	_initial = _initial * 0.75;
-	_scaleMvmt = _scaleMvmt - 0.05;
+	_initial = _initial * 0.5625;
+	_scaleMvmt = _scaleMvmt - 0.075;
 } else {
 	if (["forest",dayz_surfaceType] call fnc_inString) then {
-		_initial = _initial * 0.5;
-		_scaleMvmt = _scaleMvmt - 0.1;
+		_initial = _initial * 0.375;
+		_scaleMvmt = _scaleMvmt - 0.15;
 	} else {
 		if (["concrete",dayz_surfaceType] call fnc_inString) then {
-			_initial = _initial * 1.2;
-			_scaleMvmt = _scaleMvmt + 0.1;
+			_initial = _initial * 0.9;
+			_scaleMvmt = _scaleMvmt + 0.05;
 		} else {
 			if (["rock",dayz_surfaceType] call fnc_inString) then {
-				_initial = _initial * 1.1;
-				_scaleMvmt = _scaleMvmt + 0.05;
+				_initial = _initial * 0.825;
+				_scaleMvmt = _scaleMvmt + 0.02;
 			};
 		};
 	};
 };
 
 if (isOnRoad _pos) then {
-	_initial = _initial * 1.3;
-	_scaleMvmt = _scaleMvmt + 0.2;
+	_initial = _initial * 0.975;
+	_scaleMvmt = _scaleMvmt + 0.1;
 	//dayz_surfaceNoise = dayz_surfaceNoise + 10;
 };
 /*
