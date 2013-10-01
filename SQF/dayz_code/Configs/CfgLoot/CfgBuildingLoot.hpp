@@ -54,7 +54,7 @@ class CfgBuildingLoot {
 			{"RH_anac","weapon",0.005},//RH_6Rnd_44_Mag
 			{"RH_bull","weapon",0.005},//RH_6Rnd_44_Mag
 		//special
-			{"WeaponHolder_ItemTent","object",0.01},
+			{"WeaponHolder_ItemDomeTent","object",0.05},
 		//mags special
 			{"PartWoodPile","magazine",0.04},
 		//bags
@@ -188,12 +188,14 @@ class CfgBuildingLoot {
 			{"Makarov","weapon",0.02},
 			//{"Colt1911","weapon",0.02}, //mil/police
 			{"LeeEnfield","weapon",0.01},
-			{"revolver_EP1","weapon",0.01},
-			{"Winchester1866","weapon",0.03},
-			{"Crossbow_DZ","weapon",0.01},
-			{"MR43","weapon", 0.01},			
+			{"revolver_EP1","weapon",0.03},
+			{"Winchester1866","weapon",0.02},
+			{"Crossbow_DZ","weapon",0.03},
+			{"MR43","weapon", 0.04},			
 		//special
-			{"WeaponHolder_ItemTent","object",0.01},
+			{"WeaponHolder_ItemTent","object",0.02},
+			{"WeaponHolder_ItemDomeTent","object",0.01},
+			{"ItemGeocache","magazine",0.01},
 		//mags special
 			{"PartWoodPile","magazine",0.04},
 		//bags
@@ -252,7 +254,7 @@ class CfgBuildingLoot {
 			{"WeaponHolder_PartFueltank","object",0.02},
 			{"WeaponHolder_PartEngine","object",0.02},
 			{"WeaponHolder_ItemFuelcan","object",0.03},
-			{"WeaponHolder_ItemTent","object",0.01},
+			{"WeaponHolder_ItemTent","object",0.005},
 			{"WeaponHolder_ItemFuelcan","object",0.03},
 			{"MedBox0","object",0.05},
 			{"MedBox1","object",0.05},
@@ -579,27 +581,27 @@ class CfgBuildingLoot {
 			//{"M14_EP1","weapon",0.005},
 			//{"KSVK_DZ","weapon",0.003},
 			//{"M4A3_CCO_EP1","weapon",0.02},
+			//{"M9SD","weapon",0.02},
 		//pistols
-			{"M9SD","weapon",0.02},
 			{"MakarovSD","weapon",0.07},
-			{"glock17_EP1","weapon",0.04},
-			{"RH_uspsd","weapon",0.01},//RH_15Rnd_9x19_uspsd
-			{"RH_m9sd","weapon",0.01},//15Rnd_9x19_M9SD
-			{"RH_pmsd","weapon",0.01},//8Rnd_9x18_MakarovSD
-			{"RH_apssd","weapon",0.01},//RH_20Rnd_9x18_apssd
+			{"glock17_EP1","weapon",0.06},
+			{"RH_uspsd","weapon",0.04},//RH_15Rnd_9x19_uspsd
+			{"RH_m9sd","weapon",0.03},//15Rnd_9x19_M9SD
+			{"RH_pmsd","weapon",0.04},//8Rnd_9x18_MakarovSD
+			{"RH_apssd","weapon",0.05},//RH_20Rnd_9x18_apssd
 		//weapons
 			{"Remington870_lamp","weapon",0.08},
 			{"M1014","weapon",0.07},
-			{"Saiga12K","weapon",0.03},
+			{"Saiga12K","weapon",0.04},
 		//AK-Damage
-			{"RH_ak74mk","weapon",0.01},//30Rnd_545x39_AK
-			{"RH_ak74mkgl","weapon",0.01},//30Rnd_545x39_AK
-			{"RH_ak74msp","weapon",0.01},//30Rnd_545x39_AK
-			{"RH_ak74mglsp","weapon",0.01},//30Rnd_545x39_AK
-			{"RH_ak105k","weapon",0.01},//30Rnd_545x39_AK
-			{"RH_ak105kgl","weapon",0.01},//30Rnd_545x39_AK
-			{"RH_ak105sp","weapon",0.01},//30Rnd_545x39_AK
-			{"RH_ak105glsp","weapon",0.01},//30Rnd_545x39_AK
+			{"RH_ak74mk","weapon",0.04},//30Rnd_545x39_AK
+			{"RH_ak74mkgl","weapon",0.03},//30Rnd_545x39_AK
+			{"RH_ak74msp","weapon",0.04},//30Rnd_545x39_AK
+			{"RH_ak74mglsp","weapon",0.03},//30Rnd_545x39_AK
+			{"RH_ak105k","weapon",0.03},//30Rnd_545x39_AK
+			{"RH_ak105kgl","weapon",0.02},//30Rnd_545x39_AK
+			{"RH_ak105sp","weapon",0.03},//30Rnd_545x39_AK
+			{"RH_ak105glsp","weapon",0.02},//30Rnd_545x39_AK
 		//Stanag-Damage
 			{"RH_m4caim","weapon",0.01},//30Rnd_556x45_Stanag
 			{"RH_m4cacog","weapon",0.01},//30Rnd_556x45_Stanag
@@ -631,18 +633,18 @@ class CfgBuildingLoot {
 			{"Sa58V_CCO_EP1","weapon",0.02},
 		//DMR-Damage
 			{"RH_m14acog","weapon",0.005},//20Rnd_762x51_DMR
-			{"RH_m14aim","weapon",0.005},//20Rnd_762x51_DMR
-			{"RH_m14eot","weapon",0.005},//20Rnd_762x51_DMR
+			{"RH_m14aim","weapon",0.01},//20Rnd_762x51_DMR
+			{"RH_m14eot","weapon",0.01},//20Rnd_762x51_DMR
 			{"RH_scarHb_eotech","weapon",0.01},//20rnd_762x51_B_SCAR
 			{"RH_scarHb_gl_acog","weapon",0.01},//20rnd_762x51_B_SCAR
-			{"M240_DZ","weapon",0.005},
+			{"M240_DZ","weapon",0.01},
 			{"Mk_48_DZ","weapon",0.005},
-			{"Pecheneg_DZ","weapon",0.002},
-			{"DMR_DZ","weapon",0.002},
+			{"Pecheneg_DZ","weapon",0.005},
+			{"DMR_DZ","weapon",0.005},
 			{"M24","weapon",0.01},
-			{"M40A3","weapon",0.004},
-			{"SVD_CAMO","weapon",0.01},
-			{"SVD","weapon",0.001},
+			{"M40A3","weapon",0.005},
+			{"SVD_CAMO","weapon",0.005},
+			{"SVD","weapon",0.01},
 		//Silenced
 			{"M4A1_AIM_SD_camo","weapon",0.02},
 			{"SCAR_L_CQC_CCO_SD","weapon",0.015},
@@ -654,9 +656,9 @@ class CfgBuildingLoot {
 
 			//silenced
 			{"bizon_silenced","weapon",0.04},
-			{"G36_C_SD_camo","weapon",0.02},
-			{"SCAR_H_CQC_CCO_SD","weapon",0.01},
-			{"SCAR_H_LNG_Sniper_SD","weapon",0.002},
+			//{"G36_C_SD_camo","weapon",0.02},
+			{"SCAR_H_CQC_CCO_SD","weapon",0.006},
+			{"SCAR_H_LNG_Sniper_SD","weapon",0.005},
 			{"WeaponHolder_ItemCamoNet","object",0.03},
 		//mags special
 			{"PipeBomb","magazine",0.01},
