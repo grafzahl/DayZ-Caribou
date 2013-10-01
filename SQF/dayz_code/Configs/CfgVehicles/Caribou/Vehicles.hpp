@@ -1,3 +1,12 @@
+class WeaponHolder_ItemDomeTent : WeaponHolderBase {
+	scope = public;
+	displayName = $STR_ITEM_NAME_CAMONET;
+	model = "\dayz_equip\proxy\tentbag.p3d";
+	class eventHandlers {
+		init = "[(_this select 0),'cfgMagazines','ItemDomeTent'] execVM '\z\addons\dayz_code\init\object_pickupAction.sqf';";
+	};
+};
+
 class GeoCache_DZ : StashSmall {
 	displayname = "Geocache (Storage)";
 	animated = 0;
