@@ -13,6 +13,7 @@ Industrial[] = {
 	{"FoodCanRusStew",0.01},
 //special
 	{"equip_duct_tape",0.03},
+	{"equip_string",0.03},
 	{"equip_rag",0.03},
 	{"equip_nails",0.06},
 	{"equip_brick",0.03},

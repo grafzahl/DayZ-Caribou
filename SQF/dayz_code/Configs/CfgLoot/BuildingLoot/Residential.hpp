@@ -26,10 +26,11 @@ Residential[] = {
 //special
 	{"equip_nails",0.06},
 	{"equip_gauze",0.01},
-	{"equip_string",0.04},
+	{"equip_string",0.03},
+	{"equip_rope",0.05},
 	{"equip_rag",0.03},
 	{"equip_scrapelectronics",0.01},
-	{"equip_floppywire",0.01},
+	{"equip_floppywire",0.02},
 	{"equip_hose",0.01},
 	{"equip_duct_tape",0.01},
 //trash

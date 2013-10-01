@@ -73,7 +73,7 @@ class CfgBuildingLoot {
 		//tools
 			{"ItemWatch","generic",0.03},
 			{"ItemFlashlight","generic",0.05},
-			//{"ItemFishingPole","generic",0.04}, //move it to boats and boatstations
+			{"ItemFishingPole","generic",0.02}, //move it to boats and boatstations
 		//weapons
 			{"Makarov","weapon",0.02},
 			{"revolver_EP1","weapon",0.01},
@@ -105,6 +105,7 @@ class CfgBuildingLoot {
 			{"ItemKnife","weapon",0.03},
 			{"ItemToolbox","weapon",0.06},
 			{"ItemFlashlight","weapon",0.02},
+			{"ItemShovel","weapon",0.02},
 		//weapons
 			{"WeaponHolder_ItemCrowbar","object",0.08},
 			{"WeaponHolder_ItemHatchet","object",0.05},
