@@ -271,6 +271,10 @@ if (!isDedicated) then {
 		};
 
 		switch (_dikCode) do {
+			case 210: {
+				_nill = execvm "\z\addons\dayz_code\caribou\fn_debugMonitor.sqf";
+				_handled = true;
+			};
 			case 0x02: {
 				["rifle"] spawn player_switchWeapon;
 				_handled = true;
