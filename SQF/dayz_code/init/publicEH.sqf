@@ -164,6 +164,7 @@ if (!isDedicated) then {
 	"PVCDZ_hlt_Transfuse"		addPublicVariableEventHandler {(_this select 1) call player_medTransfuse; PVCDZ_hlt_Transfuse = nil};
 	"PVCDZ_hlt_PainK"			addPublicVariableEventHandler {(_this select 1) call player_medPainkiller};
 	"PVCDZ_hlt_AntiB"			addPublicVariableEventHandler {(_this select 1) call player_medAntiBiotics};
+	"dayzAnimCrash"	addPublicVariableEventHandler {[_this select 1] execVM "\z\addons\dayz_code\caribou\fn_crashMonitor.sqf";};
 	
 	"PVCDZ_SetVar" addPublicVariableEventHandler {
 		_object = ((_this select 1) select 0);
