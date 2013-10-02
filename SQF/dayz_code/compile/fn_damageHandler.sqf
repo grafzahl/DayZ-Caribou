@@ -7,7 +7,7 @@ scriptName "Functions\misc\fn_damageHandler.sqf";
 	- Function
 	- [unit, selectionName, damage, source, projectile] call fnc_usec_damageHandler;
 ************************************************************/
-private ["_myKills","_humanityHit","_canHitFree","_isBandit","_wpst","_scale","_nrj","_hitPain","_rndPain","_isbleeding","_rndBleed","_hitBleed","_rndInfection","_hitInfection","_isInjured","_lowBlood","_wound","_isHit","_isCardiac","_chance","_unit","_hit","_damage","_unconscious","_source","_ammo","_type","_Viralzed","_isMinor","_isHeadHit","_isPlayer"];
+private ["_hasHighBody","_hasLowBody","_hasHelmet","_headProtection","_isBodyHit","_playerModel","_myKills","_humanityHit","_canHitFree","_isBandit","_wpst","_scale","_nrj","_hitPain","_rndPain","_isbleeding","_rndBleed","_hitBleed","_rndInfection","_hitInfection","_isInjured","_lowBlood","_wound","_isHit","_isCardiac","_chance","_unit","_hit","_damage","_unconscious","_source","_ammo","_type","_Viralzed","_isMinor","_isHeadHit","_isPlayer"];
 _unit = _this select 0;
 _hit = _this select 1;
 _damage = _this select 2;
@@ -36,6 +36,35 @@ if ((isNull _source) AND {((_ammo == "") OR {({damage _x > 0.9} count((getposATL
 	//player sidechat format["Processed damage for %1",_unit];
 	//USEC_SystemMessage = format["CLIENT: %1 damaged for %2 (in vehicle: %5)",_unit,_damage,_isMinor,_isHeadHit,_inVehicle];
 	//PublicVariable "USEC_SystemMessage";
+
+//Stuff for the amored Skins
+_playerModel = typeOf player;
+_isBodyHit = (_hit == "body");
+_headProtection = _unit getVariable ["headProtection", true];
+
+//All Models with visual Helmet
+_hasLowBody = _playerModel in CB_lowBody;
+_hasHighBody = _playerModel in CB_highBody;
+//All Models with visual (Bulletproof) Vest
+_hasHelmet = _playerModel in CB_Helmet;
+
+if(_isHeadHit && _hasHelmet && _headProtection && _damage > 0.1) then {
+	_hit = "body";
+	_isHeadHit = false;
+	_damage = _damage * 0.7;
+	if(_isPlayer) then {
+		_unit setVariable ["headProtection", false];
+	};
+};
+
+if(_isBodyHit && _hasLowBody && _damage > 0.1) then {
+	_damage = _damage * 0.8;
+} else {
+	if(_isBodyHit && _hasHighBody && _damage > 0.1) then {
+		_damage = _damage * 0.6;
+	};
+};
+
 
 if (_unit == player) then {
 	if (_hit == "") then {
