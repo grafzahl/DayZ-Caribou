@@ -51,17 +51,17 @@ _hasHelmet = _playerModel in CB_Helmet;
 if(_isHeadHit && _hasHelmet && _headProtection && _damage > 0.1) then {
 	_hit = "body";
 	_isHeadHit = false;
-	_damage = _damage * 0.7;
+	_damage = _damage * 0.8;
 	if(_isPlayer) then {
 		_unit setVariable ["headProtection", false];
 	};
 };
 
 if(_isBodyHit && _hasLowBody && _damage > 0.1) then {
-	_damage = _damage * 0.8;
+	_damage = _damage * 0.85;
 } else {
 	if(_isBodyHit && _hasHighBody && _damage > 0.1) then {
-		_damage = _damage * 0.6;
+		_damage = _damage * 0.7;
 	};
 };
 
@@ -228,7 +228,7 @@ if (_damage > 0.4) then { //0.25
 	switch true do {
 		default {
 			_rndBleed = (random 100);
-			_hitBleed = (_rndBleed < 10);
+			_hitBleed = (_rndBleed < 50);
 
 			if (_hitBleed) then {
 				_isbleeding = true;
