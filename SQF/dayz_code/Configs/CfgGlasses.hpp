@@ -1,5 +1,6 @@
 class CfgGlasses {
 	class None;
+	/*
 	class Pro_Helmet : None {};
 	class Pro_Helmet_g : None {};
 	class Pro_Helmet_2 : None {};
@@ -31,4 +32,5 @@ class CfgGlasses {
 	class RedSun_sof_w : None {};
 	class None_sof_w : None {};
 	class goggles_winter : None {};
+	*/
 };
