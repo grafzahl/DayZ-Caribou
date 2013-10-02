@@ -195,7 +195,7 @@ class CfgBuildingLoot {
 		//special
 			{"WeaponHolder_ItemTent","object",0.02},
 			{"WeaponHolder_ItemDomeTent","object",0.01},
-			{"ItemGeocache","magazine",0.01},
+			{"WeaponHolder_ItemGeocache","object",0.01},
 		//mags special
 			{"PartWoodPile","magazine",0.04},
 		//bags
@@ -461,8 +461,8 @@ class CfgBuildingLoot {
 			{"DZ_British_ACU","object",0.05}, // 18
 			{"DZ_CivilBackpack_EP1","object",0.03}, // 24			
 		//multiple spawns
-			{"","military",0.70},
-			{"","generic",0.30}
+			{"","military",0.9},
+			{"","generic",0.4}
 		};
 	};
 
@@ -543,8 +543,8 @@ class CfgBuildingLoot {
 			{"DZ_British_ACU","object",0.05}, // 18
 			{"DZ_CivilBackpack_EP1","object",0.03}, // 24			
 		//multiple spawns
-			{"","military",0.70},
-			{"","generic",0.30}
+			{"","military",0.90},
+			{"","generic",0.50}
 		};
 	};
 	class MilitarySpecial: Default {
@@ -557,13 +557,14 @@ class CfgBuildingLoot {
 		lootType[] = {
 		//one spawn
 		//tools
-			{"Binocular","weapon",0.03},
+			{"Binocular","weapon",0.05},
 			{"ItemFlashlightRed","generic",0.05},
 			{"ItemKnife","generic",0.05},
 			{"ItemGPS","weapon",0.01},
 			{"ItemMap","generic",0.03},
-			{"Binocular_Vector","generic",0.002},
-			{"NVGoggles","weapon",0.004},
+			{"Binocular_Vector","generic",0.005},
+			{"NVGoggles","weapon",0.01},
+			{"ItemRadio","weapon",0.02},
 		//Unused
 			//{"UZI_EP1","weapon",0.08},
 			//{"M16A2","weapon",0.05},
@@ -603,9 +604,9 @@ class CfgBuildingLoot {
 			{"RH_ak105sp","weapon",0.03},//30Rnd_545x39_AK
 			{"RH_ak105glsp","weapon",0.02},//30Rnd_545x39_AK
 		//Stanag-Damage
-			{"RH_m4caim","weapon",0.01},//30Rnd_556x45_Stanag
+			{"RH_m4caim","weapon",0.03},//30Rnd_556x45_Stanag
 			{"RH_m4cacog","weapon",0.01},//30Rnd_556x45_Stanag
-			{"RH_m4ceotech","weapon",0.01},//30Rnd_556x45_Stanag
+			{"RH_m4ceotech","weapon",0.02},//30Rnd_556x45_Stanag
 			{"RH_m4cglaim","weapon",0.01},//30Rnd_556x45_Stanag
 			{"RH_m4cglacog","weapon",0.01},//30Rnd_556x45_Stanag
 			{"RH_m4cgleotech","weapon",0.01},//30Rnd_556x45_Stanag
@@ -623,11 +624,11 @@ class CfgBuildingLoot {
 			{"RH_M249","weapon",0.01},//200Rnd_556x45_M249
 			{"RH_M249p","weapon",0.01},//200Rnd_556x45_M249
 		//AKM-Damage
-			{"RH_rk95ag","weapon",0.01},//30Rnd_762x39_AK47
+			{"RH_rk95ag","weapon",0.02},//30Rnd_762x39_AK47
 			{"RH_rk95aim","weapon",0.01},//30Rnd_762x39_AK47
-			{"RH_ak103k","weapon",0.01},//30Rnd_762x39_AK47
+			{"RH_ak103k","weapon",0.03},//30Rnd_762x39_AK47
 			{"RH_ak103kgl","weapon",0.01},//30Rnd_762x39_AK47
-			{"RH_ak103sp","weapon",0.01},//30Rnd_762x39_AK47
+			{"RH_ak103sp","weapon",0.02},//30Rnd_762x39_AK47
 			{"RH_ak103glsp","weapon",0.01},//30Rnd_762x39_AK47
 			{"Sa58V_RCO_EP1","weapon",0.01},
 			{"Sa58V_CCO_EP1","weapon",0.02},
@@ -667,7 +668,7 @@ class CfgBuildingLoot {
 			{"DZ_CivilBackpack_EP1","object",0.02}, // 24
 			{"DZ_Backpack_EP1","object",0.03}, // 24		
 		//multiple spawns
-			{"","military",0.90},
+			{"","military",1},
 			{"","CaribouClothing",0.3},
 			{"","generic",0.90}
 		};
