@@ -31,10 +31,10 @@ class ItemGeocache : CA_Magazine {
 	scope = public;
 	count = 1;
 	type = (256 * 3);
-	displayName = "Geocache";
+	displayName = "Geocache Kit";
 	model = "\rhnet\caribou_models\mdl\misc\rhnet_geoc";
-	picture = "\dayz_equip\textures\equip_tentbag_ca.paa";
-	descriptionShort = $STR_EQUIP_DESC_20;
+	picture = "\dzcb_data\icons\geocache.paa";
+	descriptionShort = "A Kit for hiding a Geocache (Some stupid GPS-Game before the Zombies came here... Humans...)";
 
 	class ItemActions {
 		class Build {

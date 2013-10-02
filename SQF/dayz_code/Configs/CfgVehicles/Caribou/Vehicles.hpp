@@ -1,3 +1,12 @@
+class WeaponHolder_ItemGeocache : WeaponHolderBase {
+	scope = public;
+	displayName = "Geocache Kit";
+	model = "\rhnet\caribou_models\mdl\misc\rhnet_geoc";
+	class eventHandlers {
+		init = "[(_this select 0),'cfgMagazines','ItemGeocache'] execVM '\z\addons\dayz_code\init\object_pickupAction.sqf';";
+	};
+};
+
 class WeaponHolder_ItemDomeTent : WeaponHolderBase {
 	scope = public;
 	displayName = $STR_ITEM_NAME_CAMONET;
