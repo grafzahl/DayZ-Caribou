@@ -332,6 +332,29 @@ if (!isNull _cursorTarget and !_inVehicle and (player distance _cursorTarget < 4
 		};
 	};
 
+	//Pack Bike
+	if(_cursorTarget isKindOf "MMT_Civ" and _canDo  and (damage _cursorTarget < 1)) then {
+		if ((s_player_bikepack < 0) and (player distance _cursorTarget < 3)) then {
+			s_player_bikepack = player addAction ["Pack Bike", "\z\addons\dayz_code\actions\player_packBike.sqf",_cursorTarget, 0, false, true, "",""];
+		};
+	} else {
+		player removeAction s_player_bikepack;
+		s_player_bikepack = -1;
+	};
+
+	//Ignite all Storage-Containers
+	_hasMatches = "ItemMatchbox" in items player;
+	_hasFlares = "HandRoadFlare" in magazines player;
+	if ( ((cursorTarget isKindOf "TentStorage") || (cursorTarget isKindOf "DomeTentStorage") || (cursorTarget isKindOf "StashMedium") || (cursorTarget isKindOf "StashSmall") || (cursorTarget isKindOf "GeoCache_DZ")) and (_hasMatches or _hasFlares) and _canDo and !(inflamed cursorTarget)) then {
+		if (s_player_ignite_storage < 0) then {
+			_burnTarget = "Storage";
+			s_player_ignite_storage = player addAction ["Ignite " + _burnTarget, "\z\addons\dayz_code\actions\player_igniteStorage.sqf",cursorTarget, 3, false, true, "", ""];
+		};
+	} else {
+		player removeAction s_player_ignite_storage;
+		s_player_ignite_storage = -1;
+	};
+
 	//Repairing Vehicles
 	/*
 	if ((dayz_myCursorTarget != _cursorTarget) and _isVehicle and !_isMan and _hasToolbox and (damage _cursorTarget < 1)) then {
@@ -406,6 +429,10 @@ if (!isNull _cursorTarget and !_inVehicle and (player distance _cursorTarget < 4
 	s_player_fillfuel = -1;
 	player removeAction s_player_studybody;
 	s_player_studybody = -1;
+	player removeAction s_player_bikepack;
+	s_player_bikepack = -1;
+	player removeAction s_player_ignite_storage;
+	s_player_ignite_storage = -1;
 	/*
 	//Drag Body
 	player removeAction s_player_dragbody;

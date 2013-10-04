@@ -610,7 +610,7 @@ class CfgVehicles {
 	class LAV25: Banned {};
 	class LAV25_HQ: Banned {};
 	class MMT_USMC: Banned {};
-	class MMT_Civ: Banned {};
+	//class MMT_Civ: Banned {};
 	class MTVR: Banned {};
 	class MtvrReammo: Banned {};
 	class MtvrRefuel: Banned {};
