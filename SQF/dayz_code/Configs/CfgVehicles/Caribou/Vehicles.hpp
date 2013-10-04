@@ -1,3 +1,12 @@
+class WeaponHolder_ItemBikeBox : WeaponHolderBase {
+	scope = public;
+	displayName = "Folding-Bike Kit";
+	model = "\z\addons\dayz_communityassets\models\crate.p3d";
+	class eventHandlers {
+		init = "[(_this select 0),'cfgMagazines','ItemBikeBox'] execVM '\z\addons\dayz_code\init\object_pickupAction.sqf';";
+	};
+};
+
 class WeaponHolder_ItemGeocache : WeaponHolderBase {
 	scope = public;
 	displayName = "Geocache Kit";

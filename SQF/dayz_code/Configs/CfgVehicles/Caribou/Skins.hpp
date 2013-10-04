@@ -203,3 +203,44 @@ class Pilot2_DZ: Pilot_Default3 {
 	weaponSlots = "1	 + 	4	 + 12*		256	 + 2*	4096	 + 	2	 + 8*	16  + 12*131072";
 	canHideBodies = 1;
 };
+
+class Gangsta_merc2;
+class Gang1_DZ: Gangsta_merc2 {
+	displayName = "Gangster";
+	side = 1;
+	weapons[] = {"Throw","Put"};
+	canCarryBackPack = 1;
+	backpack = "";
+	magazines[] = {};
+	respawnWeapons[] = {"Throw","Put"};
+	respawnMagazines[] = {};
+	weaponSlots = "1	 + 	4	 + 12*		256	 + 2*	4096	 + 	2	 + 8*	16  + 12*131072";
+	canHideBodies = 1;
+};
+
+class Gangsta_merc3;
+class Gang2_DZ: Gangsta_merc3 {
+	displayName = "Gangster";
+	side = 1;
+	weapons[] = {"Throw","Put"};
+	canCarryBackPack = 1;
+	backpack = "";
+	magazines[] = {};
+	respawnWeapons[] = {"Throw","Put"};
+	respawnMagazines[] = {};
+	weaponSlots = "1	 + 	4	 + 12*		256	 + 2*	4096	 + 	2	 + 8*	16  + 12*131072";
+	canHideBodies = 1;
+};
+class Gangsta_merc5;
+class Gang3_DZ: Gangsta_merc5 {
+	displayName = "Gangster";
+	side = 1;
+	weapons[] = {"Throw","Put"};
+	canCarryBackPack = 1;
+	backpack = "";
+	magazines[] = {};
+	respawnWeapons[] = {"Throw","Put"};
+	respawnMagazines[] = {};
+	weaponSlots = "1	 + 	4	 + 12*		256	 + 2*	4096	 + 	2	 + 8*	16  + 12*131072";
+	canHideBodies = 1;
+};

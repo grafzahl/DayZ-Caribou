@@ -49,8 +49,8 @@ _bias = (_bias + (random(100 - _bias)) / 100);
 			_lootChance = _lootChance + 0.05;
 		};
 
-		if (dayz_currentWeaponHolders < dayz_maxMaxWeaponHolders) then {	
-			if (_rnd <= _lootChance) then {
+	if (_rnd <= _lootChance) then {
+		if (dayz_currentWeaponHolders < dayz_maxMaxWeaponHolders) then { 
 				if (count _nearBy == 0) then {
 					_index = dayz_CBLBase find _type;
 					_weights = dayz_CBLChances select _index;
