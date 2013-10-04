@@ -78,6 +78,7 @@ class CfgBuildingLoot {
 			{"ItemFishingPole","generic",0.02}, //move it to boats and boatstations
 		//weapons
 			{"MR43","weapon",0.02},
+			{"ItemBikeBox","magazine",0.005},
 			{"Winchester1866","weapon",0.02},
 			{"LeeEnfield","weapon",0.01},
 			{"MeleeBaseBallBat","weapon",0.02},

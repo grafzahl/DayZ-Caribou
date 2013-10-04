@@ -27,6 +27,25 @@ class ItemBloodbag: CA_Magazine {
 	};
 };
 
+class ItemBikeBox : CA_Magazine {
+	scope = public;
+	count = 1;
+	type = (256 * 6);
+	displayName = "Folding-Bike Kit";
+	model = "\z\addons\dayz_communityassets\models\crate.p3d";
+	picture = "\dzcb_data\icons\bikeobox.paa";
+	descriptionShort = "Bike";
+
+	class ItemActions {
+		class Build {
+			text = "Unpack Bike"; //this is the text that is in the box you click
+			script = "spawn player_unPackBike; r_action_count = r_action_count + 1;";//here we define what the action will do
+			require = "ItemToolbox";//by default you require a toolbox in order to deploy the bike
+			create = "MMT_Civ";//and here is the output, the mountain bike.
+		};
+	};
+};
+
 class ItemGeocache : CA_Magazine {
 	scope = public;
 	count = 1;
@@ -164,5 +183,21 @@ class Skin_Pilot1_DZ : SkinBase {
 class Skin_Pilot2_DZ : SkinBase {
 	usemodel = "Pilot2_DZ";
 	displayName = "Pilot Clothing";
+	descriptionShort = "Clothing-Parcel with a used Pre-Outbreak Suit";
+};
+
+class Skin_Gang1_DZ : SkinBase {
+	usemodel = "Gang1_DZ";
+	displayName = "Gangster Clothing";
+	descriptionShort = "Clothing-Parcel with a used Pre-Outbreak Suit";
+};
+class Skin_Gang2_DZ : SkinBase {
+	usemodel = "Gang2_DZ";
+	displayName = "Gangster Clothing";
+	descriptionShort = "Clothing-Parcel with a used Pre-Outbreak Suit";
+};
+class Skin_Gang3_DZ : SkinBase {
+	usemodel = "Gang3_DZ";
+	displayName = "Gangster Clothing";
 	descriptionShort = "Clothing-Parcel with a used Pre-Outbreak Suit";
 };
