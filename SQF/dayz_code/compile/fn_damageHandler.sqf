@@ -219,7 +219,7 @@ if (_damage > 0.4) then { //0.25
 			_id = [_source,"shothead"] spawn player_death;
 		};
 	};
-
+/*
 	//Create wound and cause bleed
 	_wound = _hit call fnc_usec_damageGetWound;
 	_isHit = _unit getVariable["hit_"+_wound,false];
@@ -228,7 +228,7 @@ if (_damage > 0.4) then { //0.25
 	switch true do {
 		default {
 			_rndBleed = (random 100);
-			_hitBleed = (_rndBleed < 50);
+			_hitBleed = (_rndBleed < 10);
 
 			if (_hitBleed) then {
 				_isbleeding = true;
@@ -239,6 +239,14 @@ if (_damage > 0.4) then { //0.25
 	if (_ammo == "zombie") then {
 		//if(!_isHit and ((_isbleeding) or _isHeadHit)) then {
 		if(!_isHit and _isbleeding) then {
+			//Create Wound
+*/
+	//Create wound and cause bleed
+	_wound = _hit call fnc_usec_damageGetWound;
+	_isHit = _unit getVariable["hit_"+_wound,false];
+
+	if (_ammo == "zombie") then {
+		if(!_isHit and ((_damage > 0.7) or _isHeadHit)) then {
 			//Create Wound
 			_unit setVariable["hit_"+_wound,true,true];
 			
@@ -269,7 +277,7 @@ if (_damage > 0.4) then { //0.25
 			if ((!r_player_infected) and !(r_player_Sepsis select 0)) then {
 				if (_ammo == "zombie") then {
 					_rndInfection = (random 100);
-					_hitInfection = (_rndInfection < 1);
+					_hitInfection = (_rndInfection < 3);
 
 					if (_hitInfection) then {
 						r_player_Sepsis = [true, diag_tickTime];

@@ -82,6 +82,7 @@ if (!isDedicated) then {
 	player_goFishing =	compile preprocessFileLineNumbers "\z\addons\dayz_code\actions\player_goFishing.sqf";
 	player_gather =	compile preprocessFileLineNumbers "\z\addons\dayz_code\actions\player_gather.sqf";
 	player_selfBloodBag =	compile preprocessFileLineNumbers "\z\addons\dayz_code\actions\player_selfBloodBag.sqf";
+	player_unPackBike = compile preprocessFileLineNumbers "\z\addons\dayz_code\actions\player_unPackBike.sqf";
 
 	//ui
 	player_selectSlot = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\ui_selectSlot.sqf";
