@@ -17,7 +17,7 @@ Industrial[] = {
 	{"equip_rag",0.03},
 	{"equip_nails",0.06},
 	{"equip_brick",0.03},
-	{"equip_crate",0.02},
+	//{"equip_crate",0.02},
 	{"equip_scrapelectronics",0.01},
 //trash
 	{"ItemSodaSmashtEmpty",0.06},
