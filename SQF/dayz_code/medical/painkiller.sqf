@@ -18,7 +18,7 @@ if ((_unit == player) or (vehicle player != player)) then {
 	//PVCDZ_plr_Humanity = [player,20];
 	[player,20] call player_humanityChange;
 };
-
+[player,"painkiller",0,false] call dayz_zombieSpeak;
 player removeMagazine "ItemPainkiller";
 
 sleep 1;

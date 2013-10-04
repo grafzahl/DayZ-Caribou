@@ -13,6 +13,7 @@ if (vehicle player == player) then {
 	//not in a vehicle
 	player playActionNow "Medic";
 };
+[player,"morphine",0,false] call dayz_zombieSpeak;
 r_interrupt = false;
 _animState = animationState player;
 r_doLoop = true;
