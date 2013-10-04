@@ -70,6 +70,10 @@ if (count _array > 0) then {
 		};
 	};
 	_body setVariable ["deathType",_method,true];
+	_body setVariable["dead_HumanKills",(player getVariable ["humanKills",0]),true];
+	_body setVariable["dead_BanditKills",(player getVariable ["banditKills",0]),true];
+	_body setVariable["dead_DeathTime",serverTime,true];
+	_body setVariable["dead_Humanity",(player getVariable["humanity",0]),true];
 };
 
 terminate dayz_musicH;
