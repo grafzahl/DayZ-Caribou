@@ -2,7 +2,7 @@
         Created exclusively for ArmA2:OA - DayZMod.
         Please request permission to use/alter/distribute from project leader (R4Z0R49) AND the author (facoptere@gmail.com)
 */
-private ["_rnd","_move","_hpList","_hp","_wound","_cnt","_index","_damage","_woundDamage","_total","_doRE","_deg","_lastTackle","_cantSee","_unit","_type","_vehicle","_speed","_distance","_isVehicle","_dist","_tPos","_zPos","_inAngle","_pos","_movePlayer","_knockdown","_dir"];
+private ["_rnd","_move","_wound","_cnt","_index","_damage","_total","_movePlayer"];
 //_start = diag_tickTime;
 
 _unit = _this select 0;
@@ -17,7 +17,7 @@ _isVehicle = (_vehicle != player);
 //_agentPos = getPosATL _unit;
 
 if (_type != "zombie") exitWith { diag_log ("not a zombie"); }; // we deal only with zombies in this function
-if (_unit distance player > dayz_areaAffect) exitWith { diag_log ("too far:"); }; // distance too far according to any logic dealt here //+str(_unit distance _nextPlayerPos)+"/"+str(_areaAffect)
+//if (_unit distance player > dayz_areaAffect) exitWith { diag_log ("too far:"); }; // distance too far according to any logic dealt here //+str(_unit distance _nextPlayerPos)+"/"+str(_areaAffect)
 
 // check Z stance. Stand up Z if it prones/kneels.
 if (unitPos _unit != "UP") then {
@@ -97,62 +97,65 @@ _inAngle = [_zPos,(getdir _unit),50,_tPos] call fnc_inAngleSector;
 if (_inAngle) then {
 	// compute damage for vehicle and/or the player
 	if (_isVehicle) then {
-		if ((_unit distance player) < 3.6) then {
-			if((speed _vehicle) < 15) then {
-				// eject the player of the open vehicle. There will be no damage in this case
-				if (0 != {_vehicle isKindOf _x} count ["ATV_Base_EP1",  "Motorcycle",  "Bicycle"]) then {
-					if (random 3 < 1) then {
-						player action ["eject",  _vehicle];
+		if ((_unit distance player) < 5) then {
+			_hpList = 	_vehicle call vehicle_getHitpoints;
+			_hp = 		_hpList call BIS_fnc_selectRandom;
+			_wound = 	getText(configFile >> "cfgVehicles" >> (typeOf _vehicle) >> "HitPoints" >> _hp >> "name");
+			_damage = 	random 0.08;
+			_chance =	round(random 12);
+			
+			if ((_chance % 4) == 0) then {
+				_openVehicles = ["ATV_Base_EP1", "Motorcycle", "Bicycle"];
+				{
+					if (_vehicle isKindOf _x) exitWith {
+						player action ["eject", _vehicle];
 					};
-					diag_log(format["%1: Player ejected from %2", __FILE__, _vehicle]);
-				} else { 
-					// vehicle with a compartment
-					_wound = _this select 2; // what is this? wound linked to Z attack?
-					if (isNil "_wound") then {
-						_hpList = _vehicle call vehicle_getHitpoints;
-						_hp = _hpList call BIS_fnc_selectRandom;
-						_wound = getText(configFile >> "cfgVehicles" >> (typeOf _vehicle) >> "HitPoints" >> _hp >> "name");
+				} forEach _openVehicles;
+			};
+			
+			if (_wound IN [ "glass1",  "glass2",  "glass3",  "glass4",  "glass5",  "glass6" ]) then {
+				_strH = "hit_" + (_wound);
+				_dam = _vehicle getVariable [_strH,0];
+				_total = (_dam + _damage);
+				
+				//handle vehicle dmg
+				[_vehicle,  _wound, _total,  _unit,  "zombie", true] call fnc_veh_handleDam;
+
+				//diag_log ("Hitpoints " +str(_wound) +str(_total));
+
+				//handle player dmg
+				if (_total >= 1) then {
+					if (r_player_blood < (r_player_bloodTotal * 0.8)) then {
+						_cnt = count (DAYZ_woundHit select 1);
+						_index = floor (random _cnt);
+						_index = (DAYZ_woundHit select 1) select _index;
+						_wound = (DAYZ_woundHit select 0) select _index; 
+					} else {
+						_cnt = count (DAYZ_woundHit_ok select 1);
+						_index = floor (random _cnt);
+						_index = (DAYZ_woundHit_ok select 1) select _index;
+						_wound = (DAYZ_woundHit_ok select 0) select _index; 
 					};
-					_woundDamage = _vehicle getVariable ["hit_"+_wound, 0];
-					// we limit how vehicle could be damaged by Z. Above 0.8, the vehicle could explode, which is ridiculous.
-					_damage =  (if (_woundDamage < 0.8 OR {(!(_wound IN dayZ_explosiveParts))}) then {0.1} else {0.01});
-					// Add damage to vehicle. the "sethit" command will be done by the gameengine for which vehicle is local
-					diag_log(format["%1: Part ""%2"" damaged from vehicle, damage:+%3", __FILE__, _wound, _damage]);
-					_total = [_vehicle,  _wound,  _woundDamage + _damage,  _unit,  "zombie", true] call fnc_veh_handleDam;
-					if ((_total >= 1) AND {(_wound IN [ "glass1",  "glass2",  "glass3",  "glass4",  "glass5",  "glass6" ])}) then {
-						// glass is broken,  so hurt the player in the vehicle
-						if (r_player_blood < (r_player_bloodTotal * 0.8)) then {
-							_cnt = count (DAYZ_woundHit select 1);
-							_index = floor (random _cnt);
-							_index = (DAYZ_woundHit select 1) select _index;
-							_wound = (DAYZ_woundHit select 0) select _index;
-						} else {
-							_cnt = count (DAYZ_woundHit_ok select 1);
-							_index = floor (random _cnt);
-							_index = (DAYZ_woundHit_ok select 1) select _index;
-							_wound = (DAYZ_woundHit_ok select 0) select _index;
-						};
-						_damage = 0.2 + random (0.512);
-						diag_log(format["%1 Player wounded through ""%4"" vehicle window. hit:%2 damage:+%3", __FILE__, _wound, _damage, _vehicle]);
-						[player,  _wound,  _damage,  _unit,  "zombie"] call fnc_usec_damageHandler;
-						
-						// broadcast hit noise
-						_pos = getPosATL player;
-						if ({isPlayer _x} count (_pos nearEntities ["CAManBase",40]) > 1) then {
-							[_unit,"hit",0,false] call dayz_zombieSpeak;
-						} else {
-							[_unit,"hit",0,true] call dayz_zombieSpeak;
-						};
-					};
+					_damage = 0.1 + random (1.2);
+					//diag_log ("START DAM: Player Hit on " + _wound + " for " + str(_damage));
+					[player, _wound, _damage, _unit,"zombie"] call fnc_usec_damageHandler;
 				};
+			};
+			
+			// broadcast hit noise
+			_pos = getPosATL player;
+			if ({isPlayer _x} count (_pos nearEntities ["CAManBase",40]) > 1) then {
+				[_unit,"hit",0,false] call dayz_zombieSpeak;
+			} else {
+				[_unit,"hit",0,true] call dayz_zombieSpeak;
 			};
 		};
 	} else { 
 		// player by foot
-		if ((_unit distance player) < 2) then {
+		if ((_unit distance player) < 3) then {
 			
 			//Make sure sure evrything is processed as we attack.
-			_damage = 0.1 + random (0.2);
+			_damage = 0.1 + random (1.2);
 			
 			//LOS check
 			_cantSee = [_unit,_vehicle] call dayz_losCheck;

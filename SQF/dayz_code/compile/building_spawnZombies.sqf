@@ -2,7 +2,7 @@
         Created exclusively for ArmA2:OA - DayZMod.
         Please request permission to use/alter/distribute from project leader (R4Z0R49)
 */
-private ["_maxControlledZombies","_iPos","_nearByZed","_nearByPlayer","_rnd","_positions","_zombieChance","_unitTypes","_min","_max","_num","_clean","_obj","_type","_config","_canLoot","_originalPos","_fastRun"];
+//private ["_maxControlledZombies","_iPos","_nearByZed","_nearByPlayer","_rnd","_positions","_zombieChance","_unitTypes","_min","_max","_num","_clean","_obj","_type","_config","_canLoot","_originalPos","_fastRun"];
 _obj = 			_this select 0;
 _type = 		typeOf _obj;
 _config = 		configFile >> "CfgBuildingLoot" >> _type;
@@ -21,7 +21,7 @@ if (_canLoot) then {
 
 	//Walking Zombies
 	_num = (round(random _max)) max _min; // + round(_max / 3);
-	diag_log ("Class: " + _type + " / Zombies: " + str(_unitTypes) + " / Walking: " + str(_num));
+	//diag_log ("Class: " + _type + " / Zombies: " + str(_unitTypes) + " / Walking: " + str(_num));
 	for "_i" from 0 to _num do
 	{
 		//_iPos = _obj modelToWorld _originalPos;
@@ -46,7 +46,7 @@ if (_canLoot) then {
 					_iPos = _obj modelToWorld _Pos;
 					_nearByZed = {alive _x} count (_iPos nearEntities ["zZombie_Base",(((sizeOf _type) * 2) + 10)]) > 0;
 					_nearByPlayer = ({isPlayer _x} count (_iPos nearEntities ["CAManBase",30])) > 0;
-					diag_log ("BUILDING: " + _type + " / " + str(_nearByZed) + " / " + str(_nearByPlayer));
+					//diag_log ("BUILDING: " + _type + " / " + str(_nearByZed) + " / " + str(_nearByPlayer));
 					if ((dayz_spawnZombies < _maxControlledZombies) and (dayz_CurrentNearByZombies < dayz_maxNearByZombies) and (dayz_currentGlobalZombies < dayz_maxGlobalZeds)) then {
 						if (!_nearByPlayer and !_nearByZed) then {
 							[_iPos,false,_unitTypes] call zombie_generate;

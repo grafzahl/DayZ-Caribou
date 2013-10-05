@@ -1,4 +1,3 @@
-private ["_unit"];
 _unit = _this select 0;
 //_killer = _this select 1;
 //_type = typeOf _unit;

@@ -1,4 +1,4 @@
-private ["_cfgHitPoints", "_hps", "_funcGetHitPoints"];
+private ["_hps"];
 _cfgHitPoints = configFile >> "CfgVehicles" >> (typeOf _this) >> "HitPoints";
 _hps = [];
 

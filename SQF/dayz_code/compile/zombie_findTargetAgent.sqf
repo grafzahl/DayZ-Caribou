@@ -1,4 +1,4 @@
-private ["_agent","_target","_targets","_man","_manDis","_range","_objects","_localtargets","_remotetargets"];
+private ["_target","_targets","_man","_manDis","_localtargets","_remotetargets"];
 _agent = _this;
 _target = objNull;
 _targets = [];

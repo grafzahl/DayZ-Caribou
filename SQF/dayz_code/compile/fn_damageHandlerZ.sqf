@@ -1,7 +1,7 @@
 //[unit, selectionName, damage, source, projectile]
 //will only run when local to the created object
 //record any key hits to the required selection
-private ["_zed","_selection","_damage","_hitter","_projectile","_headShots","_damageOrg"];
+private ["_damage","_headShots"];
 
 _zed = _this select 0;
 _selection = _this select 1;
@@ -32,4 +32,4 @@ if (local _zed) then {
 };
 
 // all "HandleDamage event" functions should return the effective damage that the engine will record
-_damage;
+_damage

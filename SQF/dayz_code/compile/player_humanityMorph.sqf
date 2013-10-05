@@ -1,4 +1,4 @@
-private ["_updates","_charID","_humanity","_worldspace","_model","_fractures","_old","_medical","_zombieKills","_headShots","_humanKills","_banditKills","_wpnType","_ismelee"];
+private ["_charID","_newmodel","_old","_updates","_humanity","_medical","_worldspace","_zombieKills","_headShots","_humanKills","_banditKills","_fractures","_wpnType","_ismelee"];
 //_playerUID = _this select 0;
 _charID = _this select 1;
 _model = _this select 2;
@@ -73,9 +73,6 @@ player setVariable["banditKills",_banditKills,true];
 player setVariable["characterID",_charID,true];
 player setVariable["worldspace",_worldspace];
 
-//code for this on the server is missing
-//["dayzPlayerMorph",[_charID,player,_playerUID,[_zombieKills,_headShots,_humanKills,_banditKills],_humanity]] call callRpcProcedure;
-
 call dayz_resetSelfActions;
 
 eh_player_killed = player addeventhandler ["FiredNear",{_this call player_weaponFiredNear;} ];
@@ -88,12 +85,9 @@ player addWeapon "Flare";
 
 sleep 0.1;
 //melee check
-_wpnType = primaryWeapon player;
-_ismelee = (gettext (configFile >> "CfgWeapons" >> _wpnType >> "melee"));
-if (_ismelee == "true") then {
-	call dayz_meleeMagazineCheck;
-};
+call dayz_meleeMagazineCheck;
 
 sleep 0.1;
-deleteVehicle _old;
+if !(isNull _old) then {deleteVehicle _old;}; 
+
 

@@ -1,4 +1,5 @@
-private ["_class","_position","_dir","_group","_oldUnit","_newUnit","_currentWpn","_muzzles","_currentAnim","_playerUID","_weapons","_magazines","_primweapon","_secweapon","_newBackpackType","_backpackWpn","_backpackMag","_backpackWpnTypes","_backpackWpnQtys","_countr","_backpackmagTypes","_backpackmagQtys","_display","_createSafePos","_wpnType","_ismelee","_rndx","_rndy"];
+//private ["_class","_position","_dir","_group","_oldUnit","_newUnit","_currentWpn","_muzzles","_currentAnim","_playerUID","_weapons","_magazines","_primweapon","_secweapon","_newBackpackType","_backpackWpn","_backpackMag","_backpackWpnTypes","_backpackWpnQtys","_countr","_backpackmagTypes","_backpackmagQtys","_display","_createSafePos","_wpnType","_ismelee","_rndx","_rndy"];
+private ["_class","_position","_dir","_currentAnim","_currentCamera","_playerUID","_weapons","_magazines","_primweapon","_secweapon","_newBackpackType","_backpackWpn","_backpackMag","_currentWpn","_muzzles","_display","_oldUnit","_newUnit","_oldBackpack","_backpackWpnTypes","_backpackWpnQtys","_countr","_backpackmagTypes","_backpackmagQtys","_backpackmag","_createSafePos","_rndx","_rndy","_playerObjName","_wpnType","_ismelee"];
 _class = _this;
 
 disableSerialization;
@@ -8,16 +9,7 @@ _currentAnim = animationState player;
 //_currentCamera = cameraView;
 
 //Get PlayerID
-	_playerUID = "";
-	if (count playableUnits == 0 and isServer) then {
-		//In Single Player
-		isSinglePlayer = true;
-		player sidechat "Single player Mode detected!";
-		//_id = [42,"SinglePlayer"] call server_onPlayerConnect;
-		_playerUID = "42";
-	} else {
-		_playerUID = getPlayerUID player;
-	};
+	_playerUID = getPlayerUID player;
 
 //BackUp Weapons and Mags
 	_weapons = weapons player;
@@ -183,7 +175,7 @@ _currentAnim = animationState player;
 //Clear and delete old Unit
 	removeAllWeapons _oldUnit;
 	{_oldUnit removeMagazine _x;} forEach magazines _oldUnit;
-	deleteVehicle _oldUnit;
+	if !(isNull _oldUnit) then {deleteVehicle _oldUnit;};
 
 //	player switchCamera = _currentCamera;
 	if(_currentWpn != "") then {_newUnit selectWeapon _currentWpn;};
@@ -197,11 +189,7 @@ _currentAnim = animationState player;
 //	publicVariable _playerObjName;
 
 	//melee check
-	_wpnType = primaryWeapon player;
-	_ismelee = (gettext (configFile >> "CfgWeapons" >> _wpnType >> "melee"));
-	if (_ismelee == "true") then {
-		call dayz_meleeMagazineCheck;
-	};
+	call dayz_meleeMagazineCheck;
 
 	//reveal all near objects.
 	{player reveal _x} forEach (nearestObjects [getPosATL player, ["AllVehicles","WeaponHolder","Land_A_tent","BuiltItems"], 75]);

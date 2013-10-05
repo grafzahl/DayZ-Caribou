@@ -1,4 +1,4 @@
-private ["_isAir","_inVehicle","_dateNow","_age","_position","_maxControlledZombies","_type","_nearby","_config","_dis","_checkLoot","_looted","_zombied","_doNothing","_totalcrew","_spawnZedRadius","_bPos","_zombiesNum","_canSpawn","_spawnableObjects","_speed","_maxlocalspawned","_isLand","_isSea"];
+private ["_maxControlledZombies","_looted","_zombied","_doNothing","_spawnZedRadius"];
 
 _age = -1;
 //_nearbyBuildings = [];
@@ -66,7 +66,7 @@ if (_maxlocalspawned > 0) then { _spawnZedRadius = _spawnZedRadius * 3; };
 	_canSpawn = isClass (_config);
 	_dis = _x distance player;
 	_checkLoot = ((count (getArray (_config >> "lootPos"))) > 0);
-	//_islocal = _x getVariable ["", false]; // object created locally via TownGenerator. See stream_locationFill.sqf
+	_islocal = _x getVariable ["", false]; // object created locally via TownGenerator. See stream_locationFill.sqf
 	
 	//Make sure wrecks always spawn Zeds
 	//_isWreck = _x isKindOf "SpawnableWreck";
@@ -77,7 +77,7 @@ if (_maxlocalspawned > 0) then { _spawnZedRadius = _spawnZedRadius * 3; };
 		if (_currentWeaponHolders < _maxWeaponHolders) then {
 			//Baisc loot checks
 			if ((_dis < 125) and (_dis > 30) and !_inVehicle and _checkLoot) then {
-			
+			/*
 				//Get var Looted
 				//[_object,name,defaultValue]
 				PVDZ_receiveVar = [player,_x,"looted",-0.1];
@@ -87,40 +87,32 @@ if (_maxlocalspawned > 0) then { _spawnZedRadius = _spawnZedRadius * 3; };
 					if (isNil "_looted") then {
 						_looted = -0.1;
 					};
-					
-				_dateNow = (DateToNumber date);
-				_age = (_dateNow - _looted) * 525948;
+			*/
+				_looted = (_x getVariable ["looted",diag_tickTime]);			
+				_age = (diag_tickTime - _looted);
 				//diag_log ("SPAWN LOOT: " + _type + " Building is " + str(_age) + " old" );
-				if (_age < -0.1) then {
-					//[object,varName]
+
+				if ((_age == 0) or (_age > 900)) then {
+				/*
+					//[object,name]
 					PVDZ_serverStoreVar = [_x,"looted",(DateToNumber date)];
 					publicVariableServer "PVDZ_serverStoreVar";
-
+					sleep 0.01;
+				*/
+					_x setVariable ["looted",diag_tickTime,!_islocal];					
+					_x call building_spawnLoot;
 					if (!(_x in dayz_buildingBubbleMonitor)) then {
-						//add active zed to var
+						//add active Building to var
 						dayz_buildingBubbleMonitor set [count dayz_buildingBubbleMonitor, _x];
-					};
-				} else {
-					if (_age > 15) then {
-					
-						//[object,name]
-						PVDZ_serverStoreVar = [_x,"looted",(DateToNumber date)];
-						publicVariableServer "PVDZ_serverStoreVar";
-						sleep 0.01;
-						_x call building_spawnLoot;
-						if (!(_x in dayz_buildingBubbleMonitor)) then {
-							//add active Building to var
-							dayz_buildingBubbleMonitor set [count dayz_buildingBubbleMonitor, _x];
-						};
 					};
 				};
 			};
 		};
 	
 	//Zeds
-		//if (((time - dayz_spawnWait) > dayz_spawnDelay) or (_force)) then {
 		if (_dis > _spawnZedRadius) then {
 			if ((dayz_spawnZombies < _maxControlledZombies) and (dayz_CurrentNearByZombies < dayz_maxNearByZombies) and (dayz_currentGlobalZombies < dayz_maxGlobalZeds)) then {
+			/*
 				//[_object,name,defaultValue]
 				PVDZ_receiveVar = [player,_x,"zombieSpawn",-0.1];
 				publicVariableServer "PVDZ_receiveVar";
@@ -129,17 +121,21 @@ if (_maxlocalspawned > 0) then { _spawnZedRadius = _spawnZedRadius * 3; };
 					if (isNil "_zombied") then {
 						_zombied = -0.1;
 					};
-				_dateNow = (DateToNumber date);
-				_age = (_dateNow - _zombied) * 525948; // in minutes
-				//diag_log format ["%4 - %5: %1, %2, %3", _zombied, _dateNow, _age, "spawnCheck", _x]; 
-				if (_age > 5) then {
+			*/		
+				_zombied = (_x getVariable ["zombieSpawn",diag_tickTime]);
+				_age = (diag_tickTime - _zombied) * 525948; // in minutes
+				//diag_log format ["%4 - %5: %1, %2, %3", _zombied, diag_tickTime, _age, "spawnCheck", _x]; 
+				if ((_age == 0) or (_age > 300)) then {
 					_bPos = getPosATL _x;
 					_zombiesNum = {alive _x} count (_bPos nearEntities ["zZombie_Base",(((sizeOf _type) * 2) + 10)]);
 					if (_zombiesNum == 0) then {
+					/*
 						//[object,name]
 						PVDZ_serverStoreVar = [_x,"zombieSpawn",(DateToNumber date)];
 						publicVariableServer "PVDZ_serverStoreVar";
+					*/	
 						[_x] call building_spawnZombies;
+						_x setVariable ["zombieSpawn",diag_tickTime,!_islocal];
 						//waitUntil{scriptDone _handle};
 						if (!(_x in dayz_buildingBubbleMonitor)) then {
 							//add active zed to var

@@ -1,5 +1,3 @@
-private ["_dateNow","_age","_position","_zombied","_x"];
-
 //_radius = _this select 0;
 _position = _this select 1;
 //_inVehicle = _this select 2;

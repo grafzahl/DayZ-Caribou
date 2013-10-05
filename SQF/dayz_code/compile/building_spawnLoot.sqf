@@ -2,8 +2,8 @@
         Created exclusively for ArmA2:OA - DayZMod.
         Please request permission to use/alter/distribute from project leader (R4Z0R49)
 */
-private ["_lootChance","_index","_weights","_cntWeights","_itemType","_qty","_rnd","_iPos","_obj","_type","_config","_pos","_itemTypes","_positions","_bias"];
-
+//private ["_lootChance","_index","_weights","_cntWeights","_itemType","_qty","_rnd","_iPos","_obj","_type","_config","_pos","_itemTypes","_positions","_bias"];
+private ["_lootChance"];
 _obj = _this;
 _type = typeOf _obj;
 _config = configFile >> "CfgBuildingLoot" >> _type;
@@ -12,7 +12,7 @@ _itemTypes = [] + getArray (_config >> "lootType");
 _lootChance = getNumber (_config >> "lootChance");
 //_countPositions = count _pos;
 _qty = 0; // effective quantity of spawned weaponholder
-//_lootSpawnBias = 67; //67 between 50 and 100. The lower it is, the lower chance some of the lootpiles will spawn
+_lootSpawnBias = 67; //67 between 50 and 100. The lower it is, the lower chance some of the lootpiles will spawn
 
 
 // shuffles an array
@@ -33,11 +33,11 @@ ShuffleArray = {
 };
 _positions = _pos call ShuffleArray;
 
+
 // bias for this building. The lower it is, the lower chance some of the lootpiles will spawn
-_bias = 50 max 62;
+_bias = 50 max _lootSpawnBias;
 _bias = 100 min _bias;
-_bias = (_bias + (random(100 - _bias)) / 100);
-//diag_log (format["SpawnLoot: Positions: %1, guaranteedloot: %3/%2",_positions,_guaranteedspawn,_countPositions]);
+_bias = (_bias + random(100 - _bias)) / 100;
 //diag_log(format["BIAS:%1 LOOTCHANCE:%2", _bias, _lootChance]);
 {
 	if (count _x == 3) then {
@@ -49,8 +49,8 @@ _bias = (_bias + (random(100 - _bias)) / 100);
 			_lootChance = _lootChance + 0.05;
 		};
 
-	if (_rnd <= _lootChance) then {
-		if (dayz_currentWeaponHolders < dayz_maxMaxWeaponHolders) then { 
+		if (dayz_currentWeaponHolders < dayz_maxMaxWeaponHolders) then {	
+			if (_rnd <= _lootChance) then {
 				if (count _nearBy == 0) then {
 					_index = dayz_CBLBase find _type;
 					_weights = dayz_CBLChances select _index;
@@ -68,4 +68,4 @@ _bias = (_bias + (random(100 - _bias)) / 100);
 	};
 } forEach _positions;
 
-dayz_currentWeaponHolders;
+//dayz_currentWeaponHolders;

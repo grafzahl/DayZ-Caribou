@@ -1,7 +1,6 @@
 /*
 [_obj] call player_packTent;
 */
-private ["_objectID","_objectUID","_obj","_ownerID","_dir","_pos","_bag","_holder","_weapons","_magazines","_backpacks","_objWpnTypes","_objWpnQty","_countr","_alreadyPacking","_dis","_sfx"];
 _obj = _this;
 _ownerID = _obj getVariable["CharacterID","0"];
 _objectID = _obj getVariable["ObjectID","0"];

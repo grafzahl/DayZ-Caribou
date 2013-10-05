@@ -4,15 +4,12 @@ scriptName "Functions\misc\fn_damageActions.sqf";
 	- Function
 	- [] call fnc_usec_damageActions;
 ************************************************************/
-private ["_action","_weaponName","_turret","_weapons","_vehType","_unconscious_crew","_patients","_assignedRole","_driver","_crew","_action1","_action2","_action3","_y","_vehicle","_unit","_vehClose","_hasVehicle","_unconscious","_lowBlood","_injured","_inPain","_legsBroke","_armsBroke","_infected","_hasBandage","_hasEpi","_hasMorphine","_hasBlood","_hasAntibiotics","_hasPainkillers","_menClose","_hasPatient","_inVehicle","_isClose"];
 
 _menClose = cursorTarget;
 _hasPatient = alive _menClose;
 _vehicle = vehicle player;
 _inVehicle = (_vehicle != player);
 _isClose = ((player distance _menClose) < ((sizeOf typeOf _menClose) / 2));
-//_bag = unitBackpack player;
-//_classbag = typeOf _bag;
 
 if (_inVehicle) then {
 	r_player_lastVehicle = _vehicle;

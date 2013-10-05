@@ -27,7 +27,7 @@ _counter = 0;
 	_trigger = createTrigger["EmptyDetector",_campPos];
 	_trigger setTriggerArea[_campRadius,_campRadius+100,false];
 	_trigger setTriggerActivation["ANY","PRESENT",true];
-	_trgcode = format["[%1,%2] spawn camp_spawnZombies;",_campPos,_campAmount];
+	_trgcode = format["[%1,%2] call camp_spawnZombies;",_campPos,_campAmount];
 	//_trgcode = [_campPos,_campAmount] spawn camp_spawnZombies;
 	_trigger setTriggerStatements["player in thislist", _trgcode, ""];
 	//_trigger setTriggerTimeout [0, 5, 3, false];

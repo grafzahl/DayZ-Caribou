@@ -1,5 +1,4 @@
-
-private ["_location","_distCfg","_configClass","_distAct","_rubbish","_config","_locHdr","_w8","_ahead","_forEachIndex"];
+//private ["_location","_distCfg","_configClass","_distAct","_rubbish","_config","_locHdr","_w8","_ahead","_forEachIndex"];
 _w8 = _this select 0;
 //diag_log "running location check...";
 _rubbish = dayz_Trash == 1;

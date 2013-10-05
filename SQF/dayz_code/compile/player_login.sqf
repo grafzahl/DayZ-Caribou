@@ -1,4 +1,3 @@
-private ["_unit","_detail"];
 _unit = _this select 0;
 _detail = _this select 1;
 if(_unit == getPlayerUID player) then {

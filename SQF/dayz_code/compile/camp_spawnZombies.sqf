@@ -1,4 +1,4 @@
-private ["_campPos","_amount","_doLoiter","_counter","_campZeds","_rndx","_rndy","_position","_nearByZed","_nearByPlayer","_loot","_array","_agent","_unitTypes","_type","_radius","_method","_stance","_myDest","_newDest","_rnd","_lootType","_index","_weights","_loot_count"];
+private ["_doLoiter","_counter","_position","_agent"];
 
 _campPos = _this select 0;
 _amount = _this select 1;

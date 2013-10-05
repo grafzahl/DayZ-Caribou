@@ -1,4 +1,4 @@
-private["_unit","_pos","_type","_typeA","_soundType","_soundVal","_array"];
+private["_soundVal","_array"];
 
 _unit = _this;
 _pos = getPosATL _unit;
@@ -17,4 +17,4 @@ if (_soundVal == 0) then {
 	_soundVal = 25;
 };
 _array = [_soundType,_soundVal];
-_array;
+_array

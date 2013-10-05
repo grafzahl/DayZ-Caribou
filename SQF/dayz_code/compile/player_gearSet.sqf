@@ -1,4 +1,4 @@
-private ["_inventory","_wpns","_mags","_idc","_isOK"];
+private ["_idc"];
 _inventory = _this;
 if (count _inventory > 0) then {
 	_wpns = _inventory select 0;
@@ -38,6 +38,7 @@ if (count _inventory > 0) then {
 		if (_x == "Crossbow") then { _x = "Crossbow_DZ" }; // Convert Crossbow to Crossbow_DZ
 		// Convert to DayZ Weapons
 		if (_x == "DMR") then { _x = "DMR_DZ" };
+		//if (_x == "M14_EP1") then { _x = "M14_DZ" };
 		if (_x == "SVD") then { _x = "SVD_DZ" }; 
 		if (_x == "SVD_CAMO") then { _x = "SVD_CAMO_DZ" };
 

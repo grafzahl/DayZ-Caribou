@@ -10,10 +10,10 @@
 //  - arg#1 is a boolean: check also whether arg#0 is inside (bounding box of) some non-enterable buildings around. Can be used to check if a player or an installed item is on a building roof.
 //  - arg#0 is posATL, arg#1 should be a building
 
-private ["_unit","_inside","_building","_type","_size"];
+private ["_unit","_inside","_building","_size"];
 
 _check = {
-	private ["_inside","_relPos","_point","_boundingBox","_min","_max","_myX","_myY","_myZ","_offset","_building"];
+	private ["_inside"];
 
 	_building = _this select 0;
 	_point = _this select 1;

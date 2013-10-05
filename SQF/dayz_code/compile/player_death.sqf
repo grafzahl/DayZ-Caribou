@@ -1,4 +1,4 @@
-private ["_array","_source","_kills","_killsV","_humanity","_wait","_myKills","_method","_body","_canHitFree","_isBandit","_myGroup","_display","_playerID"];
+private ["_display","_body","_playerID","_array","_source","_method","_canHitFree","_isBandit","_punishment","_humanityHit","_myKills","_humanity","_kills","_killsV","_myGroup"];
 disableSerialization;
 if (deathHandled) exitWith {};
 
@@ -38,42 +38,31 @@ player setVariable ["startcombattimer", 0];
 r_player_unconscious = false;
 r_player_cardiac = false;
 
-//_id = player spawn spawn_flies;
 
 _array = _this;
 if (count _array > 0) then {
 	_source = _array select 0;
 	_method = _array select 1;
-	if (!isNull _source) then {
-		if (_source != player) then {
-			_canHitFree = player getVariable ["freeTarget",false];
-			//_isBandit = (["Bandit",typeOf player,false] call fnc_inString);
-			_isBandit = (player getVariable["humanity",0]) <= -2000;
-			_wait = 0;
-			_humanity = 0;
-			if (!_canHitFree and !_isBandit) then {
-				// "humanKills" from local character is used to compute _source player "PVCDZ_plr_Humanity" change
-				_myKills = -1 max (1 - (player getVariable ["humanKills",0]) / 7);  // -1 (good action) to 1 (bad action)
-				_humanity = -2000 * _myKills;
-				if (_humanity > 0) then { _wait = 300; };
-				_kills = _source getVariable ["humanKills",0];
-				_source setVariable ["humanKills",(_kills + 1),true];
-			} else {
-				_killsV = _source getVariable ["banditKills",0];
-				_source setVariable ["banditKills",(_killsV + 1),true];
-				_wait = 0;
-			};
-			if (!_canHitFree and !_isBandit and (_humanity != 0)) then {
-				PVDZ_send = [_source,"Humanity",[_source,_humanity,_wait]];
-				publicVariableServer "PVDZ_send";
-			};
+	if ((!isNull _source) and (_source != player)) then {
+		_canHitFree = player getVariable ["freeTarget",false];
+		_isBandit = (player getVariable["humanity",0]) <= -2000;
+		_punishment = _canHitFree or _isBandit; //if u are bandit or start first - player will not recieve humanity drop
+		_humanityHit = 0;
+		if (!_punishment) then {
+			//i'm "not guilty" - kill me and be punished
+			_myKills = ((player getVariable ["humanKills",0]) / 30) * 1000;
+			_humanityHit = -(2000 - _myKills);
+			_kills = _source getVariable ["humanKills",0];
+			_source setVariable ["humanKills",(_kills + 1),true];
+			PVDZ_send = [_source,"Humanity",[_source,_humanityHit,300]];
+			publicVariableServer "PVDZ_send";
+		} else {
+			//i'm "guilty" - kill me as bandit
+			_killsV = _source getVariable ["banditKills",0];
+			_source setVariable ["banditKills",(_killsV + 1),true];
 		};
 	};
 	_body setVariable ["deathType",_method,true];
-	_body setVariable["dead_HumanKills",(player getVariable ["humanKills",0]),true];
-	_body setVariable["dead_BanditKills",(player getVariable ["banditKills",0]),true];
-	_body setVariable["dead_DeathTime",serverTime,true];
-	_body setVariable["dead_Humanity",(player getVariable["humanity",0]),true];
 };
 
 terminate dayz_musicH;
@@ -101,8 +90,6 @@ r_player_dead = true;
 
 //Player is Dead!
 3 fadeSound 0;
-0 cutText ["", "BLACK",10];
-dayz_DeathActioned = true;
 sleep 1;
 
 dayz_originalPlayer enableSimulation true;
@@ -132,12 +119,12 @@ playMusic "dayz_track_death_1";
 
 sleep 2;
 
-for "_x" from 5 to 1 step -1 do {
+for  "_x" from 5 to 1 step -1 do {
 	titleText [format[localize "str_return_lobby", _x], "PLAIN DOWN", 1];
 	sleep 1;
 };
 
-//PVDZ_Server_Simulation = [_body, false];
-//publicVariableServer "PVDZ_Server_Simulation";
+PVDZ_Server_Simulation = [_body, false];
+publicVariableServer "PVDZ_Server_Simulation";
 
 endMission "END1";

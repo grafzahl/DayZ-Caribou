@@ -1,7 +1,7 @@
 //Kilzone_Kid's megafast inString function
 //caseinsensitive
 //params [needle,haystack];
-private ["_needle","_haystack","_haystackArr","_haystackLen","_needleLen","_found","_hayArr"];
+private ["_found","_hayArr"];
 
 scopeName "main";
 _needle = _this select 0;
@@ -26,4 +26,4 @@ if (_needleLen <= _haystackLen) then {
 		};
 	};
 };
-_found;
+_found

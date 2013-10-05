@@ -1,4 +1,4 @@
-private ["_unit","_projectile","_isInCombat","_currentNear","_projectilespeed","_projectflight","_listNear","_callCount","_nearVehicle"];
+private ["_currentNear","_listNear","_callCount"];
 _unit = _this select 0;
 _projectile = _this select 6;
 

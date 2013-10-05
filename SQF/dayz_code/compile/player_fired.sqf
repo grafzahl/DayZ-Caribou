@@ -1,4 +1,4 @@
-private ["_projectile","_unit","_ammo","_audible","_caliber","_distance"];
+private ["_projectile","_unit","_ammo"];
 
 //[unit, weapon, muzzle, mode, ammo, magazine, projectile]
 _unit = _this select 0;
@@ -22,10 +22,9 @@ if ((_ammo isKindOf "SmokeShell") or (_ammo isKindOf "GrenadeHandTimedWest") or 
 	if (_ammo isKindOf "G_40mm_HE") then { dayz_disAudial = 30 };
 
 	[_unit,_ammo] spawn {
-		private ["_unit","_ammo","_projectile","_pos","_listTalk","_i","_group","_isLocal","_localtargets","_remotetargets","_targets"];
+		private ["_pos","_group","_localtargets","_remotetargets"];
 		_unit = _this select 0;
 		_ammo = _this select 1;
-		_i = 0;
 
 		_projectile = nearestObject [_unit, _ammo];
 		_pos = getPosATL _projectile;
@@ -60,7 +59,6 @@ if ((_ammo isKindOf "SmokeShell") or (_ammo isKindOf "GrenadeHandTimedWest") or 
 						};
 					};
 				};
-				_i = _i + 1;
 			} forEach _listTalk;
 			
 		} else {

@@ -1,4 +1,4 @@
-private ["_list","_Pos","_randrefpoint","_PosList","_PosSelect","_animalssupported","_type","_root","_favouritezones","_agent"];
+private ["_type"];
 _list = getposATL player nearEntities [["CAAnimalBase"],dayz_animalDistance];
 
 if ((count _list < dayz_maxAnimals) and (dayz_currentGlobalAnimals < dayz_maxGlobalAnimals)) then {

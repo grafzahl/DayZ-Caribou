@@ -61,20 +61,63 @@ _inArray = {
 _getGear = {
 	private ["_return","_index"];
 	_return = [];
+	_weapons = [];
+	_magazines = [];
+	_nearByPile = nearestObjects [getPosATL player, ["WeaponHolder"], 2];
+    if (count _nearByPile > 0) then {
+		_weaps = getWeaponCargo (_nearByPile select 0);
+		_mags = getMagazineCargo (_nearByPile select 0);
+		
+		diag_log format ["%1, %2", _weaps, _mags];
+		
+			//Add weapons
+			_objWpnTypes = _weaps select 0;
+			_objWpnQty = _weaps select 1;
+			
+			for "_i" from 0 to (count _objWpnTypes - 1) do {
+				_obj = _objWpnTypes select _i;
+				_index = [_return, _obj] call _inArray;
 
-	{
-		_return set [count _return, [_x, 1, 0]];
-	} forEach (weapons player);
+				if (_index != -1) then {
+					_return set [_index, [_obj, ((_return select _index) select 1) + (_objWpnQty select _i), 0]];
+				} else {
+					_return set [count _return, [_obj, _objWpnQty select _i, 0]];
+				};
+			};
 
-	{
-		_index = [_return, _x] call _inArray;
+			//Add Magazines
+			_objMagTypes = _mags select 0;
+			_objMagQty = _mags select 1;
+			
+			for "_i" from 0 to (count _objMagTypes - 1) do {
+				_obj = _objMagTypes select _i;
+				_index = [_return, _obj] call _inArray;
 
-		if (_index != -1) then {
-			_return set [_index, [_x, ((_return select _index) select 1) + 1, 0]];
-		} else {
+				if (_index != -1) then {
+					_return set [_index, [_obj, ((_return select _index) select 1) + (_objMagQty select _i), 0]];
+				} else {
+					_return set [count _return, [_obj, _objMagQty select _i, 0]];
+				};
+			};
+		
+	} else {
+		_weapons = weapons player; 
+		_magazines = magazines player;
+
+		{
 			_return set [count _return, [_x, 1, 0]];
-		};
-	} forEach (magazines player);
+		} forEach (_weapons);
+
+		{
+			_index = [_return, _x] call _inArray;
+
+			if (_index != -1) then {
+				_return set [_index, [_x, ((_return select _index) select 1) + 1, 0]];
+			} else {
+				_return set [count _return, [_x, 1, 0]];
+			};
+		} forEach (_magazines);		
+	};
 
 	_return;
 };
@@ -145,6 +188,7 @@ _update = {
 		_classname = _item select 0;
 		_gearcount = _item select 1;
 		_tablecount = _item select 2;
+		
 		_itemName = [_classname] call _getItemName;
 		_itemPicture = [_classname] call _getItemPicture;
 
@@ -164,7 +208,7 @@ _craftItem = {
 	private ["_classList","_countList","_item","_classname","_tablecount","_arrayToSend"];
 	_classList = [];
 	_countList = [];
-
+	
 	for "_i" from 0 to (count _itemArray) - 1 do {
 		_item = _itemArray select _i;
 		_classname = _item select 0;
@@ -179,10 +223,11 @@ _craftItem = {
 	if (count _classList > 0) then {
 		_arrayToSend = [_classList,_countList];
 		[_arrayToSend] call player_checkRecipe;
+		
 	};
 };
 
-_getRecipies = {
+_getRecipes = {
 	private["_config","_control","_controlPos","_msg","_lines"];
 	_config = configFile >> "CfgCrafting";
 	_control = _display displayCtrl 430;
@@ -201,6 +246,12 @@ _getRecipies = {
 			{
 				_item = _x select 0;
 				_amount = _x select 2;
+				
+				if (typeName _item == "ARRAY") then {
+					_amount = _item select 2;
+					_item = _item select 0;
+				};
+				
 				_itemMsg = _itemMsg + format ["%1 %2<br />", _amount, [_item] call _getItemName];
 				_lines = _lines + 1;
 			} forEach _input;
@@ -225,7 +276,7 @@ switch (_event) do {
 	case "init": {
 		[] call _init;
 		[] call _update;
-		[] call _getRecipies;
+		[] call _getRecipes;
 	};
 	case "add": {
 		[] call _addItem;

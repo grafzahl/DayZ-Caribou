@@ -1,6 +1,4 @@
-private["_unit","_selection","_damage","_strH","_dam","_total","_break","_display","_ctrlFracture"];
-
-disableSerialization;
+private["_break"];
 _unit = _this select 0;
 _selection = _this select 1;
 _damage = _this select 2;
@@ -14,11 +12,12 @@ if (local _unit) then {
 	_break = false;
 
 	if (_selection in USEC_MinorWounds and _total >= 1 and _unit == player) then {
+		disableSerialization;
 		_display = uiNamespace getVariable 'DAYZ_GUI_display';
 		_ctrlFracture = _display displayCtrl 1203;
 
 		if ((_selection == "legs") and !r_fracture_legs) then {
-			_id = [] spawn { //do not touch this spawns!
+			_id = [] spawn { //do not touch this spawn!
 				player setHit["legs",1];
 			};
 			r_fracture_legs = true;

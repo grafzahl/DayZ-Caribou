@@ -1,11 +1,9 @@
-private ["_animalbody","_qty","_rawfoodtype"];
-
 _animalbody = _this select 0;
 _qty = _this select 1;
 _rawfoodtype = getText (configFile >> "CfgSurvival" >> "Meat" >> typeOf _animalbody >> "rawfoodtype");
 
 if (local _animalbody) then {
-	for "_x" from 1 to _qty do {
+	for "_i" from 1 to _qty do {
 		_animalbody addMagazine _rawfoodtype;
 	};
 	
@@ -19,10 +17,9 @@ if (local _animalbody) then {
 	*/
 
 	[time, _animalbody] spawn {
-		private ["_timer","_body","_pos","_inRange"];
 		_timer = _this select 0;
 		_body = _this select 1;
-        	_pos = getPosATL _body;
+        _pos = getPosATL _body;
 		while {(count magazines _body > 0) and (time - _timer < 300) } do {
 			sleep 5;
 		};

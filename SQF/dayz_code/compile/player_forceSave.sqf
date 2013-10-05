@@ -1,4 +1,3 @@
-private["_magazineArray", "_objects"];
 _magazineArray = [] call player_countMagazines;
 
 PVDZ_plr_Save = [player,[_magazineArray,dayz_onBack],false];

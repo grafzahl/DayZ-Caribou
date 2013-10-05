@@ -20,4 +20,4 @@ if(count _this > 0) then
 	_ret = random _ret;
 	_ret = _this select _ret;           //get the element, return it
 };
-_ret;
+_ret

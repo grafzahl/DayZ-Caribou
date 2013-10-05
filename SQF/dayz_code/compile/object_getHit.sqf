@@ -1,5 +1,3 @@
-private["_unit","_hp","_selection","_strH","_dam"];
-
 _unit = _this select 0;
 _hp = _this select 1;
 
@@ -7,4 +5,4 @@ _selection = getText (configFile >> "CfgVehicles" >> (typeOf _unit) >> "HitPoint
 _strH = "hit_" + (_selection);
 _dam = _unit getVariable [_strH,0];
 
-_dam;
+_dam

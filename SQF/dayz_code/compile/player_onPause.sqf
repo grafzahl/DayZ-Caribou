@@ -1,4 +1,4 @@
-private["_display","_btnRespawn","_btnAbort","_timeout","_btnAbortText","_inCombat","_playerCheck","_zedCheck"];
+private ["_display","_timeout","_inCombat","_playerCheck","_zedCheck"];
 disableSerialization;
 waitUntil {
 	_display = findDisplay 49;

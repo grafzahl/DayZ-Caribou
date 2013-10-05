@@ -1,10 +1,8 @@
-class Mode_SemiAuto;
-class Mode_Burst;
-class Mode_FullAuto;
-class Single;
-class Burst;
-class FullAuto;
+class Mode_SemiAuto;	// External class reference
+class Mode_FullAuto;	// External class reference
+class Mode_Burst;		// External class reference
 
+class DZ_SingleMelee; 	// External class reference
 class CfgWeapons {
 	class Default {
 		canlock = 0;
@@ -14,6 +12,9 @@ class CfgWeapons {
 	class Rifle;
 	class MeleeWeapon : Rifle {
 		canDrop = true;
+		class Single : DZ_SingleMelee {
+			displayName = $STR_ACTION_HACK;
+		}; 
 	};
 	class PistolCore;
 	class Pistol;
@@ -23,9 +24,10 @@ class CfgWeapons {
 	class DMR;
 	class SVD;
 	class SVD_CAMO;
-	class Single;
+	class M14_EP1;
 
 	#include "CfgWeapons\CARIBOU.hpp"
+
 	#include "CfgWeapons\Melee\MeleeMachete.hpp"
 	#include "CfgWeapons\Melee\ItemMachete.hpp"
 	#include "CfgWeapons\Melee\MeleeHatchet.hpp"
@@ -48,8 +50,6 @@ class CfgWeapons {
 	#include "CfgWeapons\Item\ItemShovel.hpp"
 	#include "CfgWeapons\Item\ItemFishingPole.hpp"
 	
-	//Sniper Rifel
-	//#include "CfgWeapons\Weapon\Sniper\AS50.hpp"
 	//Pistols
 	#include "CfgWeapons\Weapon\Pistol\M9.hpp"
 	#include "CfgWeapons\Weapon\Pistol\M9SD.hpp"
@@ -73,7 +73,7 @@ class CfgWeapons {
 	//Sniper
 	#include "CfgWeapons\Weapon\Sniper\M107.hpp"
 	#include "CfgWeapons\Weapon\Sniper\DMR_DZ.hpp"
+	#include "CfgWeapons\Weapon\M14_DZ.hpp"
 	#include "CfgWeapons\Weapon\Sniper\SVD_DZ.hpp"
-	//#include "CfgWeapons\Weapon\Sniper\SVD_CAMO_DZ.hpp"
-
+	#include "CfgWeapons\Weapon\Sniper\SVD_CAMO_DZ.hpp"
 };

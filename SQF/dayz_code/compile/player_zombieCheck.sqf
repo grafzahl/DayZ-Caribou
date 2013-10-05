@@ -1,11 +1,10 @@
-private ["_refObj","_listTalk","_attacked","_type","_chance","_last","_targets","_cantSee","_lowBlood","_near","_targeted","_attackCheck","_group","_localtargets","_remotetargets","_radius","_vehicle","_isVehicle"];
+private ["_attacked","_chance","_near","_targeted","_localtargets","_remotetargets"];
 
-_radius = 150;
 _vehicle = vehicle player;
 _isVehicle = (_vehicle != player);
 _refObj = (driver _vehicle);
-_listTalk = (getPosATL _refObj) nearEntities ["Zed_Base", _radius];
-//_pHeight = (getPosATL _refObj) select 2;
+_listTalk = (getPosATL _refObj) nearEntities ["Zed_Base", 200];
+_pHeight = (getPosATL _refObj) select 2;
 _attacked = false; // at least 1 Z attacked the player
 _near = false;
 //_multiplier = 1;
@@ -38,9 +37,12 @@ _near = false;
 					if (!(animationState _x == "ZombieFeed")) then {
 						//perform an attack
 						_last = _x getVariable["lastAttack", 0];
-						if ((diag_tickTime - _last) > 1) then {
-							_attackResult = [_x,  _type] spawn player_zombieAttack;
-							_x setVariable["lastAttack", diag_tickTime - random(1)];
+						_entHeight = (getPosATL _x) select 2;
+						_delta = _pHeight - _entHeight;
+						
+						if (((diag_tickTime - _last) > 1) and ((_delta < 1.5) and (_delta > -1.5))) then {
+							_attackResult = [_x,  _type] call player_zombieAttack;
+							_x setVariable["lastAttack", diag_tickTime];
 							//waitUntil{scriptDone _attackResult};;
 						};
 						_attacked = true;
@@ -51,11 +53,14 @@ _near = false;
 						if (!(animationState _x == "ZombieFeed")) then {
 							//perform an attack
 							_last = _x getVariable["lastAttack", 0];
-							if ((diag_tickTime - _last) > 1) then {
+							_entHeight = (getPosATL _x) select 2;
+							_delta = _pHeight - _entHeight;
+						
+							if (((diag_tickTime - _last) > 1) and ((_delta < 1.5) and (_delta > -1.5))) then {
 								//_LosCheck = [_refObj,_x] call dayz_losCheck_attack;
 								//if (_LosCheck) then {
-									_attackResult = [_x,  _type] spawn player_zombieAttack;
-									_x setVariable["lastAttack", diag_tickTime - random(1)];
+									_attackResult = [_x,  _type] call player_zombieAttack;
+									_x setVariable["lastAttack", diag_tickTime];
 									//waitUntil{scriptDone _attackResult};;
 								//};
 							};

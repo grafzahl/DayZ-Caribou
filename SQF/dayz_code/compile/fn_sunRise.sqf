@@ -14,10 +14,10 @@
 	Reference:
 	http://forums.bistudio.com/showthread.php?107476-How-do-I-detect-sundown-sunrise
 */
-private["_lat","_day","_hour","_daytime"];
+private["_daytime"];
 
 _lat = -1 * getNumber(configFile >> "CfgWorlds" >> worldName >> "latitude");
 _day = 360 * (dateToNumber date);
 _hour = acos ((24 * sin(_lat) * cos(_day)) / ((12 * cos(_day) - 78) * cos(_lat)));
 _daytime = _hour / 360 * 24;
-_daytime;
+_daytime

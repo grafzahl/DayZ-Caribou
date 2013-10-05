@@ -92,8 +92,8 @@ switch _class do {
 		_noCollision = false;
 		_testBuilding = false;
 	};
-	case "Wire_cat1";
-	case "Sandbag1_DZ";
+	case "Wire_cat1" : {};
+	case "Sandbag1_DZ" : {};
 	case "Hedgehog_DZ" : {};
 	default { // = vehicles (used for hive maintenance on startup)
 		_testBuilding = false;
@@ -161,7 +161,7 @@ if (_testSlope) then { // "flat spot" test
 	_x = _new isflatempty [
 		0, // don't check collisions
 		0, // don't look around
-		0.1*_size, // slope gradient
+		(0.1*_size), // slope gradient
 		_size, // object size
 		1, // do not check in the sea
 		false, // don't check far from shore

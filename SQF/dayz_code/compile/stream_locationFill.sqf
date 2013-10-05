@@ -1,4 +1,4 @@
-private ["_config","_type","_position","_dir","_object","_list","_w8","_dis"];
+//private ["_config","_type","_position","_dir","_object","_list","_w8","_dis"];
 _list = _this select 0;
 _w8 = _this select 1;
 for "_i" from ((count _list) - 1) to 0 step -1 do
@@ -10,6 +10,7 @@ for "_i" from ((count _list) - 1) to 0 step -1 do
 		_dir = getNumber (_config >> "direction");
 		//_onFire = getNumber (_config >> "onFire");
 		_dis = _position distance player;
+		_inVehicle = (vehicle player != player);
 		
 		if (_dis > 2) then {
 			_object = _type createVehicleLocal [_position select 0,_position select 1,-100];
@@ -19,12 +20,16 @@ for "_i" from ((count _list) - 1) to 0 step -1 do
 			_object allowDamage false;
 			_object setVariable ["", true]; // SV used by player_spawnCheck
 			if (_w8 AND {((_i % 25) == 0)}) then { sleep 0.01; };
-			//diag_log format["CreateObj: %1 / %2",_type,_position];
-			/*
-			if (_onFire > 0) then {
-				nul=[_object,_onFire,time,false,false] call BIS_Effects_Burn;
+		} else {
+			if (!_inVehicle) then {
+				_object = _type createVehicleLocal [_position select 0,_position select 1,-100];
+				_object setDir _dir;
+				_object setPos [_position select 0,_position select 1,0];
+				_object setPosATL _position;
+				_object allowDamage false;
+				_object setVariable ["", true]; // SV used by player_spawnCheck
+				if (_w8 AND {((_i % 25) == 0)}) then { sleep 0.01; };
 			};
-			*/
 		};
 	};
 };

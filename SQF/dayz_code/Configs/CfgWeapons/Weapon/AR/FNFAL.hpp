@@ -1,7 +1,7 @@
 class FN_FAL: M16A2 {
 	afmax = 0;
-	displayname = $STR_EQUIP_NAME_FN_FAL;
-	descriptionshort = $STR_EQUIP_DESC_FN_FAL;
+	displayName = $STR_EP1_DN_FN_FAL;
+	descriptionShort = $STR_EP1_DSS_FN_FAL;
 	dexterity = 1.55;
 	htmax = 480;
 	htmin = 1;

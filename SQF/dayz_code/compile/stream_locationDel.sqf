@@ -1,5 +1,4 @@
-
-private ["_config","_type","_position","_object","_list"];
+//private ["_config","_type","_position","_object","_list"];
 _list = _this select 0;
 //_w8 = _this select 1;
 for "_i" from ((count _list) - 1) to 0 step -1 do

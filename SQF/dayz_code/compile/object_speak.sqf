@@ -1,5 +1,4 @@
-
-private ["_unit","_type","_chance","_dis","_local","_num","_isWoman","_rnd","_sound"];
+private ["_type","_local","_unit"];
 
 _unit = _this select 0;
 _type = _this select 1;
@@ -14,7 +13,7 @@ _dis = switch true do {
 _local = false;
 if (count _this > 3) then { _local = _this select 3; };
 if (!_local) then { // we override _local according to number of players inside _dis radius
-	_local = { _unit distance _x < _dis; } count playableUnits <= 1;
+	//_local = { _unit distance _x < _dis; } count playableUnits <= 1;
 };
 
 //diag_log(format["%1 dis:%2 local:%3", __FILE__, _dis, _local]);

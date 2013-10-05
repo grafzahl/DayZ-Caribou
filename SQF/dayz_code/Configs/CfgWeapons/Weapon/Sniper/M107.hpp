@@ -1,6 +1,7 @@
 class m107: Rifle 
 {
-	displayname = "M107";
+	displayname = "$STR_DN_M107";
+	descriptionShort = "$STR_DSS_M107";
 	type = "1";
 	canlock = 0;
 	cursor = "RifleCursor";
@@ -9,8 +10,6 @@ class m107: Rifle
 
 class m107_DZ: m107 
 {
-	displayName = $STR_EQUIP_NAME_M107;
-	descriptionShort = $STR_EQUIP_DESC_M107;
 	type = "1";
 	canlock = 0;
 	cursor = "";

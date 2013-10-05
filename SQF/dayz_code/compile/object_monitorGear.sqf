@@ -1,9 +1,8 @@
-private["_object","_objectName","_controlText","_magazinesMax","_weaponsMax","_backpacksMax","_distance","_isVehicle","_isMan","_isStorage","_isOK","_magazines","_weapons","_backpacks","_freeSlots","_timeout"];
+private ["_valueIDCs","_object","_display","_weaponsMax","_magazinesMax","_backpacksMax","_weapons","_magazines","_backpacks","_freeSlots"];
 
 disableSerialization;
 
 _countWeapons = {
-	private["_weapons","_return"];
 	_weapons = [];
 	_return = 0;
 
@@ -13,7 +12,6 @@ _countWeapons = {
 };
 
 _countMagazines = {
-	private["_magazines","_return"];
 	_magazines = [];
 	_return = 0;
 
@@ -23,7 +21,6 @@ _countMagazines = {
 };
 
 _countBackpacks = {
-	private["_backpacks","_return"];
 	_backpacks = [];
 	_return = 0;
 
@@ -33,21 +30,17 @@ _countBackpacks = {
 };
 
 _countFreeSlots = {
-	private["_return"];
 	_return = [(_weaponsMax - _weapons), (_magazinesMax - _magazines), (_backpacksMax - _backpacks)];
 	_return;
 };
 
 _getControlText = {
-	private["_control","_return"];
 	_control = _display displayCtrl 156;
 	_return = ctrlText _control;
 	_return;
 };
 
 _setControlText = {
-	private["_i","_control"];
-
 	for [{_i = 0}, {_i < (count _valueIDCs)}, {_i = _i + 1}] do {
 		_control = _display displayCtrl (_valueIDCs select _i);
 		_control ctrlSetText format ["%1", (_freeSlots select _i)];

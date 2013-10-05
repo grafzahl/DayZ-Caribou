@@ -1,4 +1,4 @@
-private ["_currentObjects","_newObjects","_checkObjects","_change","_type","_qtyNow","_qtyBefore"];
+private ["_newObjects","_change"];
 //_newObjects = [_previous,weapons player] call player_weaponCheck;
 _currentObjects = _this select 0;
 _checkObjects = _this select 1;

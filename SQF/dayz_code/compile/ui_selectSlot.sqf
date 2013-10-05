@@ -1,19 +1,17 @@
-private ["_control","_button","_parent","_group","_pos","_item","_conf","_name","_cfgActions","_numActions","_height","_menu","_config","_type","_script","_outputOriented","_compile","_array","_outputClass","_outputType"];
+//private ["_control","_button","_parent","_group","_pos","_item","_conf","_name","_cfgActions","_numActions","_height","_menu","_config","_type","_script","_outputOriented","_compile","_array","_outputClass","_outputType"];
 disableSerialization;
 _control = _this select 0;
 _button = _this select 1;
 _parent = findDisplay 106;
 
-//if ((time - dayzClickTime) < 1) exitWith {};
-
 if (_button == 1) then {
-	//dayzClickTime = time;
+	private ["_conf","_name","_compile","_height","_item"];
 	_group = _parent displayCtrl 6902;
 
 	_pos = ctrlPosition _group;
 
 	_item = gearSlotData _control;
-	if ((DayZ_onBack != "") && (dayz_onBack in MeleeWeapons) && mouseOverCarry) then {
+	if (mouseOverCarry) then {
 		_item = DayZ_onBack;
 	};
 

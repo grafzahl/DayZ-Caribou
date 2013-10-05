@@ -1,5 +1,3 @@
-private["_flare","_type","_lightArea","_lightSpark","_color"];
-
 _flare = _this select 0;
 _type = _this select 1;
 //_sfx = objNull;

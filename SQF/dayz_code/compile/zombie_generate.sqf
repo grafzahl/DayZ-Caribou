@@ -1,4 +1,4 @@
-private ["_position","_doLoiter","_unitTypes","_tooClose","_type","_radius","_method","_agent","_loot","_array","_rnd","_lootType","_index","_weights","_loot_count","_agtPos","_favStance","_maxControlledZombies"];
+private ["_position","_unitTypes","_radius","_method","_agent"];
 
 _position = _this select 0;
 _doLoiter = _this select 1; // wander around
@@ -6,7 +6,7 @@ _unitTypes = _this select 2; // class of wanted models
 _maxControlledZombies = round(dayz_maxLocalZombies);
 
 _cantSee = {
-	private ["_isok","_zPos","_fov","_safeDistance","_farDistance","_eye","_ed","_deg","_xasl"];
+	private ["_isok"];
 
 	_isok = true;
 	_zPos = +(_this select 0);

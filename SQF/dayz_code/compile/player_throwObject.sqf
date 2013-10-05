@@ -1,4 +1,4 @@
-private ["_obj","_unit","_ammo","_distance","_projectile","_endPos","_doWait","_vel"];
+private ["_distance","_endPos","_doWait","_vel"];
 _obj = _this select 0;
 _unit = _obj select 0;
 //_weapon = _obj select 1;

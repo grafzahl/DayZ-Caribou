@@ -13,7 +13,7 @@ or by action/repair.sqf
 - return : 0 :)
 broadcast: boolean. if true, then the request will be sent to all players if the vehicle is not local.
 ************************************************************/
-private ["_unit","_selection","_SVname","_hitpointnames","_log"];
+private ["_hitpointnames","_log"];
 
 _unit = _this select 0;
 _selection = _this select 1;
