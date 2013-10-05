@@ -22,9 +22,23 @@ usec_bandage_recovery = 5;		//time to recover after bandaging
 //Water Unconscious handling
 //	localize "CLIENT: Medical System Initiated";
 
+_int_medical_bloodLastUpdated = diag_tickTime;
+
 while {true} do {
 	//hintSilent format["Injured: %1\nUnconscious: %2 (%7)\nBlood: %5\nPain: %6\nMust Evac: %8\nHandler: %3\nAction: %4\nLeg Damage: %9\nArm Damage: %10\nInfected: %11",r_player_injured,r_player_unconscious,r_player_handler,r_action,r_player_blood,r_player_inpain,r_player_timeout,r_player_dead, player getVariable ["hit_legs",0], player getVariable ["hit_arms",0],r_player_infected];
-
+	
+	_bloodDiff = r_player_blood - (player getVariable["USEC_BloodQty", 12000]);
+	if (((_bloodDiff > 0) or (_bloodDiff < 0)) and ((diag_tickTime - _int_medical_bloodLastUpdated) > 10)) then {
+	//Do not global send
+		player setVariable["USEC_BloodQty",r_player_blood,false];
+		player setVariable["medForceUpdate",true,false];
+	//Send only to server	
+		PVDZ_serverStoreVar = [player,"USEC_BloodQty",r_player_blood];
+		publicVariableServer "PVDZ_serverStoreVar";
+	//Update last done	
+		_int_medical_bloodLastUpdated = diag_tickTime;
+	};
+			
 	//Blood forced.
 	if (r_player_blood > 12000) then {
 		r_player_blood = 12000;
@@ -65,10 +79,6 @@ while {true} do {
 	} else {
 		[] spawn fnc_usec_playerHandleBlood;
 	};
-
-	//Add player actions
-	[] call fnc_usec_damageActions;
-	[] call fnc_usec_selfActions;
 
 	//Low Blood Effects
 	[] spawn {

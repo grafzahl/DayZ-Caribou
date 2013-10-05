@@ -1,4 +1,5 @@
 private ["_started","_finished","_animState","_isMedic","_id","_unit","_item"];
+
 _unit = (_this select 3) select 0;
 _item = (_this select 3) select 1;
 player removeMagazine _item;
@@ -17,6 +18,7 @@ r_doLoop = true;
 _started = false;
 _finished = false;
 [player,"bandage",0,false] call dayz_zombieSpeak;
+
 while {r_doLoop} do {
 	_animState = animationState player;
 	_isMedic = ["medic",_animState] call fnc_inString;
@@ -40,20 +42,12 @@ while {r_doLoop} do {
 r_doLoop = false;
 
 if (_finished) then {
-	//["PVCDZ_hlt_Bandage",[_unit,player]] call broadcastRpcCallAll;
-	//PVCDZ_hlt_Bandage = [_unit,player];
-	//publicVariable "PVCDZ_hlt_Bandage";
-	PVDZ_send = [_unit,"Bandage",[_unit,player]];
-	publicVariableServer "PVDZ_send";
-	
-
 	if ((_unit == player) or (vehicle player != player)) then {
-		//Self Healing
+	//Self Healing
 		_id = [player,player] execVM "\z\addons\dayz_code\medical\publicEH\medBandaged.sqf";
-		dayz_sourceBleeding = objNull;
-		call fnc_usec_resetWoundPoints;
 	} else {
-		//PVCDZ_plr_Humanity = [player,20];
+		PVDZ_send = [_unit,"Bandage",[_unit,player]];
+		publicVariableServer "PVDZ_send";
 		[player,20] call player_humanityChange;
 	};
 } else {

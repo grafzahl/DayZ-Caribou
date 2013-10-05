@@ -4,7 +4,7 @@ fnc_usec_damageHandle = {
 	- Function
 	- [unit] call fnc_usec_damageHandle;
 	************************************************************/
-	private["_unit","_eh"];
+	//private["_unit","_eh"];
 	_unit = _this select 0;
 	mydamage_eh1 = _unit addeventhandler ["HandleDamage",{_this call fnc_usec_damageHandler;} ];
 	mydamage_eh2 = _unit addEventHandler ["Fired", {_this call player_fired;}];
@@ -63,7 +63,7 @@ fnc_usec_damageUnconscious = {
 //Action Handlers added to init file
 
 fnc_usec_bulletHit = {
-	private["_commit"];
+	//private["_commit"];
 	_commit = _this;
 	if (!r_player_unconscious) then {
 		"colorCorrections" ppEffectEnable true;"colorCorrections" ppEffectAdjust [1, 1, 0, [1, 1, 1, 0.0], [1, 1, 1, 0.1],  [1, 1, 1, 0.0]];"colorCorrections" ppEffectCommit 0;
@@ -74,28 +74,14 @@ fnc_usec_bulletHit = {
 	};
 };
 
-fnc_usec_damageType = {
-	private["_damage","_ammo","_type"];
-	_damage = _this select 0;
-	_ammo = _this select 1;
-	_type = 0;
-	if ((_ammo isKindof "Grenade") or (_ammo isKindof "ShellBase") or (_ammo isKindof "TimeBombCore") or (_ammo isKindof "BombCore") or (_ammo isKindof "MissileCore") or (_ammo isKindof "RocketCore") or (_ammo isKindof "FuelExplosion") or (_ammo isKindof "GrenadeBase")) then {
-		_type = 1;
-	};
-	if ((_ammo isKindof "B_127x107_Ball") or (_ammo isKindof "B_127x99_Ball")) then {
-		_type = 2;
-	};
-	_type;
-};
-
 fnc_usec_damageGetWound = {
-	private["_hit","_sPoint","_options","_rnd","_wound"];
+	//private["_wound"];
 	_hit = format["%1",_this];
 	_sPoint = USEC_woundHit find _hit;
 	_options = USEC_woundPoint select _sPoint;
 	_rnd = floor(random(count _options));
 	_wound = _options select _rnd;
-	_wound;
+	_wound
 };
 
 fnc_usec_medic_removeActions = {
@@ -118,7 +104,7 @@ fnc_usec_self_removeActions = {
 };
 
 fnc_usec_calculateBloodPerSec = {
-	private["_bloodLossPerSec","_bloodGainPerSec","_bloodPerSec","_wounded"];
+	private["_bloodLossPerSec","_bloodGainPerSec","_bloodPerSec"];
 	_bloodLossPerSec = 0;
 	_bloodGainPerSec = 0;
 
@@ -133,10 +119,12 @@ fnc_usec_calculateBloodPerSec = {
 			};
 		} forEach USEC_typeOfWounds;
 	};
+	
 	//Sepsis
 	if (!r_player_infected) then { 
 		if (r_player_Sepsis select 0) then {
 			 _time = diag_tickTime - (r_player_Sepsis select 1);
+			 player getVariable "sepsisStarted";
 			if (_time > 900) then {
 				if (_time < 1800) then {
 					_time = ((_time - 900) max 1) min 900;
@@ -149,8 +137,10 @@ fnc_usec_calculateBloodPerSec = {
 					player setVariable["USEC_infected",true,true];
 				};
 			};
-			if (_time < 10) then {
-				cutText [localize "str_medical_sepsis_warning","PLAIN DOWN",5]
+			
+			if (_time < 10 and isNil "sepsisStarted") then {
+				cutText [localize "str_medical_sepsis_warning","PLAIN DOWN",5];
+				player setVariable ["sepsisStarted", _time];
 			};
 		};
 	};
@@ -182,7 +172,7 @@ fnc_usec_calculateBloodPerSec = {
 };
 
 fnc_usec_playerHandleBlood = {
-	private["_bloodPerSec","_bleedTime","_elapsedTime"];
+	private["_bloodPerSec","_elapsedTime"];
 	if (r_player_injured) then { // bleeding
 		_bleedTime = (random 500) + 100;
 		_elapsedTime = 0;
@@ -197,15 +187,15 @@ fnc_usec_playerHandleBlood = {
 				_id = [player,player] execVM "\z\addons\dayz_code\medical\publicEH\medBandaged.sqf";
 				dayz_sourceBleeding = objNull;
 				call fnc_usec_resetWoundPoints;
+				r_player_Bleeding = [false, 0];
 			};
 
-			_bloodDiff = r_player_blood - (player getVariable["USEC_BloodQty", 12000]);
-
+			/*
 			if ((_bloodDiff >= 500) or (_bloodDiff <= -500)) then {
 				player setVariable["USEC_BloodQty",r_player_blood,true];
 				player setVariable["medForceUpdate",true];
 			};
-
+			*/
 			sleep 1;
 		};
 	} else { // not bleeding
@@ -217,10 +207,12 @@ fnc_usec_playerHandleBlood = {
 
 		_bloodDiff = r_player_blood - (player getVariable["USEC_BloodQty", 12000]);
 
+		/*
 		if ((_bloodDiff >= 500) or (_bloodDiff <= -500)) then {
 			player setVariable["USEC_BloodQty",r_player_blood,true];
 			player setVariable["medForceUpdate",true];
 		};
+		*/
 	};
 };
 
@@ -237,10 +229,10 @@ fnc_usec_damageBleed = {
 	- Function fnc_usec_damageBleed: Draw a creepy blood stream from a player limb
 	- [_unit, _wound, _injury] call fnc_usec_damageBleed;
 	************************************************************/
-		private["_unit","_wound","_injury","_modelPos","_point","_source"];
+		private["_wound","_modelPos","_point","_source"];
 		_unit = _this select 0;
 		_wound = _this select 1;
-		_injury = _this select 2; // not used. damage% ???
+		//_injury = _this select 2; // not used. damage% ???
 
 		diag_log format ["%1::fnc_usec_damageBleed %2", __FILE__, _this];
 

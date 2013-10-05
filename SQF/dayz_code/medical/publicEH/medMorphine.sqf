@@ -17,5 +17,6 @@ if ((_unit == player) or (vehicle player != player)) then {
 
 	//_id = false spawn dayz_disableRespawn;
 };
-_unit setVariable ["hit_legs",0,false];
-_unit setVariable ["hit_hands",0,false];
+
+_unit setVariable ["hit_legs",0,true];
+_unit setVariable ["hit_hands",0,true];

@@ -49,6 +49,7 @@ if (_finished) then {
 	if ((_unit == player) or (vehicle player != player)) then {
 		r_player_Sepsis = [false, 0];
 		player setVariable ["USEC_Sepsis", false, true];
+		player setVariable ["sepsisStarted", nil];
 	};
 } else {
 	r_interrupt = false;
