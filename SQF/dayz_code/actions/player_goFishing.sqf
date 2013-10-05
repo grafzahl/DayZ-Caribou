@@ -3,36 +3,22 @@
 	Usage: spawn player_goFishing;
 	Made for DayZ Mod please ask permission to use/edit/distrubute email vbawol@veteranbastards.com.
 */
-private ["_itemOut","_position","_isOk","_counter","_rnd","_item","_itemtodrop","_vehicle","_inVehicle","_text","_result","_raining","_linecastmax","_linecastmin","_num","_ispond"];
+private ["_linecastmax","_linecastmin","_num","_position","_ispond","_objectsPond","_isPondNearBy","_isOk","_counter","_vehicle","_inVehicle","_rnd","_itemOut","_text","_item","_itemtodrop","_result"];
 
-_vehicle = vehicle player;
+_vehicle = _this select 3;
 
-_clearActions = {
-    private ["_vehicle"];
-	_vehicle = vehicle player;
-    if (s_player_fishing > -1) then {
-		player removeAction s_player_fishing;
-		s_player_fishing = -1;
-	};
-	if (s_player_fishing_veh > -1) then {
-		_vehicle removeAction s_player_fishing_veh;
-		s_player_fishing_veh = -1;
-	};
-};
+_vehicle removeAction (_this select 2);
+s_player_fishing = -1;
+s_player_fishing_veh = -1;
 
-
-if(dayz_fishingInprogress) exitWith { cutText [localize "str_fishing_inprogress", "PLAIN DOWN"]; [] call _clearActions; };
+if(dayz_fishingInprogress) exitWith { cutText [localize "str_fishing_inprogress", "PLAIN DOWN"];};
 dayz_fishingInprogress = true;
-player removeAction s_player_fishing;
-_vehicle removeAction s_player_fishing_veh;
 
 //line distance
 _linecastmax = 67;
 _linecastmin = 37;
 
 _num = (round(random _linecastmax)) max _linecastmin;
-
-call gear_ui_init;
 
 // find position 5m in front of player
 _position = player modeltoworld [0,5,0];
@@ -52,10 +38,9 @@ _objectsPond = 	nearestObjects [_position, [], 25];
 
 //diag_log (str(_ispond));
 
-if(!(surfaceIsWater _position) and !(_ispond)) exitWith {
+if (!(surfaceIsWater _position) and !(_ispond)) exitWith {
 	dayz_fishingInprogress = false;
 	cutText [localize "str_fishing_watercheck" , "PLAIN DOWN"];
-	[] call _clearActions;
 };
 
 _isOk = true;
@@ -70,31 +55,29 @@ player playActionNow "GestureSwing";
 r_interrupt = false;
 
 while {_isOk} do {
+	if(dayz_isSwimming) exitWith {cutText [localize "str_player_26", "PLAIN DOWN"];_isOk = false;};
+	if !((currentWeapon player) in Dayz_fishingItems) exitwith {cutText [localize "str_fishing_canceled", "PLAIN DOWN"];_isOk = false;};
 
 	if (r_interrupt) then {
 		_isOk = false;
 		cutText [localize "str_fishing_canceled", "PLAIN DOWN"];
 	} else {
 		//make sure the player isnt swimming
-		if(dayz_isSwimming) exitWith {dayz_fishingInprogress = false; cutText [localize "str_player_26", "PLAIN DOWN"]; [] call _clearActions; };
-		
-		//Check if raining.
-		_raining = if(rain > 0) then {true} else {false};
-		
+
 		// wait for animation
 		sleep 2;
-			
-		_rnd = 100;
-		
+
 		// check if player is in boat
-		_inVehicle = (_vehicle != player);
-		if(_inVehicle) then {
-			if(_vehicle isKindOf "Ship") then {
-				_rnd = 75;
-			};
+		_vehicle = vehicle player;
+		if ((_vehicle != player) and (_vehicle isKindOf "Ship")) then {
+			_inVehicle = true;
+			_rnd = 75;
+		} else {
+			_inVehicle = false;
+			_rnd = 100;
 		};
 		//Check for rain fish are more active during the rain.
-		if (_raining) then { _rnd = _rnd / 2;};
+		if (rain > 0) then {_rnd = _rnd / 2;};
 
 		// 1% chance to catch anything
 		if((random _rnd) <= 1) then {
@@ -106,32 +89,31 @@ while {_isOk} do {
 				case ((_num > 60)) : { ["FishRawTrout","FishRawTrout","FishRawTrout","FishRawTrout","FishRawSeaBass","FishRawSeaBass","FishRawTuna"]; }; 				
 				default { ["FishRawTrout"]; };
 			};
-			diag_log (str(_itemOut));
 			_itemOut = _itemOut call BIS_fnc_selectRandom;
-			
+			_text = getText (configFile >> "CfgMagazines" >> _itemOut >> "displayName");
 			if(_inVehicle) then { 
 				_item = _vehicle;
 				_itemtodrop = _itemOut;
 				_item addMagazineCargoGlobal [_itemtodrop,1];
 				//Let the player know what he caught
-				_text = getText (configFile >> "CfgMagazines" >> _itemOut >> "displayName");
 				cutText [format[localize "str_fishing_success",_text], "PLAIN DOWN"];
 			} else {
+				call gear_ui_init;
+				//Remove melee magazines (BIS_fnc_invAdd fix) 
+				{player removeMagazines _x} forEach MeleeMagazines;
 				_result = [player,_itemOut] call BIS_fnc_invAdd;
 				if (_result) then {
 					//Let the player know what he caught
-					_text = getText (configFile >> "CfgMagazines" >> _itemOut >> "displayName");
 					cutText [format[localize "str_fishing_success",_text], "PLAIN DOWN"];
 				} else {
-					_text = getText (configFile >> "CfgMagazines" >> _itemOut >> "displayName");
 					cutText [format[localize "str_fishing_noroom",_text], "PLAIN DOWN"];
 				};
+				//adding melee mags back if needed
+				call dayz_meleeMagazineCheck;
 			};
-			
-			//end
 			_isOk = false;
 		} else {
-			
+
 			switch (true) do {
 				case (_counter == 0) : { cutText [format[localize "str_fishing_cast",_num], "PLAIN DOWN"]; }; 
 				case (_counter == 4) : { cutText [localize "str_fishing_pull", "PLAIN DOWN"]; player playActionNow "GesturePoint"; }; 
@@ -139,7 +121,7 @@ while {_isOk} do {
 				default { cutText [localize "str_fishing_nibble", "PLAIN DOWN"]; };
 			}; 
 			_counter = _counter + 1;
-				
+
 			if(_counter == 12) then {
 				_isOk = false;
 				sleep 1;
@@ -149,4 +131,3 @@ while {_isOk} do {
 	};
 };
 dayz_fishingInprogress = false;
-[] call _clearActions;

@@ -12,6 +12,12 @@ _nameType = getText(_configVeh >> "displayName");
 _curFuel = ((fuel _vehicle) * _capacity);
 _newFuel = (_curFuel + _canSize);
 _fueling = player getVariable "fueling";
+_isMan = _vehicle isKindOf "Man";
+_isAnimal = _vehicle isKindOf "Animal";
+_isZombie = _vehicle isKindOf "zZombie_base";
+
+if (_isMan or _isAnimal or _isZombie) exitWith { cutText ["You can only refuel a vehicle!", "PLAIN DOWN"] };
+
 
 player removeAction s_player_fillfuel + _capacity;
 

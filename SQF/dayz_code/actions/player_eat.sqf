@@ -61,9 +61,9 @@ if (_hasoutput and !_invehicle) then{
     _itemtodrop = food_output select (food_with_output find _itemorignal);
 
     sleep 3;
-    _nearByPile= nearestObjects [getPosATL player, ["WeaponHolder"], 2];
-    _item = if (count _nearByPile > 0) then {_nearByPile select 0} else {nil};
-    if ((isNil "_item") OR {(player distance _item > 2)}) then {
+    _nearByPile = nearestObjects [getPosATL player, ["WeaponHolder","WeaponHolderBase"], 2];
+    _item = if (count _nearByPile > 0) then {_nearByPile select 0};
+    if (count _nearByPile == 0) then {
     	_pos = player modeltoWorld [0,1,0];
     	//diag_log format [ "%1 itempos:%2 _nearByPile:%3", __FILE__, _pos, _nearByPile];
         _item = createVehicle ["WeaponHolder", _pos, [], 0.0, "CAN_COLLIDE"];

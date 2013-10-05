@@ -300,7 +300,7 @@ class CfgBuildingLoot {
 			{"M9SD","weapon",0.02},
 			{"KSVK_DZ","weapon",0.01},
 			{"VSS_Vintorez","weapon",0.02},
-			{"M14_EP1","weapon",0.02},
+			{"M14_DZ","weapon",0.02},
 			{"DMR_DZ","weapon",0.02},
 			{"PK_DZ","weapon",0.02},
 			{"RPK_74","weapon",0.05},

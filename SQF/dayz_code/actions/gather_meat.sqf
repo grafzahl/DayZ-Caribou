@@ -1,4 +1,3 @@
-private["_item","_hasKnife","_hasKnifeBlunt","_type","_hasHarvested","_config","_isListed","_text","_dis","_sfx","_qty","_array","_string"];
 _item = _this select 3;
 _hasKnife = "ItemKnife" in items player;
 _hasKnifeBlunt = "ItemKnifeBlunt" in items player;
@@ -8,8 +7,13 @@ _config = configFile >> "CfgSurvival" >> "Meat" >> _type;
 
 player removeAction s_player_butcher;
 s_player_butcher = -1;
+_PlayerNear = {isPlayer _x} count ((getPosATL _item) nearEntities ["CAManBase", 10]) > 1;
+if (_PlayerNear) exitWith {cutText [localize "str_pickup_limit_5", "PLAIN DOWN"]};
+
+
 
 if ((_hasKnife or _hasKnifeBlunt) and !_hasHarvested) then {
+	private ["_qty"];
 	//Get Animal Type
 	_isListed = isClass (_config);
 	_text = getText (configFile >> "CfgVehicles" >> _type >> "displayName");
@@ -30,13 +34,14 @@ if ((_hasKnife or _hasKnifeBlunt) and !_hasHarvested) then {
 
 	if (_hasKnifeBlunt) then { _qty = round(_qty / 2); };
 
-	_array = [_item,_qty];
-
 	if (local _item) then {
-		_array spawn local_gutObject; //leave as spawn (sleeping in loops will work but can freeze the script)
+		[_item,_qty] spawn local_gutObject; //leave as spawn (sleeping in loops will work but can freeze the script)
 	} else {
 		PVDZ_send = [_item,"GutBody",[_item,_qty]];
 		publicVariableServer "PVDZ_send";
+		
+		//PVCDZ_obj_GutBody =[_item,_qty];
+		//publicVariable "PVCDZ_obj_GutBody";
 	};
 
 	sleep 6;

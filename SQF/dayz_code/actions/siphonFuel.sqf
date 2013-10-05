@@ -2,10 +2,13 @@ private ["_vehicle","_curFuel","_newFuel","_started","_finished","_animState","_
 
 player removeAction s_player_siphonfuel;
 
-if(dayz_siphonFuelInProgress) exitWith { cutText [localize "str_siphon_inprogress", "PLAIN DOWN"] };
+if (dayz_siphonFuelInProgress) exitWith { cutText [localize "str_siphon_inprogress", "PLAIN DOWN"] };
+_PlayerNear = {isPlayer _x} count ((getPosATL _vehicle) nearEntities ["CAManBase", 10]) > 1;
+if (_PlayerNear) exitWith {cutText [localize "str_pickup_limit_5", "PLAIN DOWN"];};
+
 dayz_siphonFuelInProgress = true;
 
-_vehicle = 	cursorTarget;
+_vehicle = _this select 3;
 
 _abort = false;
 
@@ -13,8 +16,12 @@ _abort = false;
 _configVeh = 	configFile >> "cfgVehicles" >> TypeOf(_vehicle);
 _capacity = 	getNumber(_configVeh >> "fuelCapacity");
 _nameText = 	getText(_configVeh >> "displayName");
-
+_isMan = _vehicle isKindOf "Man";
+_isAnimal = _vehicle isKindOf "Animal";
+_isZombie = _vehicle isKindOf "zZombie_base";
 _availableCansEmpty = ["ItemJerrycanEmpty","ItemFuelcanEmpty"];
+
+if (_isMan or _isAnimal or _isZombie) exitWith { cutText ["You can only siphon the fuel from a vehicle!", "PLAIN DOWN"] };
 
 // Loop to find containers that can could hold fuel and fill them
 {
@@ -53,7 +60,7 @@ _availableCansEmpty = ["ItemJerrycanEmpty","ItemFuelcanEmpty"];
 				cutText [format[localize "str_siphon_preparing",_canTypeEmpty], "PLAIN DOWN"];
 				
 				// alert zombies
-				[player,20,true,(getPosATL player)] spawn player_alertZombies;
+				[player,20,true,(getPosATL player)] call player_alertZombies;
 
 				_finished = false;
 

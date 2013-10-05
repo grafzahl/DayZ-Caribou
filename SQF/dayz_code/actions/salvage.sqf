@@ -1,6 +1,4 @@
-private ["_vehicle","_part","_hitpoint","_type","_selection","_array","_started","_finished","_animState","_isMedic","_isOK","_brokenPart","_findPercent","_damage","_hasToolbox","_nameType","_namePart"];
-
-if(dayz_salvageInProgress) exitWith { cutText [localize "str_salvage_inprogress", "PLAIN DOWN"]; };
+if (dayz_salvageInProgress) exitWith { cutText [localize "str_salvage_inprogress", "PLAIN DOWN"]; };
 dayz_salvageInProgress = true;
 
 _array = 	_this select 3;
@@ -11,13 +9,16 @@ _type = typeOf _vehicle;
 
 _isOK = false;
 _brokenPart = false;
+_started = false;
+_finished = false;
 
 _hasToolbox = "ItemToolbox" in items player;
 
 _nameType = getText(configFile >> "cfgVehicles" >> _type >> "displayName");
 _namePart = getText(configFile >> "cfgMagazines" >> _part >> "displayName");
 
-{_vehicle removeAction _x} forEach s_player_repairActions;s_player_repairActions = [];
+{_vehicle removeAction _x} forEach s_player_repairActions;
+ s_player_repairActions = [];
 s_player_repair_crtl = 1;
 
 if (_hasToolbox) then {
@@ -25,13 +26,11 @@ if (_hasToolbox) then {
 	player playActionNow "Medic";
 
 	[player,"repair",0,false] call dayz_zombieSpeak;
-	[player,50,true,(getPosATL player)] spawn player_alertZombies;
+	[player,50,true,(getPosATL player)] call player_alertZombies;
 
 	r_interrupt = false;
 	_animState = animationState player;
 	r_doLoop = true;
-	_started = false;
-	_finished = false;
 	
 	while {r_doLoop} do {
 		_animState = animationState player;
@@ -55,7 +54,7 @@ if (_hasToolbox) then {
 				_brokenPart = false;
 			};
 
-			if (_isOK) then {	
+			if (_isOK) then {
 				_selection = getText(configFile >> "cfgVehicles" >> _type >> "HitPoints" >> _hitpoint >> "name");
 				if ((_hitpoint == "HitEngine") or (_hitpoint == "HitFuel")) then {
 					[_vehicle, _selection, 0.89] call fnc_veh_handleDam;

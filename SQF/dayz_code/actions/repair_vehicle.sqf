@@ -1,6 +1,6 @@
 private ["_part","_cancel","_color","_string","_handle","_damage","_cmpt","_vehicle","_hitpoints","_damagePercent","_allFixed","_configVeh"];
 
-_vehicle = cursorTarget;
+_vehicle = _this select 3;
 {dayz_myCursorTarget removeAction _x} forEach s_player_repairActions;s_player_repairActions = [];
 dayz_myCursorTarget = _vehicle;
 
@@ -36,14 +36,13 @@ _hitpoints = _vehicle call vehicle_getHitpoints;
 
 } forEach _hitpoints;
 
-/*
 if (_allFixed) then {
 		_vehicle setDamage 0;
 };
-*/
 
 if(count _hitpoints > 0 ) then {
-	_cancel = dayz_myCursorTarget addAction [localize "str_actions_cancel", "\z\addons\dayz_code\actions\repair_cancel.sqf","repair", 0, true, false, "",""];
+	//ArmA OA String
+	_cancel = dayz_myCursorTarget addAction [localize "str_action_cancel_action", "\z\addons\dayz_code\actions\repair_cancel.sqf","repair", 0, true, false, "",""];
 	s_player_repairActions set [count s_player_repairActions,_cancel];
 	s_player_repair_crtl = 1;
 };

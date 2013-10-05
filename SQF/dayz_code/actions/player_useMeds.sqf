@@ -37,6 +37,7 @@ switch (_item) do {
 		_id = [0,0,0,[player,"ItemSepsisBandage"]] execVM "\z\addons\dayz_code\medical\bandage.sqf";
 		r_player_Sepsis = [false, 0];
 		player setVariable ["USEC_Sepsis", false, true];
+		player setVariable ["sepsisStarted", nil];
 	};
 };
 if (vehicle player != player) then {

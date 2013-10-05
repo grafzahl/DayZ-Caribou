@@ -7,11 +7,20 @@ private["_config","_input","_output","_required","_failChance","_hasInput","_ava
 disableSerialization;
 ["close"] call fn_updateCraftUI;
 
-_config = _this;
+_config = _this select 0;
+_overwrite = _this select 1;
 _input = getArray (_config >> "input");
 _output = getArray (_config >> "output");
 _required = getArray (_config >> "required");
 _failChance = getNumber (_config >> "failChance");
+
+if (count _overwrite > 0) then {
+	{
+		_index = _x select 0;
+		_entry = _x select 1;
+		_input set [_index, _entry];
+	}forEach _overwrite;
+};
 
 _hasInput = true;
 
