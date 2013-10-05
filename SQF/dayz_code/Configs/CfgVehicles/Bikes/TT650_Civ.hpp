@@ -1,11 +1,9 @@
-class TT650_Ins: TT650_Base {
+class TT650_Civ: TT650_Base {
 	crew = "";
-	faction = "INS";
-	displayname = $STR_VEH_NAME_TT650_INS;
-	hiddenselectionstextures[] = {"\ca\wheeled3\tt650\data\Yam650_skin1_CO.paa"};
-	maxspeed = 120;
+	faction = "CIV";
+	rarityurban = 0.8;
 	scope = 2;
-	side = 0;
+	side = 3;
 	typicalcargo[] = {};
 	
 	class HitPoints {

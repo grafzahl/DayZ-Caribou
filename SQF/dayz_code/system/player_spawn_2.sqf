@@ -1,4 +1,4 @@
-private ["_refObj","_size","_vel","_speed","_hunger","_thirst","_timeOut","_result","_wpnType","_isOK","_randomSpot","_distance","_mylastPos","_humanity","_lastTemp","_rnd","_listTalk","_messTimer","_display","_control","_PlayerNearby","_ZedsNearby","_ismelee","_saveTime","_tempPos","_lastUpdate","_foodVal","_thirstVal","_lowBlood","_startcombattimer","_myPos","_debug"];
+private ["_hunger","_thirst","_timeOut","_result","_randomSpot","_distance","_mylastPos","_lastTemp","_rnd","_listTalk","_messTimer","_PlayerNearby","_ZedsNearby","_saveTime"];
 disableSerialization;
 _timeOut = 0;
 _messTimer = 0;
@@ -81,7 +81,7 @@ while {true} do {
 	};
 
 	//Hunger
-	_hunger = +((((r_player_bloodTotal - r_player_blood) / r_player_bloodTotal) * 5) + _speed + dayz_myLoad) * 3;
+	_hunger = (abs((((r_player_bloodTotal - r_player_blood) / r_player_bloodTotal) * 5) + _speed + dayz_myLoad) * 3);
 	if (time - dayz_panicCooldown < 120) then {
 		_hunger = _hunger * 2;
 	};
@@ -105,6 +105,7 @@ while {true} do {
 	if (!r_player_infected) then {
 		//	Infectionriskstart
 		if (dayz_temperatur < ((80 / 100) * (dayz_temperaturnormal - dayz_temperaturmin) + dayz_temperaturmin)) then { //TeeChange
+			private "_listTalk";
 			_listTalk = _mylastPos nearEntities ["CAManBase",8];
 			{
 				if (_x getVariable["USEC_infected",false]) then {
@@ -189,23 +190,6 @@ while {true} do {
 	if (_messTimer > 15) then {
 		_messTimer = 0;
 		player setVariable ["messing",[dayz_hunger,dayz_thirst],true];
-	};
-
-	//check if can disconnect
-	if (!dayz_canDisconnect) then {
-		if ((time - dayz_damageCounter) > 180) then {
-			if (!r_player_unconscious) then {
-				dayz_canDisconnect = true;
-				//["PVDZ_plr_Discorem",getPlayerUID player] call callRpcProcedure;
-				PVDZ_plr_Discorem = getPlayerUID player;
-				publicVariableServer "PVDZ_plr_Discorem";
-
-				//Ensure Control is hidden
-				_display = uiNamespace getVariable 'DAYZ_GUI_display';
-				_control = _display displayCtrl 1204;
-				_control ctrlShow false;
-			};
-		};
 	};
 
 	//Save Checker

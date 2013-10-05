@@ -1,7 +1,7 @@
 class AN2_DZ: An2_Base_EP1
 	{
 		displayname = $STR_VEH_NAME_AN2;
-		displaynameshort = "AN2_DZ";
+		displaynameshort = $STR_EP1_DN_AN2_TK;
 		scope = 2;
 		side = 2;
 		crew = "";

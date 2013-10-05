@@ -6,6 +6,6 @@ class V3S_Civ: V3S_Base {
 		side = 3;
 		typicalcargo[] = {};
 		class Library {
-			libtextdesc = "The V3S is a Czech-made military 6x6 cargo truck capable of carrying cargo up to 5 tons, or up to 3 tons in rough terrain.<br/>This one is a harmless civilian vehicle.";
+			libtextdesc = $STR_EP1_LIB_V3S;
 		};
 	};

@@ -59,6 +59,14 @@ class WeaponHolder_MeleeMachete: WeaponHolderBase
 		init="[(_this select 0),'cfgWeapons','MeleeMachete'] execVM '\z\addons\dayz_code\init\object_pickupAction.sqf';";
 	};
 };
+class WeaponHolder_ItemJerrycanEmpty : WeaponHolderBase {
+	scope = public;
+	displayName = "$STR_EQUIP_NAME_39";
+	model = "\dayz_equip\proxy\jerrycan_side.p3d";
+	class eventHandlers {
+		init = "[(_this select 0),'cfgMagazines','ItemJerrycanEmpty'] execVM '\z\addons\dayz_code\init\object_pickupAction.sqf';";
+	};
+};
 class WeaponHolder_ItemFuelcanEmpty : WeaponHolderBase {
 	scope = public;
 	displayName = $STR_ITEM_NAME_FUELCAN_EMPTY;
@@ -81,9 +89,19 @@ class WeaponHolder_ItemFuelcan : WeaponHolderBase {
 class WeaponHolder_ItemCamoNet : WeaponHolderBase {
 	scope = public;
 	displayName = $STR_ITEM_NAME_CAMONET;
-	model = "\dayz_equip\proxy\tentbag.p3d";
+	model = "dayz_equip\models\tentbag_gear.p3d";
 
 	class eventHandlers {
 		init = "[(_this select 0),'cfgMagazines','ItemCamoNet'] execVM '\z\addons\dayz_code\init\object_pickupAction.sqf';";
+	};
+};
+
+class WeaponHolder_ItemDomeTent : WeaponHolderBase {
+	scope = public;
+	displayName = $STR_VEH_NAME_DOME_TENT;
+	model = "\dayz_equip\proxy\tentbag.p3d";
+	
+	class eventHandlers {
+		init = "[(_this select 0),'cfgMagazines','ItemDomeTent'] execVM '\z\addons\dayz_code\init\object_pickupAction.sqf';";
 	};
 };

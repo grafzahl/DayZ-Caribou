@@ -1,4 +1,3 @@
-private ["_holder","_type","_classname","_name","_actionSet"];
 _holder = _this select 0;
 _type = _this select 1;
 _classname = _this select 2;

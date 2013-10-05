@@ -1,4 +1,4 @@
-private ["_building","_nearby","_run","_items"];
+private ["_nearby","_run"];
 _building = _this select 0;
 //_GroupMarker = _this select 1;
 _items = _this select 2;

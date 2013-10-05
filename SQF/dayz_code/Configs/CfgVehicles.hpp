@@ -23,6 +23,7 @@ class CfgVehicles {
 	//External Class
 	class SkodaBase;
 	class ATV_Base_EP1;
+	class Motorcycle;
 	class RubberBoat;
 	class UAZ_Unarmed_Base;
 	class HMMWV_Base;
@@ -80,6 +81,8 @@ class CfgVehicles {
 	#include "CfgVehicles\Bikes\ATV_US_EP1.hpp"
 	#include "CfgVehicles\Bikes\ATV_CZ_EP1.hpp"
 	#include "CfgVehicles\Bikes\TT650_Ins.hpp"
+	#include "CfgVehicles\Bikes\TT650_Civ.hpp"
+	#include "CfgVehicles\Bikes\M1030.hpp"
 	//Boat
 	#include "CfgVehicles\Boat\PBX.hpp"
 	#include "CfgVehicles\Boat\Fishing_Boat.hpp"
@@ -133,14 +136,14 @@ class CfgVehicles {
 	//Antihack
 	#include "CfgVehicles\antihack_logic.hpp"
 	#include "CfgVehicles\antihack_plants.hpp"
-
+	
 	//WorldPlants
 	class Building;
 	class Plant_Base: Building {
 		scope = 2;
 		displayname = "Plant Sphere 100cm";
 		favouritezones = "(meadow) * (forest) * (1 - houses) * (1 - sea)";
-	}
+	};
 	class Dayz_Plant1: Plant_Base {
 		displayname = $STR_ITEM_NAME_comfrey;
 		output = "equip_comfreyleafs";
@@ -162,6 +165,23 @@ class CfgVehicles {
 		favouritezones = "(meadow) * (forest) * (1 - houses) * (1 - sea)";
 		model = "z\addons\dayz_communityassets\models\comfrey_up.p3d";
 	};
+
+	class BuiltItems;
+	class Wire_cat1 : BuiltItems {
+		displayName = $STR_BUILT_WIRE1;
+	};
+	
+	class Wire_cat2 : Wire_cat1 {
+		displayName = $STR_BUILT_WIRE2;
+	};
+	
+	class Hedgehog_DZ : BuiltItems {
+		displayName = $STR_BUILT_HEDGEHOG;
+	};
+	
+	class Sandbag1_DZ : BuiltItems {
+		displayName = $STR_BUILT_SANDBAG;
+	}; 
 };
 class CfgNonAIVehicles {
 	#include "CfgVehicles\StreetLamps.hpp"

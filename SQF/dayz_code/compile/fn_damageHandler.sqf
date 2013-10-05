@@ -7,7 +7,7 @@ scriptName "Functions\misc\fn_damageHandler.sqf";
 	- Function
 	- [unit, selectionName, damage, source, projectile] call fnc_usec_damageHandler;
 ************************************************************/
-private ["_unit","_hit","_damage","_unconscious","_source","_ammo","_Viralzed","_isMinor","_isHeadHit","_isPlayer","_canHitFree","_isBandit","_punishment","_humanityHit","_myKills","_wpst","_sourceDist","_sourceWeap","_scale","_type","_nrj","_rndPain","_hitPain","_wound","_isHit","_isbleeding","_rndBleed","_hitBleed","_isInjured","_lowBlood","_rndInfection","_hitInfection","_isCardiac","_chance"];
+private ["_hasHighBody","_hasLowBody","_hasHelmet","_headProtection","_isBodyHit","_playerModel","_unit","_hit","_damage","_unconscious","_source","_ammo","_Viralzed","_isMinor","_isHeadHit","_isPlayer","_canHitFree","_isBandit","_punishment","_humanityHit","_myKills","_wpst","_sourceDist","_sourceWeap","_scale","_type","_nrj","_rndPain","_hitPain","_wound","_isHit","_isbleeding","_rndBleed","_hitBleed","_isInjured","_lowBlood","_rndInfection","_hitInfection","_isCardiac","_chance"];
 _unit = _this select 0;
 _hit = _this select 1;
 _damage = _this select 2;
@@ -19,6 +19,34 @@ _isMinor = (_hit in USEC_MinorWounds);
 _isHeadHit = (_hit == "head_hit");
 _isPlayer = (isPlayer _source);
 if ((isNull _source) AND {((_ammo == "") OR {({damage _x > 0.9} count((getposATL _unit) nearEntities [["Air", "LandVehicle", "Ship"],15]) == 0) AND (count nearestObjects [getPosATL _unit, ["TrapItems"], 30] == 0)})}) exitWith {0};
+
+//Stuff for the amored Skins
+_playerModel = typeOf player;
+_isBodyHit = (_hit == "body");
+_headProtection = _unit getVariable ["headProtection", true];
+
+//All Models with visual Helmet
+_hasLowBody = _playerModel in CB_lowBody;
+_hasHighBody = _playerModel in CB_highBody;
+//All Models with visual (Bulletproof) Vest
+_hasHelmet = _playerModel in CB_Helmet;
+
+if(_isHeadHit && _hasHelmet && _headProtection && _damage > 0.1) then {
+	_hit = "body";
+	_isHeadHit = false;
+	_damage = _damage * 0.8;
+	if(_isPlayer) then {
+		_unit setVariable ["headProtection", false];
+	};
+};
+
+if(_isBodyHit && _hasLowBody && _damage > 0.1) then {
+	_damage = _damage * 0.85;
+} else {
+	if(_isBodyHit && _hasHighBody && _damage > 0.1) then {
+		_damage = _damage * 0.7;
+	};
+};
 
 if (_unit == player) then {
 	if (_hit == "") then {

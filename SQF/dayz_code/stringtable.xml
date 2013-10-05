@@ -24,13 +24,6 @@
 			<French>Récolter %1</French>
 			<Czech>Posbírat %1</Czech>
 		</Key>
-		<Key ID="str_actions_cancel">
-			<English>Cancel</English>
-			<Russian>Отменить</Russian>
-			<Spanish>Cancelar</Spanish>
-			<French>Annuler</French>
-			<Czech>Ukončit</Czech>
-		</Key>
 		<Key ID="STR_ACTIONS_DROP">
 			<English>Drop</English>
 			<Russian>Выбросить</Russian>
@@ -432,6 +425,10 @@
 			<French>Vous ne pouvez pas faire d'autre transfusion de sang aussi rapidement</French>
 			<Czech>Nelze znovu provést krevní transfúzi tak rychle po sobě.</Czech>
 		</Key>
+		<Key ID="STR_ACTION_HACK">
+			<English>Hack</English>
+			<Russian>Удар</Russian>
+		</Key>
 		<Key ID="str_action_studybody">
 			<English>Study Body</English>
 			<German>Leiche untersuchen</German>
@@ -674,7 +671,7 @@
 		<Key ID="str_crafting_success">
 			<English>Successfully created %1</English>
 			<German>Erfolgreich erstellt %1</German>
-			<Russian>Успешно создан %1</Russian>
+			<Russian>Успешно создано (%1)</Russian>
 			<Spanish>Se creó existosamente: %1</Spanish>
 			<French>Création de %1 réussie</French>
 			<Czech>Úspěšně jsi vytvořil %1</Czech>
@@ -3099,20 +3096,6 @@
 			<French>Fusil d'assault américain avec lance-grenades &lt;br/&gt;Calibre: 5.56x45mm OTAN, grenade 40mm</French>
 			<Czech>Útočná puška s granátometem &lt;br/&gt;Kalibr: 5.56x45mm NATO</Czech>
 		</Key>
-		<Key ID="STR_EQUIP_NAME_FN_FAL">
-			<English>FN FAL</English>
-			<Russian>FN FAL</Russian>
-			<Spanish>Fusil FAL</Spanish>
-			<French>Fusil FAL</French>
-			<Czech>FN FAL</Czech>
-		</Key>
-		<Key ID="STR_EQUIP_DESC_FN_FAL">
-			<English>Battle rifle&lt;br/&gt;Caliber: 7.62x51mm NATO</English>
-			<Russian>Автоматическая винтовка &lt;br/&gt;Калибр: 7.62x51мм НАТО</Russian>
-			<Spanish>Rifle de batalla&lt;br/&gt;Calibre: 7.62x51mm NATO</Spanish>
-			<French>Fusil Automatique Léger d'origine belge&lt;br/&gt;Calibre: 7.62x51mm OTAN</French>
-			<Czech>Lehká automatická puška &lt;br/&gt;Kalibr: 7.62x51mm NATO</Czech>
-		</Key>
 		<Key ID="STR_EQUIP_NAME_M9">
 			<English>M9</English>
 			<Russian>M9</Russian>
@@ -3224,62 +3207,6 @@
 			<Spanish>Pistola semi-automática &lt;br/&gt;Calibre: 9x19mm</Spanish>
 			<French>Pistolet semi-automatique autrichien &lt;br/&gt;Calibre: 9x19mm</French>
 			<Czech>Poloautomatická pistole &lt;br/&gt;Kalibr: 9x19mm</Czech>
-		</Key>
-		<Key ID="STR_EQUIP_NAME_M107">
-			<English>M107</English>
-			<Russian>M107</Russian>
-			<Spanish>M107</Spanish>
-			<French>M107</French>
-			<Czech>M107</Czech>
-		</Key>
-		<Key ID="STR_EQUIP_DESC_M107">
-			<English>Sniper rifle &lt;br/&gt;Calibre: 12.7×99mm NATO</English>
-			<Russian>Снайперская винтовка &lt;br/&gt;Калибр: 12.7×99мм NATO</Russian>
-			<Spanish>Rifle de francotirador &lt;br/&gt;Calibre: 12.7×99mm NATO</Spanish>
-			<French>Fusil de franc-tireur américain, avec zoom variable et compensation de distance &lt;br/&gt;Calibre: 12.7×99mm OTAN</French>
-			<Czech>Odstřelovací puška &lt;br/&gt;Kalibr: 12.7×99mm NATO</Czech>
-		</Key>
-		<Key ID="STR_EQUIP_NAME_DMR">
-			<English>DMR</English>
-			<Russian>DMR</Russian>
-			<Spanish>DMR</Spanish>
-			<French>DMR</French>
-			<Czech>DMR</Czech>
-		</Key>
-		<Key ID="STR_EQUIP_DESC_DMR">
-			<English>Sniper rifle &lt;br/&gt;Calibre: 7.62x51mm</English>
-			<Russian>Снайперская винтовка &lt;br/&gt;Калибр: 7.62x51мм</Russian>
-			<Spanish>Rifle de francotirador &lt;br/&gt;Calibre: 7.62x51mm</Spanish>
-			<French>Fusil de franc-tireur américain avec zoom variable &lt;br/&gt;Calibre: 7.62x51mm</French>
-			<Czech>Odstřelovací puška &lt;br/&gt;Kalibr: 7.62x51mm</Czech>
-		</Key>
-		<Key ID="STR_EQUIP_NAME_SVD">
-			<English>SVD Dragunov</English>
-			<Russian>СВД</Russian>
-			<Spanish>SVD Dragunov</Spanish>
-			<French>SVD Dragunov</French>
-			<Czech>SVD Dragunov</Czech>
-		</Key>
-		<Key ID="STR_EQUIP_DESC_SVD">
-			<English>Sniper rifle &lt;br/&gt;Calibre: 7.62x54mm</English>
-			<Russian>Снайперская винтовка &lt;br/&gt;Калибр: 7.62x54мм</Russian>
-			<Spanish>Rifle de francotirador &lt;br/&gt;Calibre: 7.62x54mm</Spanish>
-			<French>Fusil de franc-tireur russe Dragunov &lt;br/&gt;Calibre: 7.62x54mm</French>
-			<Czech>Odstřelovací puška &lt;br/&gt;Kalibr: 7.62x54mm</Czech>
-		</Key>
-		<Key ID="STR_EQUIP_NAME_SVD_CAMO">
-			<English>SVD CAMO</English>
-			<Russian>Камуфлированный СВД</Russian>
-			<Spanish>SVD Camuflado</Spanish>
-			<French>SVD Camuflado</French>
-			<Czech>SVD Kamufláž</Czech>
-		</Key>
-		<Key ID="STR_EQUIP_DESC_SVD_CAMO">
-			<English>Sniper rifle &lt;br/&gt;Calibre: 7.62x54mm</English>
-			<Russian>Снайперская винтовка &lt;br/&gt;Калибр: 7.62x54мм</Russian>
-			<Spanish>Rifle de francotirador &lt;br/&gt;Calibre: 7.62x54mm</Spanish>
-			<French>Fusil de franc-tireur russe Dragunov, avec camouflage&lt;br/&gt;Calibre: 7.62x54mm</French>
-			<Czech>Odstřelovací puška &lt;br/&gt;Kalibr: 7.62x54mm</Czech>
 		</Key>
 		<Key ID="STR_EQUIP_NAME_CLOTHES">
 			<English>Clothes</English>
@@ -3435,7 +3362,7 @@
 		</Key>
 		<Key ID="STR_FOOD_EQUIP_CODE_NAME_1">
 			<English>Mutton Raw</English>
-			<German>Rohes Hammelfleisch</German>
+			<German>Rohes Ziegenfleisch</German>
 			<Russian>Ягнятина</Russian>
 			<Spanish>Cordero Crudo</Spanish>
 			<French>Agneau Cru</French>
@@ -3571,7 +3498,7 @@
 		</Key>
 		<Key ID="STR_FOODCOOKED_EQUIP_CODE_DESC_2">
 			<English>Chicken Leg to be used for sustainment.</English>
-			<German>Hühnchenkeule, für den Verzehr geeignet.</German>
+			<German>Hühnchenkeule, die für den Verzehr geeignet.</German>
 			<Russian>Жареный куриный окрочек, готовый к употреблению.</Russian>
 			<Spanish>Pata de Pollo que se utilizará para sobrevivir.</Spanish>
 			<French>La cuisse de poulet peut être consommée.</French>
@@ -5350,6 +5277,14 @@
 			<French>Vous n'avez pas assez de place dans votre inventaire pour faire cela.</French>
 			<Czech>Pro tuto akci nemáš dostatek místa v inventáři.</Czech>
 		</Key>
+		<Key ID="str_player_24_Stoped">
+			<English>You have finished collecting wood.</English>
+			<Russian>Вы закончили рубку дров.</Russian>
+		</Key>
+		<Key ID="str_player_24_progress">
+			<English>Chopping down tree (%1/%2). Walk away at anytime to cancel.</English>
+			<Russian>Рубим дровишки... (%1/%2). Шагните в сторону, чтобы прекратить.</Russian>
+		</Key>
 		<Key ID="str_player_25">
 			<English>A pile of wood has been successfully added to your inventory.</English>
 			<German>Ein Holzstapel wurde erfolgreich Ihrem Inventar hinzugefügt.</German>
@@ -5639,12 +5574,20 @@
 			<Czech>Lze sebrat pouze jeden předmět zároveň.</Czech>
 		</Key>
 		<Key ID="str_pickup_limit_4">
-			<English>Another Player Near by, Only one player must be within 5 meters of a bag to pickup</English>
-			<German>Another Player Near by, Only one player must be within 5 meters of a bag to pickup</German>
+			<English>Another Player is Near by, Only one player can be within 5 meters of a bag to pickup</English>
+			<German>Another Player is  Near by, Only one player can be within 5 meters of a bag to pickup</German>
 			<Russian>Другой игрок рядом! Он должен быть далее 5ти метров от поднимаемого рюкзака</Russian>
 			<Spanish>Otro jugador cerca, solo un jugador debe estar a menos de 5 metros de la mochila para tomarla</Spanish>
 			<French>Un autre joueur se trouve à proximité. Un seul joueur peut fouiller un sac dans un rayon de 5 mètres.</French>
 			<Czech>Poblíž je další hráč. Pouze jeden hráč musí být v rozsahu 5 metrů aby jste mohli batoh zvednout</Czech>
+		</Key>
+		<Key ID="str_pickup_limit_5">
+			<English>Another player is nearby, only one player can be near to perform this action</English>
+			<German>Ein anderer Spieler in der Nähe ist, kann nur ein Spieler sich in der Nähe, um diese Aktion durchzuführen</German>
+			<Russian>Другой игрок рядом, только один игрок может делать это.</Russian>
+			<Spanish>Otro jugador que está cerca, sólo un jugador puede estar cerca para realizar esta acción</Spanish>
+			<French>Un autre joueur est à proximité, un seul joueur peut se trouver à proximité pour effectuer cette action</French>
+			<Czech>Dalším hráčem je v blízkosti, může být jeden hráč blízko k provedení této akce</Czech>
 		</Key>
 		<Key ID="str_refuel_fail">
 			<English>Already refueling!</English>
@@ -6572,8 +6515,25 @@
 			<Spanish>Tienda de Campaña</Spanish>
 			<Czech>Stan (kopule)</Czech>
 		</Key>
+		<Key ID="STR_BUILT_WIRE1">
+			<English>Wire (CAT1)</English>
+			<Russian>Колючка</Russian>
+		</Key>
+		<Key ID="STR_BUILT_WIRE2">
+			<English>Wire (CAT2)</English>
+			<Russian>Усиленная колючка</Russian>
+		</Key>
+		<Key ID="STR_BUILT_HEDGEHOG">
+			<English>Hedgehog (Steel)</English>
+			<Russian>Противотанковый ёж</Russian>
+		</Key>
+		<Key ID="STR_BUILT_SANDBAG">
+			<English>Bag Fence</English>
+			<Russian>Преграда из мешков с песком</Russian>
+		</Key>
 		<Key ID="STR_ZNAME_SOLDIER">
 			<English>Infected Soldier</English>
+			<German>Infizierter Soldat</German>
 			<Spanish>Soldado Infectado</Spanish>
 			<Russian>Инфицированный солдат</Russian>
 			<French>Soldat infecté</French>
@@ -6581,6 +6541,7 @@
 		</Key>
 		<Key ID="STR_ZNAME_SOLDIERHEAVY">
 			<English>Inf. Soldier (Heavy)</English>
+			<German>Infizierter Soldat (Heavy)</German>
 			<Spanish>Soldado Pesado Infectado</Spanish>
 			<Russian>Инфиц. солдат (Тяжелый)</Russian>
 			<French>Soldat armé infecté</French>
@@ -6588,6 +6549,7 @@
 		</Key>
 		<Key ID="STR_ZNAME_PILOT">
 			<English>Infected Pilot</English>
+			<German>Infizierter Pilot</German>
 			<Spanish>Piloto Infectado</Spanish>
 			<Russian>Инфицированный пилот</Russian>
 			<French>Pilote infecté</French>
@@ -6595,6 +6557,7 @@
 		</Key>
 		<Key ID="STR_ZNAME_INFECTED">
 			<English>Infected</English>
+			<German>Infiziert</German>
 			<Spanish>Infectado</Spanish>
 			<Russian>Инфицированный</Russian>
 			<French>Infecté</French>
@@ -6609,6 +6572,7 @@
 		</Key>
 		<Key ID="STR_ZNAME_POLICEMAN">
 			<English>Infected policeman</English>
+			<German>Infizierter Polizeimann</German>
 			<Spanish>Policía Infectado</Spanish>
 			<Russian>Инфицированный милиционер</Russian>
 			<French>Policier infecté</French>
@@ -6616,6 +6580,7 @@
 		</Key>
 		<Key ID="STR_ZNAME_SUIT">
 			<English>Infected clerk</English>
+			<German>Infizierter clerk</German>
 			<Spanish>Oficinista Infectado</Spanish>
 			<Russian>Инфицированный клерк</Russian>
 			<French>Employé infecté</French>
@@ -6623,6 +6588,7 @@
 		</Key>
 		<Key ID="STR_ZNAME_WORKER">
 			<English>Infected worker</English>
+			<German>Infizierter Arbeiter</German>
 			<Spanish>Trabajador Infectado</Spanish>
 			<Russian>Инфицированный работяга</Russian>
 			<French>Ouvrier infecté</French>
@@ -6630,6 +6596,7 @@
 		</Key>
 		<Key ID="STR_ZNAME_DOCTOR">
 			<English>Infected doctor</English>
+			<German>Infizierter Doktor</German>
 			<Spanish>Doctor Infectado</Spanish>
 			<Russian>Инфицированный доктор</Russian>
 			<French>Docteur infecté</French>
@@ -6637,6 +6604,7 @@
 		</Key>
 		<Key ID="STR_ZNAME_TEACHER">
 			<English>Infected teacher</English>
+			<German>Infizierter Lehrer</German>
 			<Spanish>Maestro Infectado</Spanish>
 			<Russian>Инфицированный учитель</Russian>
 			<French>Enseignant infecté</French>
@@ -6644,6 +6612,7 @@
 		</Key>
 		<Key ID="STR_ZNAME_HUNTER">
 			<English>Infected hunter</English>
+			<German>Infizierter hunter</German>
 			<Spanish>Cazador Infectado</Spanish>
 			<Russian>Инфицированный охотник</Russian>
 			<French>Chasseur infecté</French>
@@ -6651,6 +6620,7 @@
 		</Key>
 		<Key ID="STR_ZNAME_PRIEST">
 			<English>Infected priest</English>
+			<German>Infizierter Priester</German>
 			<Spanish>Sacerdote Infectado</Spanish>
 			<Russian>Инфицированный священник</Russian>
 			<French>Prêtre infecté</French>

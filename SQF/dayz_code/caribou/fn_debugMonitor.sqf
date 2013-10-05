@@ -27,7 +27,7 @@
 		",dayz_playerName,r_player_blood,round _humanity,_killsH,_killsB,_kills,null,round(diag_fps),_hours,_minutes,_color,dayz_skilllevel,_humanityLevel,r_player_blood,(playersNumber west)];
 	} else {
 	//		<t size='1'font='Bitstream'align='left'>Humanity-Level:</t><t size='1'font='Bitstream'align='right'>%13</t><br/>
-		hintSilent parseText format ["
+		hint parseText format ["
 		<t size='1.20' font='Bitstream' align='center'>%1<br/><br/></t>
 	
 		<t size='1' font='Bitstream' align='left'>Days Alive:</t><t size='1' font='Bitstream' align='right'>%12</t><br/><br/>

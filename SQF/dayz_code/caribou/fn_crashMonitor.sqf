@@ -26,7 +26,7 @@ if(heliSOS && ("ItemRadio" in items player) && (player distance heliPos <= sosDi
 	//playSound "beep";
 	[player,"mayday",0,false] call dayz_zombieSpeak;
 	[player,10,false,(getPosATL player)] spawn player_alertZombies;
-	hint parseText format ["<t color='#00ff00' size='1.25'>Received Transmission</t><img size='5' image='%3'/><br/><t color='#ff0000'>Mayday - Mayday<br/>Infected Pilot!</t><br/><br/>Emergency landing initiated near %2",getText (configFile >> 'CfgVehicles' >> heliModel >> 'displayName'),(heliPos call fa_coor2str), getText (configFile >> "cfgVehicles" >> heliModel >> "picture")];
+	hintSilent parseText format ["<t color='#00ff00' size='1.25'>Received Transmission</t><img size='5' image='%3'/><br/><t color='#ff0000'>Mayday - Mayday<br/>Infected Pilot!</t><br/><br/>Emergency landing initiated near %2",getText (configFile >> 'CfgVehicles' >> heliModel >> 'displayName'),(heliPos call fa_coor2str), getText (configFile >> "cfgVehicles" >> heliModel >> "picture")];
 	sleep 15;
 };
 

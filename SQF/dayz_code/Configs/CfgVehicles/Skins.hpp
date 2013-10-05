@@ -60,4 +60,4 @@ class Camo1_DZ: BAF_Soldier_L_W {
 	respawnMagazines[] = {};
 	weaponSlots = "1	 + 	4	 + 12*		256	 + 2*	4096	 + 	2	 + 8*	16  + 12*131072";
 	canHideBodies = 1;
-};
+};	
