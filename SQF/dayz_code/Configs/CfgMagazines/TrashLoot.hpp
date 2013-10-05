@@ -34,3 +34,21 @@ class ItemTrashToiletpaper : CA_Magazine {
 		picture = "\z\addons\dayz_communityassets\pictures\equip_cards_ca.paa";
 		type = 256;
 	};
+		class Itemconi : CA_Magazine {
+		scope = public;
+		count = 1;
+		displayName = "conector i";
+		descriptionShort = $STR_ITEM_DESC_CARDS;
+		model = "z\addons\dayz_communityassets\models\connector_i.p3d";
+		picture = "\z\addons\dayz_communityassets\pictures\equip_cards_ca.paa";
+		type = 256;
+	};
+			class Item1mpile : CA_Magazine {
+		scope = public;
+		count = 1;
+		displayName = "6 poles";
+		descriptionShort = $STR_ITEM_DESC_CARDS;
+		model = "z\addons\dayz_communityassets\models\1m_pile_6.p3d";
+		picture = "\z\addons\dayz_communityassets\pictures\equip_cards_ca.paa";
+		type = 256;
+	};

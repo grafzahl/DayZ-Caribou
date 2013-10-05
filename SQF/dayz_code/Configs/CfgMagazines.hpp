@@ -84,9 +84,30 @@ class CfgMagazines {
 	#include "CfgMagazines\Jerrycan.hpp"
 	//medical
 	#include "CfgMagazines\medical.hpp"
-	#include "CfgMagazines\Caribou.hpp"
 	
 	//crafting
 	#include "CfgCrafting\Mats.hpp"
 
+	#include "CfgMagazines\Caribou.hpp"
+
+	class PartWoodPile : CA_Magazine {
+		scope = public;
+		count = 1;
+		type = (256 * 2);
+		displayName = $STR_EQUIP_NAME_40;
+		model = "\dayz_equip\models\woodPile.p3d";
+		picture = "\dayz_equip\textures\equip_woodPile_ca.paa";
+		descriptionShort = $STR_EQUIP_DESC_40;
+	};
+	
+	class PartWoodLumber: CA_Magazine {
+		scope = 2;
+		count = 1;
+		type = 256 * 4;
+		displayName = "Lumber";
+		//model = "\z\addons\dayz_communityassets\models\planks.p3d";
+		picture = "\dayz_equip\textures\equip_woodPile_ca.paa";
+		descriptionShort = "Lumber: Used for building many structures and can also be used to make plywood.";
+	};
+	
 };
