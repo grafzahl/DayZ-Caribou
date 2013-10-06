@@ -34,14 +34,14 @@ _hasHelmet = _playerModel in CB_Helmet;
 if(_isHeadHit && _hasHelmet && _headProtection && _damage > 0.1) then {
 	_hit = "body";
 	_isHeadHit = false;
-	_damage = _damage * 0.8;
+	_damage = _damage * 0.7;
 	if(_isPlayer) then {
 		_unit setVariable ["headProtection", false];
 	};
 };
 
 if(_isBodyHit && _hasLowBody && _damage > 0.1) then {
-	_damage = _damage * 0.85;
+	_damage = _damage * 0.8;
 } else {
 	if(_isBodyHit && _hasHighBody && _damage > 0.1) then {
 		_damage = _damage * 0.7;
@@ -115,7 +115,7 @@ if (_damage > 0.1) then {
 	};
 	//Start body part scale
 	if (_ammo == "zombie" and _hit == "body") then {
-		_scale = _scale * 3; //600 = Normal, 900 = Viral
+		_scale = _scale * 2; //600 = Normal, 900 = Viral
 	};
 	if (_ammo == "zombie" and _hit == "legs") then {
 		_scale = _scale; //200 = Normal, 300 = Viral
@@ -124,7 +124,7 @@ if (_damage > 0.1) then {
 		_scale = _scale;  //200 = Normal, 300 = Viral
 	};
 	if (_isHeadHit) then {
-		_scale = _scale * 6; //1200 = Normal, 1800 = Viral
+		_scale = _scale * 4; //1200 = Normal, 1800 = Viral
 	};
 	if (_ammo == "zombie" and _unconscious and !_Viralzed) then {
 		_scale = 50;
