@@ -89,7 +89,7 @@ class WeaponHolder_ItemFuelcan : WeaponHolderBase {
 class WeaponHolder_ItemCamoNet : WeaponHolderBase {
 	scope = public;
 	displayName = $STR_ITEM_NAME_CAMONET;
-	model = "dayz_equip\models\tentbag_gear.p3d";
+	model = "\dayz_equip\proxy\tentbag.p3d";
 
 	class eventHandlers {
 		init = "[(_this select 0),'cfgMagazines','ItemCamoNet'] execVM '\z\addons\dayz_code\init\object_pickupAction.sqf';";
