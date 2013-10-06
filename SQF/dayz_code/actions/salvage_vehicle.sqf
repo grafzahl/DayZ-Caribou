@@ -1,6 +1,11 @@
-private ["_part","_color"];
+private ["_part","_color","_avParts","_notAllowed"];
 
 _vehicle = _this select 3;
+
+_notAllowed = (_vehicle isKindOf "Motorcycle") or (_vehicle isKindOf "Tractor");
+_avParts = ["HitFuel","HitEngine","HitLFWheel","HitRFWheel","HitLBWheel","HitRBWheel","HitGlass1","HitGlass2","HitGlass3","HitGlass4","HitGlass5","HitGlass6","HitHRotor"];
+if (_vehicle isKindOf "Truck") then { _avParts set [count _avParts,"HitLMWheel"]; _avParts set [count _avParts,"HitRMWheel"]; };
+
 {dayz_myCursorTarget removeAction _x} forEach s_player_repairActions;s_player_repairActions = [];
 
 _PlayerNear = {isPlayer _x} count ((getPosATL _vehicle) nearEntities ["CAManBase", 10]) > 1;
@@ -24,16 +29,16 @@ _hitpoints = _vehicle call vehicle_getHitpoints;
 
 	//get every damaged part no matter how tiny damage is!
 	_damagePercent = str(round((1 - _damage) * 100))+"%";
-	if (_damage < 1) then {
+	if ((_damage < 1) && (_x in _avParts) && !_notAllowed && (_part != "PartGlass")) then {
 		_color = "color='#ffff00'"; //yellow
+		if (_damage >= 0.2) then {_color = "color='#00ff00'";}; //green
 		if (_damage >= 0.5) then {_color = "color='#ff8800'";}; //orange
 		if (_damage >= 0.9) then {_color = "color='#ff0000'";}; //red
 		_string = format[localize "str_actions_repair_01",_cmpt,_damagePercent];
 		_string = format["<t %1>%2</t>",_color,_string]; //Remove - Part
-		_handle = dayz_myCursorTarget addAction [_string, "\z\addons\dayz_code\actions\salvage.sqf",[_vehicle,_part,_x], 0, false, true, "",""];
+		_handle = dayz_myCursorTarget addAction [_string, "\z\addons\dayz_code\actions\player_salvage.sqf",[_vehicle,_part,_x], 0, false, true, "",""];
 		s_player_repairActions set [count s_player_repairActions,_handle];
 	};
-
 } forEach _hitpoints;
 
 

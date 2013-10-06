@@ -258,9 +258,11 @@ if (!isNull _cursorTarget and !_inVehicle and (player distance _cursorTarget < 4
 		if (s_player_repair_crtl < 0) then {
 			dayz_myCursorTarget = _cursorTarget;
 			_menu = dayz_myCursorTarget addAction [localize "str_actions_rapairveh", "\z\addons\dayz_code\actions\repair_vehicle.sqf",_cursorTarget, 0, true, false, "",""];
-			//_menu1 = dayz_myCursorTarget addAction [localize "str_actions_salvageveh", "\z\addons\dayz_code\actions\salvage_vehicle.sqf",_cursorTarget, 0, true, false, "",""];
 			s_player_repairActions set [count s_player_repairActions,_menu];
-			//s_player_repairActions set [count s_player_repairActions,_menu1];
+			if(!(_cursorTarget isKindOf "Motorcycle") and !(_cursorTarget isKindOf "Tractor")) then {
+				_menu1 = dayz_myCursorTarget addAction [localize "str_actions_salvageveh", "\z\addons\dayz_code\actions\salvage_vehicle.sqf",_cursorTarget, 0, true, false, "",""];
+				s_player_repairActions set [count s_player_repairActions,_menu1];
+			};
 			s_player_repair_crtl = 1;
 		} else {
 			{dayz_myCursorTarget removeAction _x} forEach s_player_repairActions;s_player_repairActions = [];

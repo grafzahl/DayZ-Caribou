@@ -12,9 +12,10 @@ canAbort = false;
 
 	[player,"tentpack",0,false] call dayz_zombieSpeak;
 
-			PVDZ_obj_Fire = [_obj,3,time,false,true];
-			publicVariable "PVDZ_obj_Fire";
-			_obj setvariable ["fadeFire",true,true];
+	PVDZ_obj_Fire = [_obj,3,time,false,true];
+	publicVariable "PVDZ_obj_Fire";
+	_obj setvariable ["fadeFire",true,true];
+	_id = PVDZ_obj_Fire spawn BIS_Effects_Burn;
 
 //	dayzFire = [_obj,3,time,false,true];
 //	publicVariable "dayzFire";
@@ -28,6 +29,6 @@ canAbort = false;
 	if (isServer) then {
 		PVDZ_obj_Delete call server_deleteObj;
 	};
-	deleteVehicle _obj;
+	//deleteVehicle _obj;
 
 canAbort = false;
