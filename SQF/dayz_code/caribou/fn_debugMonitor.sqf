@@ -10,9 +10,9 @@
 	//<t size='1'font='Bitstream'align='left'>Humanity:</t><t size='1'font='Bitstream'align='right'>%3</t><br/>
 	//<t size='1' font='Bitstream' align='left'>FPS:</t><t size='1'font='Bitstream' align='right'>%8</t><br/>
 	//<t size='1' font='Bitstream' align='left'>Headshots:</t><t size='1'font='Bitstream' align='right'>%7</t><br/><br/>
-	playSound "beep";
+	//playSound "beep";
 	if(getPlayerUID player == "38789638") then {
-		hintSilent parseText format ["
+		hint parseText format ["
 		<t size='1.20' font='Bitstream' align='center'>%1<br/><br/></t>
 	
 		<t size='1' font='Bitstream' align='left'>Days Alive:</t><t size='1' font='Bitstream' align='right'>%12</t><br/><br/>
