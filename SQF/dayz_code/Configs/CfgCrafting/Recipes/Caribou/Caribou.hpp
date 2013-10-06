@@ -4,7 +4,7 @@ class Blueprint_CM_Pack : Recipe {
 	input[] = 
 	{
 		{"equip_rope","CfgMagazines",2},
-		{"equip_hose","CfgMagazines",2},
+		{"equip_rag","CfgMagazines",2},
 		{"equip_string","CfgMagazines",1},
 		{"WoodenArrow","CfgMagazines",1}
 	};
