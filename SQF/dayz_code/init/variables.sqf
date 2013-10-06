@@ -425,13 +425,13 @@ PVDZ_obj_Publish = [];		//used for eventhandler to spawn a mirror of players ten
 PVCDZ_obj_HideBody = objNull;
 
 //DayZ settings
-dayz_maxAnimals = 5;
+dayz_maxAnimals = 8;
 dayz_maxPlants = 3;
 dayz_animalDistance = 600;
 dayz_plantDistance = 600;
 
 dayz_maxMaxModels = 80; // max quantity of Man models (player or Z, dead or alive) around players. Below this limit we can spawn Z // max quantity of loot piles around players. Below this limit we can spawn some loot
-dayz_spawnArea = 200; // radius around player where we can spawn loot & Z
+dayz_spawnArea = 300; // radius around player where we can spawn loot & Z
 dayz_cantseeDist = 150; // distance from which we can spawn a Z in front of any player without ray-tracing and angle checks
 dayz_cantseefov = 70; // half player field-of-view. Visible Z won't be spawned in front of any near players
 dayz_canDelete = 300; // Z, further than this distance from its "owner", will be deleted
@@ -517,15 +517,15 @@ if(!isDedicated) then {
 	dayz_spawnZombies = 0;
 	dayz_swarmSpawnZombies = 0;
 //Max local
-	dayz_maxLocalZombies = 30; // max quantity of Z controlled by local gameclient, used by player_spawnCheck. Below this limit we can spawn Z
+	dayz_maxLocalZombies = 20; // max quantity of Z controlled by local gameclient, used by player_spawnCheck. Below this limit we can spawn Z
 //Current NearBy
 	dayz_CurrentNearByZombies = 0;
 //Max NearBy
-	dayz_maxNearByZombies = 60; // max quantity of Z controlled by local gameclient, used by player_spawnCheck. Below this limit we can spawn Z
+	dayz_maxNearByZombies = 40; // max quantity of Z controlled by local gameclient, used by player_spawnCheck. Below this limit we can spawn Z
 //Current total
 	dayz_currentGlobalZombies = 0;
 //Max global zeds.
-	dayz_maxGlobalZeds = 3000;
+	dayz_maxGlobalZeds = 2000;
 //Animals
 	dayz_currentGlobalAnimals =	0;
 	dayz_maxGlobalAnimals =		100;
