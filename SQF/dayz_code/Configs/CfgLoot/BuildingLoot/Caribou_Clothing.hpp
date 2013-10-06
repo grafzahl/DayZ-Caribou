@@ -1,7 +1,7 @@
 CaribouClothing[] = {
-	{"Skin_Soldier1_DZ",0.01},
-	{"Skin_Sniper1_DZ",0.01},
-	{"Skin_Camo1_DZ",0.01},
+	{"Skin_Soldier1_DZ",0.02},
+	{"Skin_Sniper1_DZ",0.03},
+	{"Skin_Camo1_DZ",0.02},
 	{"Skin_Camo2_DZ",0.01},
 	{"Skin_Rebel1_DZ",0.01},
 	{"Skin_Rebel2_DZ",0.01},
