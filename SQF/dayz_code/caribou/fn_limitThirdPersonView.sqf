@@ -1,8 +1,5 @@
 Params_CameraView=1;  ////uncomment this if you do not set up parameters on mission start
 private["_v"];
-// ----------------------------------------------------------------------------
-//                          MAIN ROUTINE
-// ----------------------------------------------------------------------------
 
 // no loop need, if third person view is not available anyway
 if (difficultyEnabled "3rdPersonView") then
