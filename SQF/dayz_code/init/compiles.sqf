@@ -175,7 +175,7 @@ if (!isDedicated) then {
 		_val = (_maxDis - _dis) max 0;
 		_maxExp = ((exp 2) * _maxDis);
 		_myExp = ((exp 2) * (_val)) / _maxExp;
-		_myExp = _myExp * 0.7;
+		_myExp = _myExp * 0.5;
 		_myExp
 	};
 
