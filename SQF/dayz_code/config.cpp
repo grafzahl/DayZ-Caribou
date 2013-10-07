@@ -14,7 +14,7 @@ class CfgPatches {
 	class dayz_code {
 		units[] = {};
 		weapons[] = {};
-		requiredVersion = 0.1;
+		requiredVersion = 0.2;
 		requiredAddons[] = {"mbg_killhouses","dayz_equip","dayz_weapons","CAMisc3","CABuildingParts","CABuildingParts_Signs","CAStructuresHouse","CAStructuresLand_Ind_Stack_Big","CAStructures_Misc_Powerlines","CAStructures","CABuildings","CABuildings2","Ind_MalyKomin","CAStructures_A_CraneCon","CAStructures_Mil","CAStructures_Nav","CAStructures_Rail","A_Crane_02","A_TVTower","CAStructures_Railway","CAStructuresHouse_HouseBT"};
 	};
 };
@@ -27,7 +27,7 @@ class CfgMods {
 		hidePicture = 0;
 		hideName = 0;
 		action = "http://www.dayzcaribou.com";
-		version = "0.1";
+		version = "0.2";
 		hiveVersion = 0.96;
 		requiredAddons[] = {"caribou_z_data"};
 	};
