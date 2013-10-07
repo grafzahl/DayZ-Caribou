@@ -4,7 +4,7 @@
 	_killsB = 		player getVariable["banditKills",0];
 	_humanity =		player getVariable["humanity",0];
 	_humanityLevel = player getVariable["humanityLevel","Unknown"];
-	_restart = ceil((10800 - serverTime)/60);
+	_restart = ceil((dayZ_serverRuntime - serverTime)/60);
 	_hours = floor(_restart/60);
 	_minutes = _restart-(_hours*60);
 	//<t size='1'font='Bitstream'align='left'>Humanity:</t><t size='1'font='Bitstream'align='right'>%3</t><br/>
