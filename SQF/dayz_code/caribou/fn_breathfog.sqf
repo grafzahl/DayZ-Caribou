@@ -1,6 +1,5 @@
 scriptName "fn_breathfog.sqf";
 /*
-	File: fn_dzn_breathfog.sqf
 	Author: Sumrak
 	(Original idea by http://www.armaholic.com/page.php?id=13307)
 
