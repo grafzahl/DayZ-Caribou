@@ -202,10 +202,10 @@ class CfgBuildingLoot {
 			{"PartWoodPile","magazine",0.04},
 		//bags
 			{"DZ_Patrol_Pack_EP1","object",0.05}, //12
-			{"DZ_ALICE_Pack_EP1","object",0.02}, // 16
-			{"DZ_TK_Assault_Pack_EP1","object",0.02}, // 16
+			{"DZ_ALICE_Pack_EP1","object",0.03}, // 16
+			{"DZ_TK_Assault_Pack_EP1","object",0.03}, // 16
 		//multiple spawns		
-			{"","food",0.05},
+			{"","food",0.1},
 			{"","Supermarket",0.60},
 			{"","generic",0.50}
 		};
@@ -381,7 +381,7 @@ class CfgBuildingLoot {
 		//special
 			{"MedBox0","object",0.02},
 			{"MedBox1","object",0.03},
-			{"DZ_Medic_Pack_EP1","object",0.01},
+			{"DZ_Medic_Pack_EP1","object",0.015},
 		//mags special
 		//bags
 		//multiple spawns
@@ -417,13 +417,13 @@ class CfgBuildingLoot {
 			//{"MP5SD","weapon",0.03},
 			//{"bizon","weapon",0.03},
 		//Handguns
-			{"RH_usp","weapon",0.03},//RH_15Rnd_9x19_usp
-			{"RH_m9","weapon",0.04},//15Rnd_9x19_M9
-			{"RH_g17","weapon",0.04},//RH_17Rnd_9x19_g17
-			{"RH_g18","weapon",0.02},//RH_19Rnd_9x19_g18,RH_33Rnd_9x19_g18
-			{"RH_tec9","weapon",0.03},//RH_30Rnd_9x19_tec
+			{"RH_usp","weapon",0.05},//RH_15Rnd_9x19_usp
+			{"RH_m9","weapon",0.06},//15Rnd_9x19_M9
+			{"RH_g17","weapon",0.06},//RH_17Rnd_9x19_g17
+			{"RH_g18","weapon",0.04},//RH_19Rnd_9x19_g18,RH_33Rnd_9x19_g18
+			{"RH_tec9","weapon",0.04},//RH_30Rnd_9x19_tec
 			{"RH_muzi","weapon",0.04},//RH_32Rnd_9x19_Muzi
-			{"RH_p226","weapon",0.035},//RH_15Rnd_9x19_usp
+			{"RH_p226","weapon",0.05},//RH_15Rnd_9x19_usp
 		//weapons
 			{"M79_DZ","weapon",0.06},
 			{"Remington870_lamp","weapon",0.06},
@@ -461,7 +461,7 @@ class CfgBuildingLoot {
 		//bags
 			{"DZ_RPG_Pack_EP1","object",0.1}, // 18
 			{"DZ_British_ACU","object",0.05}, // 18
-			{"DZ_CivilBackpack_EP1","object",0.03}, // 24			
+			{"DZ_CivilBackpack_EP1","object",0.02}, // 24			
 		//multiple spawns
 			{"","military",0.9},
 			{"","generic",0.4}
@@ -502,11 +502,11 @@ class CfgBuildingLoot {
 			//{"bizon","weapon",0.03},
 			//{"AK_74","weapon",0.06},
 		//Handguns
-			{"RH_usp","weapon",0.03},//RH_15Rnd_9x19_usp
-			{"RH_m9","weapon",0.04},//15Rnd_9x19_M9
+			{"RH_usp","weapon",0.04},//RH_15Rnd_9x19_usp
+			{"RH_m9","weapon",0.06},//15Rnd_9x19_M9
 			{"RH_g17","weapon",0.04},//RH_17Rnd_9x19_g17
-			{"RH_g18","weapon",0.02},//RH_19Rnd_9x19_g18,RH_33Rnd_9x19_g18
-			{"RH_tec9","weapon",0.03},//RH_30Rnd_9x19_tec
+			{"RH_g18","weapon",0.03},//RH_19Rnd_9x19_g18,RH_33Rnd_9x19_g18
+			{"RH_tec9","weapon",0.05},//RH_30Rnd_9x19_tec
 			{"RH_muzi","weapon",0.04},//RH_32Rnd_9x19_Muzi
 			{"RH_p226","weapon",0.035},//RH_15Rnd_9x19_usp
 		//weapons
@@ -591,7 +591,7 @@ class CfgBuildingLoot {
 			{"RH_uspsd","weapon",0.04},//RH_15Rnd_9x19_uspsd
 			{"RH_m9sd","weapon",0.03},//15Rnd_9x19_M9SD
 			{"RH_pmsd","weapon",0.04},//8Rnd_9x18_MakarovSD
-			{"RH_apssd","weapon",0.05},//RH_20Rnd_9x18_apssd
+			{"RH_apssd","weapon",0.06},//RH_20Rnd_9x18_apssd
 		//weapons
 			{"Remington870_lamp","weapon",0.08},
 			{"M1014","weapon",0.07},

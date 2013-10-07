@@ -78,7 +78,7 @@ class CfgLoot {
 	};
 	generic[] = {
 	//med
-		{"ItemBandage",0.03},
+		{"ItemBandage",0.04},
 		{"ItemAntibacterialWipe",0.03},
 		{"ItemHeatPack",0.04},
 	//ammo
@@ -87,14 +87,14 @@ class CfgLoot {
 		{"6Rnd_45ACP",0.04},
 		//{"2Rnd_shotgun_74Slug",0.04}, //pellets preferred for m43
 		{"2Rnd_shotgun_74Pellets",0.08},
-		{"8Rnd_9x19_Mk",0.03},
+		{"8Rnd_9x19_Mk",0.05},
 		{"8Rnd_45cal_m1911",0.03},
-		{"10Rnd_22LR_mk2",0.02},
+		{"10Rnd_22LR_mk2",0.04},
 		{"8Rnd_762_tt33",0.03},
 		{"20Rnd_32cal_vz61",0.02},
-		{"7Rnd_32cal_ppk",0.03},
+		{"7Rnd_32cal_ppk",0.05},
 		{"8Rnd_9x19_p38",0.02},
-		{"6Rnd_357_Mag",0.02},
+		{"6Rnd_357_Mag",0.04},
 		{"RH_20Rnd_9x18_aps",0.01},
 		{"5x_22_LR_17_HMR",0.01},
 		{"10x_303",0.04},
@@ -112,19 +112,19 @@ class CfgLoot {
 		{"ItemSodaCoke",0.02},
 		{"ItemSodaPepsi",0.02},	
 	//food
-		{"FoodCanBakedBeans",0.02},
-		{"FoodCanSardines",0.02},
-		{"FoodCanFrankBeans",0.02},
-		{"FoodCanPasta",0.02},
-		{"FoodCanUnlabeled",0.03},
+		{"FoodCanBakedBeans",0.01},
+		{"FoodCanSardines",0.01},
+		{"FoodCanFrankBeans",0.01},
+		{"FoodCanPasta",0.01},
+		{"FoodCanUnlabeled",0.01},
 		{"FoodCanRusUnlabeled",0.01},
 		{"FoodCanRusStew",0.01},
 		{"FoodCanRusPork",0.02},
 		{"FoodCanRusPeas",0.01},
 		{"FoodCanRusMilk",0.02},
 		{"FoodCanRusCorn",0.01},
-		{"FoodPistachio",0.03},
-		{"FoodNutmix",0.04},
+		{"FoodPistachio",0.02},
+		{"FoodNutmix",0.03},
 	//special
 	//trash
 		{"ItemSodaCokeEmpty",0.05},
