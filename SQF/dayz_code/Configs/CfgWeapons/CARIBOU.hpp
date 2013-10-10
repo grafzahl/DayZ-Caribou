@@ -1,3 +1,10 @@
+	//ITEMS
+	class ItemRadio;
+	class ItemWalkieTalkie: ItemRadio{
+		displayName = "Walkie-Talkie";
+		descriptionShort="A walkie-talkie (more formally known as a handheld transceiver) is a hand-held, portable, two-way radio transceiver. It lets you send and receive specific Transmissions... you will notice.";
+	};
+
 	class RifleCore;									// External class reference
 	class ksvk;
 	class KSVK_DZ : ksvk 

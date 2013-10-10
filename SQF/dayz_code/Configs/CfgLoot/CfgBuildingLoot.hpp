@@ -566,7 +566,7 @@ class CfgBuildingLoot {
 			{"ItemMap","generic",0.03},
 			{"Binocular_Vector","generic",0.005},
 			{"NVGoggles","weapon",0.01},
-			{"ItemRadio","weapon",0.02},
+			{"ItemWalkieTalkie","weapon",0.02},
 		//Unused
 			//{"UZI_EP1","weapon",0.08},
 			//{"M16A2","weapon",0.05},
