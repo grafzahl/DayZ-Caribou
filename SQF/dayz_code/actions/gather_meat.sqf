@@ -37,11 +37,11 @@ if ((_hasKnife or _hasKnifeBlunt) and !_hasHarvested) then {
 	if (local _item) then {
 		[_item,_qty] spawn local_gutObject; //leave as spawn (sleeping in loops will work but can freeze the script)
 	} else {
-		PVDZ_send = [_item,"GutBody",[_item,_qty]];
-		publicVariableServer "PVDZ_send";
+		//PVDZ_send = [_item,"GutBody",[_item,_qty]];
+		//publicVariableServer "PVDZ_send";
 		
-		//PVCDZ_obj_GutBody =[_item,_qty];
-		//publicVariable "PVCDZ_obj_GutBody";
+		PVCDZ_obj_GutBody =[_item,_qty];
+		publicVariable "PVCDZ_obj_GutBody";
 	};
 
 	sleep 6;
