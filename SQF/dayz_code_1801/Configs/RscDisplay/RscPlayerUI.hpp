@@ -155,6 +155,20 @@ class RscTitles
 				w = 0.075;
 				h = 0.10;
 			};
+			//BloodText
+			class BloodStatusTXT: RscStructuredTextGUI
+			{
+				idc = 13380;
+				x = 0.925313 * safezoneW + safezoneX;
+				y = 0.805 * safezoneH + safezoneY; //3
+				//x = 0.92 * safezoneW + safezoneX;
+				//y = 0.95 * safezoneH + safezoneY;
+				//y = 0.79 * safezoneH + safezoneY;
+				w = 0.1;
+				h = 0.08;
+				colorText[] = {1,1,1,1};
+				text = "-1";
+			};
 			class RscPicture_1902: RscPictureGUI
 			{
 				idc = 1902;

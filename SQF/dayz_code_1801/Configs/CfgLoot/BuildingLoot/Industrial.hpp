@@ -8,15 +8,16 @@ Industrial[] = {
 //food
 	{"FoodCanPowell",0.01},
 	{"FoodChipsSulahoops",0.01},
-	{"FoodCanBakedBeans",0.03},
-	{"FoodCanRusPork",0.02},
-	{"FoodCanRusStew",0.02},
+	{"FoodCanBakedBeans",0.01},
+	{"FoodCanRusPork",0.01},
+	{"FoodCanRusStew",0.01},
 //special
-	{"equip_duct_tape",0.01},
-	{"equip_rag",0.01},
+	{"equip_duct_tape",0.03},
+	{"equip_string",0.03},
+	{"equip_rag",0.03},
 	{"equip_nails",0.06},
-	{"equip_brick",0.01},
-	{"equip_crate",0.01},
+	{"equip_brick",0.03},
+	//{"equip_crate",0.02},
 	{"equip_scrapelectronics",0.01},
 //trash
 	{"ItemSodaSmashtEmpty",0.06},

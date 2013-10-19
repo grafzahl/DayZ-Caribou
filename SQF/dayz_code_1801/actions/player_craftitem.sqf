@@ -120,6 +120,10 @@ if (_hasInput) then {
 							{
 								player addMagazine _item;
 							};
+							case "CfgVehicles":
+							{
+								player addBackpack _item;
+							};
 						};
 						cutText[format[(localize "str_crafting_success"),_itemName], "PLAIN DOWN"];
 						//sleep 2;

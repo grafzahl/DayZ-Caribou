@@ -3,7 +3,7 @@ Residential[] = {
 	{"ItemAntibacterialWipe",0.04},
 //ammo
 	{"8Rnd_9x18_Makarov",0.09},
-	{"7Rnd_45ACP_1911",0.03},
+	{"7Rnd_45ACP_1911",0.06},
 	{"10x_303",0.04},
 	{"HandRoadFlare",0.07},
 //drinks
@@ -19,17 +19,18 @@ Residential[] = {
 	{"FoodCanOrlok",0.01},
 	{"FoodCanPowell",0.01},
 	{"FoodCanTylers",0.01},
-	{"FoodCanRusStew",0.05},
-	{"FoodCanRusPork",0.05},
-	{"FoodCanRusPeas",0.05},
-	{"FoodCanRusMilk",0.04},
+	{"FoodCanRusStew",0.01},
+	{"FoodCanRusPork",0.01},
+	{"FoodCanRusPeas",0.02},
+	{"FoodCanRusMilk",0.02},
 //special
 	{"equip_nails",0.06},
 	{"equip_gauze",0.01},
-	{"equip_string",0.04},
+	{"equip_string",0.03},
+	{"equip_rope",0.05},
 	{"equip_rag",0.03},
 	{"equip_scrapelectronics",0.01},
-	{"equip_floppywire",0.01},
+	{"equip_floppywire",0.02},
 	{"equip_hose",0.01},
 	{"equip_duct_tape",0.01},
 //trash

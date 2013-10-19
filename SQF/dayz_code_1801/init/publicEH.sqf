@@ -33,9 +33,10 @@
 	};
 
 if (isServer) then {
+	"dayzCarBomb"				addPublicVariableEventHandler {[_this select 1] execVM "\z\addons\dayz_code\caribou\fn_carBombs.sqf";};
 	"PVDZ_plr_Death"		addPublicVariableEventHandler {_id = (_this select 1) spawn server_playerDied};
 	"PVDZ_plr_Save"			addPublicVariableEventHandler {_id = (_this select 1) call server_playerSync;};
-	"PVDZ_obj_Publish"		addPublicVariableEventHandler {(_this select 1) call server_publishObj};
+	"PVDZ_obj_Publish"	addPublicVariableEventHandler {(_this select 1) call server_publishObj};
 	"PVDZ_veh_Save" 		addPublicVariableEventHandler {(_this select 1) call server_updateObject};
 	"PVDZ_plr_Login1"		addPublicVariableEventHandler {_id = (_this select 1) call server_playerLogin};
 	"PVDZ_plr_Login2"		addPublicVariableEventHandler {(_this select 1) call server_playerSetup};
@@ -118,6 +119,7 @@ if (isServer) then {
 
 //Client only
 if (!isDedicated) then {
+	"dayzAnimCrash"			addPublicVariableEventHandler {[_this select 1] execVM "\z\addons\dayz_code\caribou\fn_crashMonitor.sqf";};
 	"dayzSetDate"				addPublicVariableEventHandler {setDate (_this select 1)};
 	"PVDZ_obj_RoadFlare"		addPublicVariableEventHandler {(_this select 1) spawn object_roadFlare};
 	"PVDZ_drg_RaDrag"   		addPublicVariableEventHandler {(_this select 1) execVM "\z\addons\dayz_code\medical\publicEH\animDrag.sqf"};

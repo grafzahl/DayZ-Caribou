@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\Programme\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, DayZ Player Monitor">*/
+/*%FSM<COMPILE "F:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, DayZ Player Monitor">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"init",0,250,-75.000000,-200.000000,25.000000,-150.000000,0.000000,"init"};
@@ -18,7 +18,7 @@ item13[] = {"Parse_Login",2,250,-75.000000,500.000000,25.000000,550.000000,0.000
 item14[] = {"Hive_Bad",4,218,125.000000,500.000000,225.000000,550.000000,10.000000,"Hive" \n "Bad"};
 item15[] = {"ERROR__Wrong_HIVE",2,250,325.000000,500.000000,425.000000,550.000000,0.000000,"ERROR:" \n "Wrong HIVE" \n "Version"};
 item16[] = {"Hive_Ok",4,218,-175.000000,550.000000,-75.000000,600.000000,0.000000,"Hive" \n "Ok"};
-item17[] = {"Phase_One",2,4346,-75.000000,600.000000,25.000000,650.000000,0.000000,"Phase One"};
+item17[] = {"Phase_One",2,250,-75.000000,600.000000,25.000000,650.000000,0.000000,"Phase One"};
 item18[] = {"Response",4,218,-175.000000,650.000000,-75.000000,700.000000,0.000000,"Response"};
 item19[] = {"Phase_Two",2,250,-75.000000,700.000000,25.000000,750.000000,0.000000,"Phase Two"};
 item20[] = {"Dead_Player",4,218,125.000000,700.000000,225.000000,750.000000,0.000000,"Dead" \n "Player"};
@@ -32,7 +32,7 @@ item27[] = {"ERROR__Bad_Versi",2,250,325.000000,800.000000,425.000000,850.000000
 item28[] = {"Display_Ready",4,218,-175.000000,1150.000000,-75.000000,1200.000000,0.000000,"Display" \n "Ready"};
 item29[] = {"Preload_Display",2,250,-75.000000,1200.000000,25.000000,1250.000000,0.000000,"Preload" \n "Display"};
 item30[] = {"Preload_Done",4,218,-175.000000,1250.000000,-75.000000,1300.000000,0.000000,"Preload" \n "Done"};
-item31[] = {"Initialize",2,250,-75.000000,1300.000000,25.000000,1350.000000,0.000000,"Initialize"};
+item31[] = {"Initialize",2,4346,-75.000000,1300.000000,25.000000,1350.000000,0.000000,"Initialize"};
 item32[] = {"Finish",1,250,-75.000000,1475.000000,25.000000,1525.000000,0.000000,"Finish"};
 item33[] = {"no_Time_Date",4,218,125.000000,900.000000,225.000000,950.000000,0.000000,"no Time/Date"};
 item34[] = {"sleep",4,218,525.000000,150.000000,625.000000,200.000000,0.000000,"sleep"};
@@ -179,8 +179,8 @@ link90[] = {80,78};
 link91[] = {81,82};
 link92[] = {82,83};
 link93[] = {83,50};
-globals[] = {25.000000,1,0,0,0,640,480,1,209,6316128,1,-340.788116,439.274902,1230.212158,467.786713,973,951,1};
-window[] = {2,-1,-1,-1,-1,805,1945,3317,25,3,991};
+globals[] = {25.000000,1,0,0,0,640,480,1,209,6316128,1,-517.451294,525.866821,1602.087402,657.418091,973,881,1};
+window[] = {2,-1,-1,-32000,-32000,880,100,1472,100,3,991};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -1076,6 +1076,9 @@ class FSM
        "dayzGearSave = true;" \n
        "" \n
        "dayz_slowCheck = 	[] spawn player_spawn_2;" \n
+       "" \n
+       "//Spawn breathing Fog" \n
+       "[player] spawn fn_breathfog;" \n
        "" \n
        "_world = toUpper(worldName); //toUpper(getText (configFile >> ""CfgWorlds"" >> (worldName) >> ""description""));" \n
        "_nearestCity = nearestLocations [getPos player, [""NameCityCapital"",""NameCity"",""NameVillage"",""NameLocal""],1000];" \n

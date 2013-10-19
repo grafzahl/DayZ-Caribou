@@ -85,10 +85,11 @@ class CfgMagazines {
 	//medical
 	#include "CfgMagazines\medical.hpp"
 	
-	
 	//crafting
 	#include "CfgCrafting\Mats.hpp"
-	
+
+	#include "CfgMagazines\Caribou.hpp"
+
 	class PartWoodPile : CA_Magazine {
 		scope = public;
 		count = 1;

@@ -14,22 +14,22 @@ class CfgPatches {
 	class dayz_code {
 		units[] = {};
 		weapons[] = {};
-		requiredVersion = 0.1;
-		requiredAddons[] = {"dayz_equip","dayz_weapons","CAMisc3","CABuildingParts","CABuildingParts_Signs","CAStructuresHouse","CAStructuresLand_Ind_Stack_Big","CAStructures_Misc_Powerlines","CAStructures","CABuildings","CABuildings2","Ind_MalyKomin","CAStructures_A_CraneCon","CAStructures_Mil","CAStructures_Nav","CAStructures_Rail","A_Crane_02","A_TVTower","CAStructures_Railway","CAStructuresHouse_HouseBT"};
+		requiredVersion = 0.2;
+		requiredAddons[] = {"mbg_killhouses","dayz_equip","dayz_weapons","CAMisc3","CABuildingParts","CABuildingParts_Signs","CAStructuresHouse","CAStructuresLand_Ind_Stack_Big","CAStructures_Misc_Powerlines","CAStructures","CABuildings","CABuildings2","Ind_MalyKomin","CAStructures_A_CraneCon","CAStructures_Mil","CAStructures_Nav","CAStructures_Rail","A_Crane_02","A_TVTower","CAStructures_Railway","CAStructuresHouse_HouseBT"};
 	};
 };
 
 class CfgMods {
 	class DayZ {
 		dir = "DayZ";
-		name = "DayZ";
+		name = "DayZ Caribou";
 		picture = "z\addons\dayz_code\gui\mod.paa";
 		hidePicture = 0;
 		hideName = 0;
-		action = "http://www.dayzmod.com";
-		version = "1.8.0.1";
+		action = "http://www.dayzcaribou.com";
+		version = "0.2";
 		hiveVersion = 0.96;
-		requiredAddons[] = {"Chernarus"};
+		requiredAddons[] = {"caribou_z_data"};
 	};
 };
 
@@ -38,7 +38,7 @@ class CfgAddons {
 	class PreloadBanks {};
 	class PreloadAddons	{
 		class dayz {
-			list[] = {"dayz_code","dayz","dayz_equip","dayz_communityassets","dayz_weapons","dayz_sfx","ST_bunnyhop","st_collision","st_evasive"};
+			list[] = {"bb_mercs_desert","mbg_killhouses","caribou_z_data","zero_buildings","dayz_code","dayz","dayz_equip","dayz_communityassets","dayz_weapons","dayz_sfx","ST_bunnyhop","st_collision","st_evasive"};
 		};
 	};
 };

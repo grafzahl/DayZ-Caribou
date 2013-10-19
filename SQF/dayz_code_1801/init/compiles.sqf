@@ -81,6 +81,12 @@ if (!isDedicated) then {
 	player_goFishing =	compile preprocessFileLineNumbers "\z\addons\dayz_code\actions\player_goFishing.sqf";
 	player_gather =	compile preprocessFileLineNumbers "\z\addons\dayz_code\actions\player_gather.sqf";
 
+	//Caribou
+	player_selfBloodBag =	compile preprocessFileLineNumbers "\z\addons\dayz_code\actions\player_selfBloodBag.sqf";
+	player_unPackBike = compile preprocessFileLineNumbers "\z\addons\dayz_code\actions\player_unPackBike.sqf";
+	fn_breathfog =	compile preprocessFileLineNumbers "\z\addons\dayz_code\caribou\fn_breathfog.sqf";
+	fn_snowfall =		compile preprocessFileLineNumbers "\z\addons\dayz_code\caribou\fn_snowfall.sqf";
+
 	//ui
 	player_selectSlot = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\ui_selectSlot.sqf";
 	player_gearSet = compile preprocessFileLineNumbers "\z\addons\dayz_code\compile\player_gearSet.sqf";
@@ -169,7 +175,7 @@ if (!isDedicated) then {
 		_val = (_maxDis - _dis) max 0;
 		_maxExp = ((exp 2) * _maxDis);
 		_myExp = ((exp 2) * (_val)) / _maxExp;
-		_myExp = _myExp * 0.7;
+		_myExp = _myExp * 0.5;
 		_myExp
 	};
 
@@ -270,6 +276,10 @@ if (!isDedicated) then {
 		};
 
 		switch (_dikCode) do {
+			case 210: {
+				_nill = execvm "\z\addons\dayz_code\caribou\fn_debugMonitor.sqf";
+				_handled = true;
+			};
 			case 0x02: {
 				["rifle"] spawn player_switchWeapon;
 				_handled = true;

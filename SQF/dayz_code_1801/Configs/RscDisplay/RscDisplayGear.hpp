@@ -15,7 +15,6 @@ class RscDisplayGear {
 	emptyHGun = "";
 	emptyHGunMag = "";
 
-
 	class Controls {
 		// Cannot be removed due to crash or something is dependend on it
 		class CA_Filter_Icon: RscPicture {
@@ -27,7 +26,7 @@ class RscDisplayGear {
 			h = 0;
 			text = "\ca\ui\data\igui_gear_filter_1_ca.paa";
 		};
-
+		
 		// Cannot be removed due to crash or something is dependend on it
 		class CA_Filter_Left_Icon: RscPicture {
 			idc = 1301;
@@ -474,7 +473,7 @@ class RscDisplayGear {
 					y = 0.364;
 					w = 0.309;
 					h = 0.174;
-					onMouseEnter = "if ((DayZ_onBack != """") && (dayz_onBack in MeleeWeapons)) then {mouseOverCarry = true;} else {mouseOverCarry = false;};";
+					onMouseEnter = "mouseOverCarry = true;";
 					onMouseExit = "mouseOverCarry = false;";
 					colorActive[] = {1,1,1,1};
 					colorBackground[] = {0.74,0.74,0.74,0.2}; // has no effect
@@ -928,6 +927,16 @@ class RscDisplayGear {
 			default = 1;
 			w = 0;
 			h = 0;
+		};
+
+		class open_craft: RscIGUIShortcutButton {
+			idc = -1;
+			x = 0.462;
+			y = 0.05;
+			//x = 0.58 * safezoneW + safezoneX;
+			//y = 0.8 * safezoneH + safezoneY;
+			text = $STR_UI_CRAFT_OPEN;
+			action = "closeDialog 0; createDialog 'RscDisplayCraftingMenu';";
 		};
 
 		class ButtonClose: RscActiveText {

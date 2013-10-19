@@ -16,7 +16,7 @@ Camo1_DZ = "Camo1_DZ";
 Soldier1_DZ = "Soldier1_DZ";
 Rocket_DZ = "Rocket_DZ";
 
-AllPlayers = ["SurvivorW2_DZ","Survivor2_DZ","Sniper1_DZ","Soldier1_DZ","Camo1_DZ","BanditW1_DZ","Bandit1_DZ","Survivor3_DZ"];
+AllPlayers = ["Rebel5_DZ","Rebel4_DZ","Rebel3_DZ","Rebel2_DZ","Rebel1_DZ","SurvivorW2_DZ","Survivor2_DZ","Sniper1_DZ","Soldier1_DZ","Camo1_DZ","Camo2_DZ","BanditW1_DZ","Bandit1_DZ","Survivor3_DZ"];
 
 MeleeWeapons = ["MeleeHatchet","MeleeCrowbar","MeleeMachete","MeleeBaseball","MeleeBaseBallBat","MeleeBaseBallBatBarbed","MeleeBaseBallBatNails","MeleeFishingPole"];
 MeleeMagazines = ["hatchet_swing","crowbar_swing","Machete_swing","Bat_Swing","BatBarbed_Swing","BatNails_Swing","Fishing_Swing"];
@@ -26,9 +26,44 @@ Dayz_plants = ["Dayz_Plant1","Dayz_Plant2","Dayz_Plant3"];
 //New Zeds
 DayZ_ViralZeds = ["z_new_villager2","z_new_villager3","z_new_villager4","z_new_worker2","z_new_worker3","z_new_worker4"];
 //Bags
-DayZ_Backpacks = ["DZ_Patrol_Pack_EP1","DZ_Assault_Pack_EP1","DZ_Czech_Vest_Puch","DZ_ALICE_Pack_EP1","DZ_TK_Assault_Pack_EP1","DZ_British_ACU","DZ_CivilBackpack_EP1","DZ_Backpack_EP1"];
+DayZ_Backpacks = ["DZ_RPG_Pack_EP1","DZ_Medic_Pack_EP1","DZ_CM_Pack_EP1","DZ_CMM_Pack_EP1","DZ_Patrol_Pack_EP1","DZ_Assault_Pack_EP1","DZ_Czech_Vest_Puch","DZ_ALICE_Pack_EP1","DZ_TK_Assault_Pack_EP1","DZ_British_ACU","DZ_CivilBackpack_EP1","DZ_Backpack_EP1"];
 
-SafeObjects = ["Land_Fire_DZ", "TentStorage", "Wire_cat1", "Sandbag1_DZ", "Hedgehog_DZ", "StashSmall", "StashMedium", "BearTrap_DZ", "DomeTentStorage", "CamoNet_DZ", "Trap_Cans", "TrapTripwireFlare", "TrapBearTrapSmoke", "TrapTripwireGrenade", "TrapTripwireSmoke", "TrapBearTrapFlare"];
+SafeObjects = ["GeoCache_DZ","Land_Fire_DZ", "TentStorage", "Wire_cat1", "Sandbag1_DZ", "Hedgehog_DZ", "StashSmall", "StashMedium", "BearTrap_DZ", "DomeTentStorage", "CamoNet_DZ", "Trap_Cans", "TrapTripwireFlare", "TrapBearTrapSmoke", "TrapTripwireGrenade", "TrapTripwireSmoke", "TrapBearTrapFlare"];
+
+
+CB_lowBody = [
+	"Camo1_DZ",
+	"Merc1_DZ",
+	"Merc2_DZ",
+	"Merc3_DZ",
+	"Merc4_DZ",
+	"Merc5_DZ",
+	"Merc1_DZ",
+	"Pilot1_DZ",
+	"Pilot2_DZ",
+	"Diver1_DZ",
+	"Diver2_DZ"
+];
+
+CB_highBody = [
+	"BlackOps1_DZ",
+	"BlackOps2_DZ",
+	"BlackOps3_DZ",
+	"BlackOps4_DZ",
+	"BlackOps5_DZ",
+	"Soldier1_DZ"
+];
+
+CB_Helmet = [
+	"Soldier1_DZ",
+	"Pilot1_DZ",
+	"Pilot2_DZ",
+	"BlackOps4_DZ",
+	"BlackOps5_DZ",
+	"Soldier1_DZ",
+	"BlackOps1_DZ",
+	"BlackOps2_DZ"
+];
 
 //Cooking
 meatraw = [
@@ -390,13 +425,13 @@ PVDZ_obj_Publish = [];		//used for eventhandler to spawn a mirror of players ten
 PVCDZ_obj_HideBody = objNull;
 
 //DayZ settings
-dayz_maxAnimals = 5;
+dayz_maxAnimals = 8;
 dayz_maxPlants = 3;
 dayz_animalDistance = 600;
 dayz_plantDistance = 600;
 
 dayz_maxMaxModels = 80; // max quantity of Man models (player or Z, dead or alive) around players. Below this limit we can spawn Z // max quantity of loot piles around players. Below this limit we can spawn some loot
-dayz_spawnArea = 200; // radius around player where we can spawn loot & Z
+dayz_spawnArea = 300; // radius around player where we can spawn loot & Z
 dayz_cantseeDist = 150; // distance from which we can spawn a Z in front of any player without ray-tracing and angle checks
 dayz_cantseefov = 70; // half player field-of-view. Visible Z won't be spawned in front of any near players
 dayz_canDelete = 300; // Z, further than this distance from its "owner", will be deleted
@@ -482,15 +517,15 @@ if(!isDedicated) then {
 	dayz_spawnZombies = 0;
 	dayz_swarmSpawnZombies = 0;
 //Max local
-	dayz_maxLocalZombies = 30; // max quantity of Z controlled by local gameclient, used by player_spawnCheck. Below this limit we can spawn Z
+	dayz_maxLocalZombies = 20; // max quantity of Z controlled by local gameclient, used by player_spawnCheck. Below this limit we can spawn Z
 //Current NearBy
 	dayz_CurrentNearByZombies = 0;
 //Max NearBy
-	dayz_maxNearByZombies = 60; // max quantity of Z controlled by local gameclient, used by player_spawnCheck. Below this limit we can spawn Z
+	dayz_maxNearByZombies = 40; // max quantity of Z controlled by local gameclient, used by player_spawnCheck. Below this limit we can spawn Z
 //Current total
 	dayz_currentGlobalZombies = 0;
 //Max global zeds.
-	dayz_maxGlobalZeds = 3000;
+	dayz_maxGlobalZeds = 2000;
 //Animals
 	dayz_currentGlobalAnimals =	0;
 	dayz_maxGlobalAnimals =		100;

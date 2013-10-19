@@ -1,4 +1,4 @@
-private ["_item","_itemTypes","_qty","_tQty","_uniq"];
+private ["_iItem","_iClass","_iPos","_radius","_iPosZ","_item","_itemTypes","_qty","_max","_index","_weights","_cntWeights","_tQty","_canType","_mags","_magQty","_uniq"];
 
 _iItem = _this select 0;
 _iClass = _this select 1;
@@ -39,6 +39,9 @@ switch (_iClass) do {
 			
 			//diag_log ("CanType: "+str(_canType));
 			_tQty = round(random 1) + 1;
+			if( _iClass == "CaribouClothing" ) then {
+				_max = 1;
+			};
 			if (_canType in _uniq) then {
 				if (({_x in _uniq} count magazines _item) == 0) then { _tQty = 1; } else { _tQty = 0;};
 				if (_tQty == 0) then {diag_log(format["%1 Prevent any duplicate member %2 from family %3",__FILE__, _canType, _uniq]);};
@@ -67,8 +70,8 @@ switch (_iClass) do {
 		//	if (_mags select 0 == "Quiver") then { _mags set [0, "WoodenArrow"] }; // Prevent spawning a Quiver
 			if (!(_iItem in MeleeWeapons)) then {
 				_magQty = round(random 10);
-				if (_magQty > 3) then {
-					_item addMagazineCargoGlobal [(_mags select 0), (round(random 1) + 1)];
+				if (_magQty > 2) then {
+					_item addMagazineCargoGlobal [(_mags select 0), (round(random 2) + 1)];
 				};
 			};
 		};

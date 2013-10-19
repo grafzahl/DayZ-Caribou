@@ -1,5 +1,4 @@
-//private ["_display","_ctrlBloodOuter","_ctrlBlood","_ctrlBleed","_bloodVal","_ctrlFood","_ctrlThirst","_thirstVal","_foodVal","_ctrlTemp","_ctrlFoodBorder","_ctrlThirstBorder","_ctrlTempBorder","_tempVal","_array","_ctrlEar","_ctrlEye","_ctrlFracture","_visual","_audible","_uiNumber","_bloodText","_blood","_thirstLvl","_foodLvl","_tempImg","_bloodLvl","_tempLvl","_thirst","_food","_temp"];
-private ["_array","_bloodText","_tempImg","_uiNumber","_blood","_foodLvl","_thirstLvl","_audible","_visual"];
+private ["_bloodTxt","_display","_ctrlBloodOuter","_ctrlBlood","_ctrlBleed","_bloodVal","_ctrlFood","_ctrlThirst","_thirstVal","_foodVal","_ctrlTemp","_ctrlFoodBorder","_ctrlThirstBorder","_ctrlTempBorder","_tempVal","_array","_ctrlEar","_ctrlEye","_ctrlFracture","_visual","_audible","_uiNumber","_bloodText","_blood","_thirstLvl","_foodLvl","_tempImg","_bloodLvl","_tempLvl","_thirst","_food","_temp"];
 disableSerialization;
 
 _foodVal = 1 - (dayz_hunger / SleepFood);
@@ -26,6 +25,8 @@ _ctrlTempBorder ctrlSetTextColor [1,1,1,1];
 _ctrlBlood = _display displayCtrl 1300;
 _ctrlBleed = _display displayCtrl 1303;
 _bloodVal = r_player_blood / r_player_bloodTotal;
+_bloodTxt = _display displayCtrl 13380;
+_bloodTxt ctrlSetStructuredText parseText format ["%1%2",(round(r_player_blood / 120)) max 1,"%"];
 _ctrlFood = _display displayCtrl 1301;
 _ctrlThirst = _display displayCtrl 1302;
 _ctrlTemp = _display displayCtrl 1306;

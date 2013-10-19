@@ -15,6 +15,7 @@ militaryEAST[] = {
 	{"SmokeShell",0.02},
 	{"SmokeShellRed",0.02},
 	{"SmokeShellGreen",0.02},
+	{"5Rnd_127x108_KSVK",0.01},
 //drinks
 //food
 	{"FoodCanRusStew",0.08},

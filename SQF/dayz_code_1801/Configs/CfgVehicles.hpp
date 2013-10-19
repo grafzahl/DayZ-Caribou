@@ -129,6 +129,10 @@ class CfgVehicles {
 	// Traps
 	#include "CfgVehicles\Traps.hpp"
 
+	//Caribou
+	#include "CfgVehicles\Caribou\Vehicles.hpp"
+	#include "CfgVehicles\Caribou\Skins.hpp"
+
 	//Antihack
 	#include "CfgVehicles\antihack_logic.hpp"
 	#include "CfgVehicles\antihack_plants.hpp"

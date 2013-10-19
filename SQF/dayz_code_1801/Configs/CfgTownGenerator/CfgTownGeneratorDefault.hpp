@@ -19019,7 +19019,7 @@ size = 840;
 		
 		class Object15 {
 			type = "HMMWVWreck";
-			position[] = {3795.57, 8943.05, 0};
+			position[] = {3796.94, 8944.38, 0};
 			direction = 297;
 			onFire = 0;
 		};

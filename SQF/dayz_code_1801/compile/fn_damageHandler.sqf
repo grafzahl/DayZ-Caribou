@@ -7,7 +7,7 @@ scriptName "Functions\misc\fn_damageHandler.sqf";
 	- Function
 	- [unit, selectionName, damage, source, projectile] call fnc_usec_damageHandler;
 ************************************************************/
-private ["_unit","_hit","_damage","_unconscious","_source","_ammo","_Viralzed","_isMinor","_isHeadHit","_isPlayer","_canHitFree","_isBandit","_punishment","_humanityHit","_myKills","_wpst","_sourceDist","_sourceWeap","_scale","_type","_nrj","_rndPain","_hitPain","_wound","_isHit","_isbleeding","_rndBleed","_hitBleed","_isInjured","_lowBlood","_rndInfection","_hitInfection","_isCardiac","_chance"];
+private ["_hasHighBody","_hasLowBody","_hasHelmet","_headProtection","_isBodyHit","_playerModel","_unit","_hit","_damage","_unconscious","_source","_ammo","_Viralzed","_isMinor","_isHeadHit","_isPlayer","_canHitFree","_isBandit","_punishment","_humanityHit","_myKills","_wpst","_sourceDist","_sourceWeap","_scale","_type","_nrj","_rndPain","_hitPain","_wound","_isHit","_isbleeding","_rndBleed","_hitBleed","_isInjured","_lowBlood","_rndInfection","_hitInfection","_isCardiac","_chance"];
 _unit = _this select 0;
 _hit = _this select 1;
 _damage = _this select 2;
@@ -18,7 +18,36 @@ _Viralzed = typeOf _source in DayZ_ViralZeds;
 _isMinor = (_hit in USEC_MinorWounds);
 _isHeadHit = (_hit == "head_hit");
 _isPlayer = (isPlayer _source);
-if ((isNull _source) AND {((_ammo == "") OR {({damage _x > 0.9} count((getposATL _unit) nearEntities [["Air", "LandVehicle", "Ship"],15]) == 0) AND (count nearestObjects [getPosATL _unit, ["TrapItems"], 30] == 0)})}) exitWith {0};
+//Disable for now because of the carbombs
+//if ((isNull _source) AND {((_ammo == "") OR {({damage _x > 0.9} count((getposATL _unit) nearEntities [["Air", "LandVehicle", "Ship"],15]) == 0) AND (count nearestObjects [getPosATL _unit, ["TrapItems"], 30] == 0)})}) exitWith {0};
+
+//Stuff for the amored Skins
+_playerModel = typeOf player;
+_isBodyHit = (_hit == "body");
+_headProtection = _unit getVariable ["headProtection", true];
+
+//All Models with visual Helmet
+_hasLowBody = _playerModel in CB_lowBody;
+_hasHighBody = _playerModel in CB_highBody;
+//All Models with visual (Bulletproof) Vest
+_hasHelmet = _playerModel in CB_Helmet;
+
+if(_isHeadHit && _hasHelmet && _headProtection && _damage > 0.1) then {
+	_hit = "body";
+	_isHeadHit = false;
+	_damage = _damage * 0.7;
+	if(_isPlayer) then {
+		_unit setVariable ["headProtection", false];
+	};
+};
+
+if(_isBodyHit && _hasLowBody && _damage > 0.1) then {
+	_damage = _damage * 0.8;
+} else {
+	if(_isBodyHit && _hasHighBody && _damage > 0.1) then {
+		_damage = _damage * 0.7;
+	};
+};
 
 if (_unit == player) then {
 	if (_hit == "") then {
@@ -87,7 +116,7 @@ if (_damage > 0.1) then {
 	};
 	//Start body part scale
 	if (_ammo == "zombie" and _hit == "body") then {
-		_scale = _scale * 3; //600 = Normal, 900 = Viral
+		_scale = _scale * 2; //600 = Normal, 900 = Viral
 	};
 	if (_ammo == "zombie" and _hit == "legs") then {
 		_scale = _scale; //200 = Normal, 300 = Viral
@@ -96,7 +125,7 @@ if (_damage > 0.1) then {
 		_scale = _scale;  //200 = Normal, 300 = Viral
 	};
 	if (_isHeadHit) then {
-		_scale = _scale * 6; //1200 = Normal, 1800 = Viral
+		_scale = _scale * 4; //1200 = Normal, 1800 = Viral
 	};
 	if (_ammo == "zombie" and _unconscious and !_Viralzed) then {
 		_scale = 50;

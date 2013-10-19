@@ -6,12 +6,12 @@ class DayLightingRainy;	// External class reference
 class Weather;	// External class reference
 
 class CfgWorlds {
-	class Chernarus;	// External class reference
-	class DayZMod : Chernarus {
+	class CaribouZ;	// External class reference
+	class DayZMod : CaribouZ {
 		access = 3;
 		worldId = 4;
-		cutscenes[] = {"DayZModIntro1"};
-		description = "DayZMod v1.8.0.1";
+		//cutscenes[] = {"DayZModIntro1"};
+		description = "DayZMod v1.8";
 		icon = "";
 		worldName = "\ca\chernarus\chernarus.wrp";
 		pictureMap = "";
@@ -305,8 +305,8 @@ class CfgWorlds {
 		};
 	};
 
-	initWorld = "DayZMod";
-	demoWorld = "DayZMod";
+	initWorld = "CaribouZ";
+	demoWorld = "CaribouZ";
 };
 
 class CfgWorldList {

@@ -6,8 +6,7 @@ class Blueprint_TrapTripwireGrenade : Recipe {
 		{"equip_string","CfgMagazines",1},
 		{"PartWoodPile","CfgMagazines",1},
 		{"equip_duct_tape","CfgMagazines",1},
-		{{"HandGrenade_West","CfgMagazines",1},
-			{"HandGrenade_East","CfgMagazines",1}}
+		{"HandGrenade_west","CfgMagazines",1}
 	};
 	output[] =
 	{

@@ -205,6 +205,14 @@ class RscDisplayMain : RscStandardDisplay
 		{
 			text = "z\addons\dayz_code\gui\mod.paa";
 		};
+		class CA_DAYZ_Caribou : RscPictureKeepAspect
+		{
+			x = 0.300717 * safezoneW + safezoneX;
+			y = 0.244949 * safezoneH + safezoneY;
+			w = 1.000000;
+			h = 1.000000;
+			text = "z\addons\dayz_code\gui\logo_caribou.paa";
+		};
 	};
 
 	class controls
@@ -213,11 +221,11 @@ class RscDisplayMain : RscStandardDisplay
 		class DAYZ_Version : CA_Version
 		{
 			idc = -1;
-			text = "1.8.0.1";
+			text = "0.1";
 			y = "(SafeZoneH + SafeZoneY) - (1 - 0.95)";
 		};
 		delete CA_TitleMainMenu;
-		delete CA_SinglePlayer;
+		//delete CA_SinglePlayer;
 		class CA_PlayerName : RscText {
 			idc = 109;
 			style = 256;

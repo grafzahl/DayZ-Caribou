@@ -2,7 +2,7 @@ class Blueprint_Bandage : Recipe {
 	displayName = $STR_CRAFT_NAME_Bandage;
 	input[] = 
 	{
-		{"equip_rag","CfgMagazines",2},
+		{"equip_rag","CfgMagazines",3},
 		{"equip_gauze","CfgMagazines",2},
 		{"equip_string","CfgMagazines",1}
 	};
@@ -19,7 +19,7 @@ class Blueprint_Bandage_Packaged : Recipe {
 	displayName = $STR_CRAFT_NAME_Bandage;
 	input[] = 
 	{
-		{"equip_rag","CfgMagazines",2},
+		{"equip_rag","CfgMagazines",3},
 		{"equip_gauzepackaged","CfgMagazines",1},
 		{"equip_string","CfgMagazines",1}
 	};
