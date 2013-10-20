@@ -1,5 +1,5 @@
 class Blueprint_CM_Pack : Recipe {
-	displayName = "CM Packpack";
+	displayName = "CM Backpack";
 	descriptionShort = "Craftable small Backpack";
 	input[] = 
 	{
@@ -19,11 +19,12 @@ class Blueprint_CM_Pack : Recipe {
 };
 
 class Blueprint_CMM_Pack : Recipe {
-	displayName = "CMM Packpack";
+	displayName = "CMM Backpack";
 	descriptionShort = "Biggest Backpack available";
 	input[] = 
 	{
-		{"equip_rope","CfgMagazines",4},
+		{"equip_rope","CfgMagazines",2},
+		{"equip_hose","CfgMagazines",2},
 		{"equip_rag","CfgMagazines",4},
 		{"equip_string","CfgMagazines",1},
 		{"WoodenArrow","CfgMagazines",1}
