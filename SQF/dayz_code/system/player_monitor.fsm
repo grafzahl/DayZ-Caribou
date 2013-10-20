@@ -20,7 +20,7 @@ item15[] = {"ERROR__Wrong_HIVE",2,250,325.000000,500.000000,425.000000,550.00000
 item16[] = {"Hive_Ok",4,218,-175.000000,550.000000,-75.000000,600.000000,0.000000,"Hive" \n "Ok"};
 item17[] = {"Phase_One",2,250,-75.000000,600.000000,25.000000,650.000000,0.000000,"Phase One"};
 item18[] = {"Response",4,218,-175.000000,650.000000,-75.000000,700.000000,0.000000,"Response"};
-item19[] = {"Phase_Two",2,250,-75.000000,700.000000,25.000000,750.000000,0.000000,"Phase Two"};
+item19[] = {"Phase_Two",2,4346,-75.000000,700.000000,25.000000,750.000000,0.000000,"Phase Two"};
 item20[] = {"Dead_Player",4,218,125.000000,700.000000,225.000000,750.000000,0.000000,"Dead" \n "Player"};
 item21[] = {"ERROR__Player_Already",2,250,325.000000,700.000000,425.000000,750.000000,0.000000,"ERROR:" \n "Player Already" \n "Dead"};
 item22[] = {"Alive",4,218,-175.000000,750.000000,-75.000000,800.000000,0.000000,"Alive"};
@@ -32,7 +32,7 @@ item27[] = {"ERROR__Bad_Versi",2,250,325.000000,800.000000,425.000000,850.000000
 item28[] = {"Display_Ready",4,218,-175.000000,1150.000000,-75.000000,1200.000000,0.000000,"Display" \n "Ready"};
 item29[] = {"Preload_Display",2,250,-75.000000,1200.000000,25.000000,1250.000000,0.000000,"Preload" \n "Display"};
 item30[] = {"Preload_Done",4,218,-175.000000,1250.000000,-75.000000,1300.000000,0.000000,"Preload" \n "Done"};
-item31[] = {"Initialize",2,4346,-75.000000,1300.000000,25.000000,1350.000000,0.000000,"Initialize"};
+item31[] = {"Initialize",2,250,-75.000000,1300.000000,25.000000,1350.000000,0.000000,"Initialize"};
 item32[] = {"Finish",1,250,-75.000000,1475.000000,25.000000,1525.000000,0.000000,"Finish"};
 item33[] = {"no_Time_Date",4,218,125.000000,900.000000,225.000000,950.000000,0.000000,"no Time/Date"};
 item34[] = {"sleep",4,218,525.000000,150.000000,625.000000,200.000000,0.000000,"sleep"};
@@ -179,8 +179,8 @@ link90[] = {80,78};
 link91[] = {81,82};
 link92[] = {82,83};
 link93[] = {83,50};
-globals[] = {25.000000,1,0,0,0,640,480,1,209,6316128,1,-346.702454,355.117249,1514.582153,596.873535,972,1271,1};
-window[] = {2,-1,-1,-1,-1,1043,372,1744,263,3,990};
+globals[] = {25.000000,1,0,0,0,640,480,1,209,6316128,1,-747.076294,387.947601,2002.175903,514.943542,970,1271,1};
+window[] = {2,-1,-1,-1,-1,980,200,1572,200,3,988};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -728,6 +728,7 @@ class FSM
        "dayz_zombiesLocal = 	0;			//Used to record how many local zombies being tracked" \n
        "dayz_Survived = _days;  //total alive dayz" \n
        "" \n
+       "" \n
        "//load in medical details" \n
        "r_player_dead = 		player getVariable[""USEC_isDead"",false];" \n
        "r_player_unconscious = 	player getVariable[""NORRN_unconscious"", false];" \n
@@ -737,9 +738,10 @@ class FSM
        "r_player_cardiac = 	player getVariable[""USEC_isCardiac"",false];" \n
        "r_player_lowblood =	player getVariable[""USEC_lowBlood"",false];" \n
        "r_player_blood = 		player getVariable[""USEC_BloodQty"",r_player_bloodTotal];" \n
+       "r_player_injection =   player getVariable[""humanity_DZCB"",false];" \n
        "" \n
        "//Hunger/Thirst" \n
-       "_messing =			player getVariable[""messing"",[0,0]];" \n
+       "_messing =			player getVariable[""messing"",[0,0]]; if(!dayz_Injection) exitWith {};" \n
        "dayz_hunger = 	_messing select 0;" \n
        "dayz_thirst = 		_messing select 1;" \n
        "" \n
@@ -1049,6 +1051,7 @@ class FSM
        "r_player_cardiac = 		player getVariable[""USEC_isCardiac"",false];" \n
        "r_player_lowblood =		player getVariable[""USEC_lowBlood"",false];" \n
        "r_player_blood = 		player getVariable[""USEC_BloodQty"",r_player_bloodTotal];" \n
+       "r_player_injection = 		player getVariable[""humanity_DZCB"",false];" \n
        "" \n
        """colorCorrections"" ppEffectEnable true;" \n
        """colorCorrections"" ppEffectAdjust [1, 1, 0, [1, 1, 1, 0.0], [1, 1, 1, 1 min (4*r_player_blood/3/r_player_bloodTotal)],  [1, 1, 1, 0.0]];" \n
@@ -1082,6 +1085,7 @@ class FSM
        "" \n
        "_world = toUpper(worldName); //toUpper(getText (configFile >> ""CfgWorlds"" >> (worldName) >> ""description""));" \n
        "_nearestCity = nearestLocations [getPos player, [""NameCityCapital"",""NameCity"",""NameVillage"",""NameLocal""],1000];" \n
+       "if(r_player_injection != true) exitWith {};" \n
        "Dayz_logonTown = ""Wilderness"";" \n
        "" \n
        "if (count _nearestCity > 0) then {Dayz_logonTown = text (_nearestCity select 0)};" \n
@@ -1132,7 +1136,7 @@ class FSM
        "	sleep 0.1;" \n
        "	};" \n
        "};" \n
-       "if((player getVariable[""humanity_DZCB"",false]) != true) then {failMission ""LOSER"";	endMission ""END1"";};" \n
+       "" \n
        "dayz_SpawnMonitor = [] spawn {" \n
        "	// GUI update" \n
        "	while {true} do {" \n
