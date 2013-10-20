@@ -533,6 +533,7 @@ if(!isDedicated) then {
 	dayz_currentGlobalPlants = 0;
 	dayz_maxGlobalPlants = 100;
 //Loot
+	dayz_tickTimeOffset = 0;
 	dayz_currentWeaponHolders = 0;
 	dayz_maxMaxWeaponHolders = 80;	
 	dayz_inVehicle = false;

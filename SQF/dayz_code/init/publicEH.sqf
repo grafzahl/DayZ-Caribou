@@ -115,6 +115,13 @@ if (isServer) then {
 		PVCDZ_SetVar = [_object,_name,_return];
 		_ownerID publicVariableClient "PVCDZ_SetVar";
 	};
+
+	"PVDZ_getTickTime" addPublicVariableEventHandler {
+		_owner = owner (_this select 1);
+		//diag_log format["TICK TIME: %1", diag_tickTime];
+		PVCDZ_setServerTickTimeOffset = diag_TickTime;
+		_owner publicVariableClient "PVCDZ_setServerTickTimeOffset";
+	};
 };
 
 //Client only
@@ -148,5 +155,11 @@ if (!isDedicated) then {
 		_name = ((_this select 1) select 1);
 		_value = ((_this select 1) select 2);
 		_object setVariable [_name,_value];
+	};
+	"PVCDZ_setServerTickTimeOffset"  addPublicVariableEventHandler {
+		_serverTickTime = _this select 1;
+		_offset = _serverTickTime - diag_tickTime;
+		dayz_tickTimeOffset = _offset;
+		//diag_log format["SERVER TIME: %1    OFFSET: %2    PLAYER TIME: %3    COMPUTED TIME: %4", _serverTickTime, _offset, diag_tickTime, (diag_tickTime + _offset)];
 	};
 };

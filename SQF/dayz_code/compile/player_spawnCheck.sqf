@@ -10,6 +10,11 @@ _radius = 200;
 _spawnZedRadius = 30;
 
 //Current amounts
+
+//Tick Time
+PVDZ_getTickTime = player;
+publicVariableServer "PVDZ_getTickTime";
+
 // we start by the closest buildings. 
 _nearby = nearestObjects [_position, _spawnableObjects,200];
 
@@ -49,9 +54,9 @@ if (_doNothing) exitwith {lastSpawned = diag_tickTime;};
 
 
 //Logging
-diag_log (format["%1 Local.Agents: %2/%3, NearBy.Agents: %8/%9, Global.Agents: %6/%7, W.holders: %10/%11, (radius:%4m %5fps).","SpawnCheck",
+diag_log (format["%1 Local.Agents: %2/%3, NearBy.Agents: %8/%9, Global.Agents: %6/%7, W.holders: %10/%11, (radius:%4m %5fps,%12 Timer).","SpawnCheck",
 	_maxlocalspawned, _maxControlledZombies, 200, round diag_fpsmin,dayz_currentGlobalZombies, 
-	dayz_maxGlobalZeds, dayz_CurrentNearByZombies, dayz_maxNearByZombies, _currentWeaponHolders,_maxWeaponHolders
+	dayz_maxGlobalZeds, dayz_CurrentNearByZombies, dayz_maxNearByZombies, _currentWeaponHolders,_maxWeaponHolders,(diag_tickTime + _offset)
 	]);
 	
 //Make only 1/5 spawn along player's journey.
@@ -77,28 +82,12 @@ if (_maxlocalspawned > 0) then { _spawnZedRadius = _spawnZedRadius * 3; };
 		if (_currentWeaponHolders < _maxWeaponHolders) then {
 			//Baisc loot checks
 			if ((_dis < 125) and (_dis > 30) and !_inVehicle and _checkLoot) then {
-			/*
-				//Get var Looted
-				//[_object,name,defaultValue]
-				PVDZ_receiveVar = [player,_x,"looted",-0.1];
-				publicVariableServer "PVDZ_receiveVar";
 
-				_looted = (_x getVariable "looted");
-					if (isNil "_looted") then {
-						_looted = -0.1;
-					};
-			*/
-				_looted = (_x getVariable ["looted",diag_tickTime]);			
-				_age = (diag_tickTime - _looted);
+				_looted = (_x getVariable ["looted",(diag_tickTime + dayz_tickTimeOffset)]);      
+        		_age = ((diag_tickTime + dayz_tickTimeOffset) - _looted);
 				//diag_log ("SPAWN LOOT: " + _type + " Building is " + str(_age) + " old" );
 
-				if ((_age == 0) or (_age > 900)) then {
-				/*
-					//[object,name]
-					PVDZ_serverStoreVar = [_x,"looted",(DateToNumber date)];
-					publicVariableServer "PVDZ_serverStoreVar";
-					sleep 0.01;
-				*/
+				if ((_age < 0) or (_age == 0) or (_age > 900)) then { 
 					_x setVariable ["looted",diag_tickTime,!_islocal];					
 					_x call building_spawnLoot;
 					if (!(_x in dayz_buildingBubbleMonitor)) then {
@@ -112,30 +101,16 @@ if (_maxlocalspawned > 0) then { _spawnZedRadius = _spawnZedRadius * 3; };
 	//Zeds
 		if (_dis > _spawnZedRadius) then {
 			if ((dayz_spawnZombies < _maxControlledZombies) and (dayz_CurrentNearByZombies < dayz_maxNearByZombies) and (dayz_currentGlobalZombies < dayz_maxGlobalZeds)) then {
-			/*
-				//[_object,name,defaultValue]
-				PVDZ_receiveVar = [player,_x,"zombieSpawn",-0.1];
-				publicVariableServer "PVDZ_receiveVar";
-				sleep 0.01;
-				_zombied = (_x getVariable "zombieSpawn");
-					if (isNil "_zombied") then {
-						_zombied = -0.1;
-					};
-			*/		
-				_zombied = (_x getVariable ["zombieSpawn",diag_tickTime]);
-				_age = (diag_tickTime - _zombied) * 525948; // in minutes
+
+				_zombied = (_x getVariable ["zombieSpawn",(diag_tickTime + dayz_tickTimeOffset)]);
+				_age = ((diag_tickTime + dayz_tickTimeOffset) - _zombied);
 				//diag_log format ["%4 - %5: %1, %2, %3", _zombied, diag_tickTime, _age, "spawnCheck", _x]; 
-				if ((_age == 0) or (_age > 300)) then {
+				if ((_age < 0) or (_age == 0) or (_age > 300)) then { 
 					_bPos = getPosATL _x;
 					_zombiesNum = {alive _x} count (_bPos nearEntities ["zZombie_Base",(((sizeOf _type) * 2) + 10)]);
-					if (_zombiesNum == 0) then {
-					/*
-						//[object,name]
-						PVDZ_serverStoreVar = [_x,"zombieSpawn",(DateToNumber date)];
-						publicVariableServer "PVDZ_serverStoreVar";
-					*/	
+					if (_zombiesNum == 0) then {	
 						[_x] call building_spawnZombies;
-						_x setVariable ["zombieSpawn",diag_tickTime,!_islocal];
+						_x setVariable ["zombieSpawn",diag_tickTime + dayz_tickTimeOffset,!_islocal];
 						//waitUntil{scriptDone _handle};
 						if (!(_x in dayz_buildingBubbleMonitor)) then {
 							//add active zed to var
