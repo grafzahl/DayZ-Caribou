@@ -12,7 +12,7 @@ _itemTypes = [] + getArray (_config >> "lootType");
 _lootChance = getNumber (_config >> "lootChance");
 //_countPositions = count _pos;
 _qty = 0; // effective quantity of spawned weaponholder
-_lootSpawnBias = 99; //67 between 50 and 100. The lower it is, the lower chance some of the lootpiles will spawn
+_lootSpawnBias = 95; //67 between 50 and 100. The lower it is, the lower chance some of the lootpiles will spawn
 
 
 // shuffles an array
@@ -39,6 +39,7 @@ _bias = 50 max _lootSpawnBias;
 _bias = 100 min _bias;
 _bias = (_bias + random(100 - _bias)) / 100;
 //diag_log(format["BIAS:%1 LOOTCHANCE:%2", _bias, _lootChance]);
+
 {
 	if (count _x == 3) then {
 		_rnd = (random 1) / _bias;
@@ -61,6 +62,9 @@ _bias = (_bias + random(100 - _bias)) / 100;
 					[_itemType select 0, _itemType select 1 , _iPos, 0.0] call spawn_loot;
 	//				diag_log (format["SpawnLoot: Pos: %1, LootType: %2/%3,",_iPos,_itemType select 0,_itemType select 1]);
 					dayz_currentWeaponHolders = dayz_currentWeaponHolders +1;
+					//loclout system
+					_islocal = _obj getVariable ["", false]; // object created locally via TownGenerator. See stream_locationFill.sqf
+					_obj setVariable ["looted",diag_tickTime + dayz_tickTimeOffset,!_islocal];
 				};
 			};
 		};
