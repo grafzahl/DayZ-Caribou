@@ -23,7 +23,7 @@ if (_isFemale) exitWith {cutText [localize "str_player_fail_wear2", "PLAIN DOWN"
 
 _myModel = (typeOf player);
 _humanity = player getVariable ["humanity",0];
-_isBandit = _humanity < -2000;
+_isBandit = _humanity <= 0;
 _isHero = _humanity > 5000;
 _itemNew = "Skin_" + _myModel;
 

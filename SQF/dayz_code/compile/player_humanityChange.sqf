@@ -7,7 +7,7 @@ if (_object == player) then {
 	_humanity = (player getVariable["humanity",0]) + _change;
 	player setVariable["humanity",_humanity,true];
 	if (_change < 0) then { //non-bandit player can be "punished" in next "_wait" seconds w/o loosing humanity
-		if ((_humanity > -2000) and (_wait > 0)) then {
+		if ((_humanity > 0) and (_wait > 0)) then {
 			player setVariable ["freeTarget",true,true];
 			player setVariable ["FTcounter",((player getVariable ["FTcounter",0]) + _wait)];
 			[_wait] spawn {
@@ -41,7 +41,7 @@ if (_object == player) then {
 
 
 	// Bandit
-	if (_humanity <= -2000) then {
+	if (_humanity <= 0) then {
 		if (_isMen || _isMenH) then {
 			[dayz_playerUID,dayz_characterID,"Bandit1_DZ"] spawn player_humanityMorph;
 		};
@@ -63,7 +63,7 @@ if (_object == player) then {
 	if (_humanity > 0 && _humanity <= 5000) then {
 */
 	//Survivor
-	if (_humanity > -2000 && _humanity <= 5000) then {
+	if (_humanity > 0 && _humanity <= 5000) then {
 		if (_isMenH || _isMenB) then {
 			[dayz_playerUID,dayz_characterID,"Survivor2_DZ"] spawn player_humanityMorph;
 		};

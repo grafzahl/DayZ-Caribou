@@ -58,7 +58,7 @@ if (_unit == player) then {
 			//};
 			
 			_canHitFree = 	player getVariable ["freeTarget",false];
-			_isBandit = (player getVariable["humanity",0]) <= -2000;
+			_isBandit = (player getVariable["humanity",0]) <= 0;
 			_punishment = _canHitFree or _isBandit; //if u are bandit or start first - player will not recieve humanity drop
 			_humanityHit = 0;
 

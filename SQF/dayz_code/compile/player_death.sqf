@@ -38,16 +38,55 @@ player setVariable ["startcombattimer", 0];
 r_player_unconscious = false;
 r_player_cardiac = false;
 
-
+//Humanity-System
 _array = _this;
 if (count _array > 0) then {
 	_source = _array select 0;
 	_method = _array select 1;
+	_isBandit = false;
+	_isHero = false;
+	_isSurvivor = false;
 	if ((!isNull _source) and (_source != player)) then {
 		_canHitFree = player getVariable ["freeTarget",false];
-		_isBandit = (player getVariable["humanity",0]) <= -2000;
+		_isBandit = (player getVariable["humanity",0]) <= 0;
+		if(!_isBandit) then {
+			_isHero = (player getVariable["humanity",0]) >= 5000;
+		};
+		_isSurvivor = !_isBandit and !_isHero;
+		_isGoodGuy = _isSurvivor or _isHero;
 		_punishment = _canHitFree or _isBandit; //if u are bandit or start first - player will not recieve humanity drop
 		_humanityHit = 0;
+		//Bandit
+		if(_isBandit) then {
+			_myKills = ((player getVariable ["humanKills",0]) / 30) * 1000;
+			//Give Plus-Humanity
+			_humanityHit = -(2000 - _myKills);
+			_kills = _source getVariable ["banditKills",0];
+			_source setVariable ["banditKills",(_kills + 1),true];
+			PVDZ_send = [_source,"Humanity",[_source,_humanityHit,300]];
+			publicVariableServer "PVDZ_send";
+		};
+		//Hero
+		if(_Hero) then {
+			_myKills = ((player getVariable ["banditKills",0]) / 30) * 1000;
+			//Give Heavy Minus-Humanity
+			_humanityHit = -(2000 - _myKills);
+			_kills = _source getVariable ["headShots",0];
+			_source setVariable ["headShots",(_kills + 1),true];
+			PVDZ_send = [_source,"Humanity",[_source,_humanityHit,300]];
+			publicVariableServer "PVDZ_send";
+		};
+		//Survivor
+		if(_isSurvivor) then {
+			_myKills = ((player getVariable ["banditKills",0]) / 30) * 1000;
+			//Give Minus-Humanity
+			_humanityHit = -(2000 - _myKills);
+			_kills = _source getVariable ["banditKills",0];
+			_source setVariable ["banditKills",(_kills + 1),true];
+			PVDZ_send = [_source,"Humanity",[_source,_humanityHit,300]];
+			publicVariableServer "PVDZ_send";
+		};
+		/*
 		if (!_punishment) then {
 			//i'm "not guilty" - kill me and be punished
 			_myKills = ((player getVariable ["humanKills",0]) / 30) * 1000;
@@ -61,6 +100,7 @@ if (count _array > 0) then {
 			_killsV = _source getVariable ["banditKills",0];
 			_source setVariable ["banditKills",(_killsV + 1),true];
 		};
+		*/
 	};
 	_body setVariable ["deathType",_method,true];
 };
