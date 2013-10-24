@@ -22,7 +22,7 @@ heliSOS = heliData select 2;
 sosDistance = heliData select 3;
 
 //If Heli has send SOS, the Player has an Radio and is in the SOS-Range... show Debug Monitor
-if(heliSOS && ("ItemWalkieTalkie" in items player) && (player distance heliPos <= sosDistance)) then {
+if(heliSOS && (("ItemWalkieTalkie" in items player) || ("ItemMap_Debug" in items player)) && (player distance heliPos <= sosDistance)) then {
 	//playSound "beep";
 	[player,"mayday",0,false] call dayz_zombieSpeak;
 	[player,10,false,(getPosATL player)] spawn player_alertZombies;

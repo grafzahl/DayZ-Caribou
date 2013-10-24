@@ -15,8 +15,8 @@ if (local _zed) then {
 		switch (_selection) do {
 			case "head_hit": {
 				if (!(_zed getVariable["hitRegistered",false])) then {
-					_headShots = _hitter getVariable["headShots",0];
-					_hitter setVariable["headShots",(_headShots + 1),true];
+					//_headShots = _hitter getVariable["headShots",0];
+					//_hitter setVariable["headShots",(_headShots + 1),true];
 					_zed setVariable["hitRegistered",true];
 				};
 			};

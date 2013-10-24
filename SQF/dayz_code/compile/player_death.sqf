@@ -106,6 +106,8 @@ deleteGroup _myGroup;
 4 cutRsc ["default", "PLAIN",3];
 
 _body setVariable["combattimeout", 0, true];
+//_body setVariable["dead_DeathTime", serverTime, true];
+_body setVariable["dead_DaysAlive", dayz_Survived, true];
 
 //["dayzFlies",player] call broadcastRpcCallAll;
 sleep 2;

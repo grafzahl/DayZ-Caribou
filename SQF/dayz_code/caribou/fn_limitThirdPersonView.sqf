@@ -10,7 +10,7 @@ if (difficultyEnabled "3rdPersonView") then
 		{
 			while {(true)} do
 			{
-				if (cameraView == "External") then
+				if ((cameraView == "External") && !("ItemMap_Debug" in items player)) then
 				{
 					_v = vehicle player;
 					if (_v == player) then {
