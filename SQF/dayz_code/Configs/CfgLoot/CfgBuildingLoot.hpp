@@ -130,15 +130,16 @@ class CfgBuildingLoot {
 			{"WeaponHolder_PartEngine","object",0.02},
 			{"WeaponHolder_PartGlass","object",0.04},
 			//{"WeaponHolder_PartVRotor","object",0.01}, //move it to helichash and ss_hangar 
+			{"WeaponHolder_ItemFuelbarrel","object",0.01},
 			{"WeaponHolder_ItemJerrycan","object",0.04},
-			{"WeaponHolder_ItemFuelcan","object",0.03},
+			{"WeaponHolder_ItemFuelcan","object",0.04},
 		//mags special
 			{"ItemWire","magazine",0.01},
 			{"ItemTankTrap","magazine",0.04},
 		//bags
 		//multiple spawns	
-			{"","Industrial",0.50},
-			{"","generic",0.50}
+			{"","Industrial",0.3},
+			{"","generic",0.3}
 		};
 	};
 	class Farm: Default {

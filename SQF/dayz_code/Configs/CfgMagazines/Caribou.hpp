@@ -30,7 +30,7 @@ class ItemFuelbarrel : CA_Magazine {
 	};
 };
 
-class ItemFuelbarrelEmpty : ItemFuelbarrel {
+class ItemFuelbarrelEmpty : CA_Magazine {
 	scope = public;
 	count = 1;
 	type = (8*256);

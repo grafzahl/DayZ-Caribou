@@ -68,7 +68,7 @@ if (!isNull _cursorTarget and !_inVehicle and (player distance _cursorTarget < 4
 	_isMan = _cursorTarget isKindOf "Man";
 	_isAnimal = _cursorTarget isKindOf "Animal";
 	_isZombie = _cursorTarget isKindOf "zZombie_base";
-	_isDestructable = _cursorTarget isKindOf "BuiltItems";
+	_isDestructable = (_cursorTarget isKindOf "BuiltItems") or (_cursorTarget isKindOf "Barrel_burning_CBDZ") or (_cursorTarget isKindOf "CamoNet_DZ");
 	_isTent = _cursorTarget isKindOf "TentStorage";
 	_isStash = _cursorTarget isKindOf "StashSmall";
 	_isMediumStash = _cursorTarget isKindOf "StashMedium";
@@ -347,6 +347,8 @@ if (!isNull _cursorTarget and !_inVehicle and (player distance _cursorTarget < 4
 	player removeAction s_player_studybody;
 	s_player_studybody = -1;
 	//fuel
+	player removeAction s_player_fillfuel80;
+	s_player_fillfuel80 = -1;
 	player removeAction s_player_fillfuel20;
 	s_player_fillfuel20 = -1;
 	player removeAction s_player_fillfuel5;

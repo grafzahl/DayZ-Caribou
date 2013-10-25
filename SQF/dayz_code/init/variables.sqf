@@ -28,7 +28,7 @@ DayZ_ViralZeds = ["z_new_villager2","z_new_villager3","z_new_villager4","z_new_w
 //Bags
 DayZ_Backpacks = ["DZ_RPG_Pack_EP1","DZ_Medic_Pack_EP1","DZ_CM_Pack_EP1","DZ_CMM_Pack_EP1","DZ_Patrol_Pack_EP1","DZ_Assault_Pack_EP1","DZ_Czech_Vest_Puch","DZ_ALICE_Pack_EP1","DZ_TK_Assault_Pack_EP1","DZ_British_ACU","DZ_CivilBackpack_EP1","DZ_Backpack_EP1"];
 
-SafeObjects = ["GeoCache_DZ","Land_Fire_DZ", "TentStorage", "Wire_cat1", "Sandbag1_DZ", "Hedgehog_DZ", "StashSmall", "StashMedium", "BearTrap_DZ", "DomeTentStorage", "CamoNet_DZ", "Trap_Cans", "TrapTripwireFlare", "TrapBearTrapSmoke", "TrapTripwireGrenade", "TrapTripwireSmoke", "TrapBearTrapFlare"];
+SafeObjects = ["Barrel_burning_CBDZ","GeoCache_DZ","Land_Fire_DZ", "TentStorage", "Wire_cat1", "Sandbag1_DZ", "Hedgehog_DZ", "StashSmall", "StashMedium", "BearTrap_DZ", "DomeTentStorage", "CamoNet_DZ", "Trap_Cans", "TrapTripwireFlare", "TrapBearTrapSmoke", "TrapTripwireGrenade", "TrapTripwireSmoke", "TrapBearTrapFlare"];
 
 
 CB_lowBody = [
