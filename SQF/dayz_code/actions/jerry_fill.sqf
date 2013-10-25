@@ -1,17 +1,18 @@
-private ["_qty","_dis","_sfx","_started","_finished","_animState","_isRefuel","_fuelcans","_qty20","_qty5"];
+private ["_qty","_dis","_sfx","_started","_finished","_animState","_isRefuel","_fuelcans","_qty80","_qty20","_qty5"];
 
 player removeAction s_player_fillfuel;
 //s_player_fillfuel = -1;
 
-_fuelcans = ["ItemFuelcanEmpty","ItemJerrycanEmpty"];
+_fuelcans = ["ItemFuelbarrelEmpty","ItemFuelcanEmpty","ItemJerrycanEmpty"];
 
 _qty = 0;
 _qty = {_x in _fuelcans} count magazines player;
 
+_qty80 = {_x == "ItemFuelbarrelEmpty"} count magazines player;
 _qty20 = {_x == "ItemJerrycanEmpty"} count magazines player;
 _qty5 = {_x == "ItemFuelcanEmpty"} count magazines player;
 
-if (("ItemJerrycanEmpty" in magazines player) or ("ItemFuelcanEmpty" in magazines player)) then {
+if (("ItemFuelbarrelEmpty" in magazines player) or ("ItemJerrycanEmpty" in magazines player) or ("ItemFuelcanEmpty" in magazines player)) then {
 	player playActionNow "Medic";
 
 	_dis=5;
@@ -39,6 +40,10 @@ if (("ItemJerrycanEmpty" in magazines player) or ("ItemFuelcanEmpty" in magazine
 
 
 	if (_finished) then {
+		for "_x" from 1 to _qty80 do {
+			player removeMagazine "ItemFuelbarrelEmpty";
+			player addMagazine "ItemFuelbarrel";
+		};
 		for "_x" from 1 to _qty20 do {
 			player removeMagazine "ItemJerrycanEmpty";
 			player addMagazine "ItemJerrycan";

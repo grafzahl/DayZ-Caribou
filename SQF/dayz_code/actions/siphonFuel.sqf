@@ -19,7 +19,7 @@ _nameText = 	getText(_configVeh >> "displayName");
 _isMan = _vehicle isKindOf "Man";
 _isAnimal = _vehicle isKindOf "Animal";
 _isZombie = _vehicle isKindOf "zZombie_base";
-_availableCansEmpty = ["ItemJerrycanEmpty","ItemFuelcanEmpty"];
+_availableCansEmpty = ["ItemFuelbarrelEmpty","ItemJerrycanEmpty","ItemFuelcanEmpty"];
 
 if (_isMan or _isAnimal or _isZombie) exitWith { cutText ["You can only siphon the fuel from a vehicle!", "PLAIN DOWN"] };
 

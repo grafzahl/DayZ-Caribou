@@ -76,8 +76,10 @@ if (!isNull _cursorTarget and !_inVehicle and (player distance _cursorTarget < 4
 	_ownerID = _cursorTarget getVariable ["characterID","0"];
 	_isVehicletype = typeOf _cursorTarget in ["ATV_US_EP1","ATV_CZ_EP1"];
 	_isFuel = false;
+	_hasFuel80 = "ItemFuelbarrel" in magazines player;
 	_hasFuel20 = "ItemJerrycan" in magazines player;
 	_hasFuel5 = "ItemFuelcan" in magazines player;
+	_hasFuelE80 = "ItemFuelbarrelEmpty" in magazines player;
 	_hasFuelE20 = "ItemJerrycanEmpty" in magazines player;
 	_hasFuelE5 = "ItemFuelcanEmpty" in magazines player;
 	_hasKnife = "ItemKnife" in items player;
@@ -133,13 +135,23 @@ if (!isNull _cursorTarget and !_inVehicle and (player distance _cursorTarget < 4
 	};
 
 	//Allow player to fill Fuel can
-	if((_hasFuelE20 or _hasFuelE5) and _isFuel and !_isZombie and !_isAnimal and !_isMan and _canDo and !a_player_jerryfilling) then {
+	if((_hasFuelE80 or _hasFuelE20 or _hasFuelE5) and _isFuel and !_isZombie and !_isAnimal and !_isMan and _canDo and !a_player_jerryfilling) then {
 		if (s_player_fillfuel < 0) then {
 			s_player_fillfuel = player addAction [localize "str_actions_self_10", "\z\addons\dayz_code\actions\jerry_fill.sqf",[], 1, false, true, "", ""];
 		};
 	} else {
 		player removeAction s_player_fillfuel;
 		s_player_fillfuel = -1;
+	};
+
+	//Allow player to fill vehicle 80L
+	if(_hasFuel80 and _canDo and !_isZombie and !_isAnimal and !_isMan and _isVehicle and (fuel _cursorTarget < 1) and (damage _cursorTarget < 1)) then {
+		if (s_player_fillfuel80 < 0) then {
+			s_player_fillfuel80 = player addAction [format[localize "str_actions_medical_10",_text,"80"], "\z\addons\dayz_code\actions\refuel.sqf",["ItemFuelbarrel"], 0, true, true, "", "'ItemFuelbarrel' in magazines player"];
+		};
+	} else {
+		player removeAction s_player_fillfuel80;
+		s_player_fillfuel80 = -1;
 	};
 
 	//Allow player to fill vehicle 20L
@@ -163,7 +175,7 @@ if (!isNull _cursorTarget and !_inVehicle and (player distance _cursorTarget < 4
 	};
 
 	//Allow player to spihon vehicles
-	if ((_hasFuelE20 or _hasFuelE5) and !_isZombie and !_isAnimal and !_isMan and _isVehicle and _canDo and !a_player_jerryfilling and (fuel _cursorTarget > 0) and (damage _cursorTarget < 1)) then {
+	if ((_hasFuelE80 or _hasFuelE20 or _hasFuelE5) and !_isZombie and !_isAnimal and !_isMan and _isVehicle and _canDo and !a_player_jerryfilling and (fuel _cursorTarget > 0) and (damage _cursorTarget < 1)) then {
 		if (s_player_siphonfuel < 0) then {
 			s_player_siphonfuel = player addAction [format[localize "str_siphon_start"], "\z\addons\dayz_code\actions\siphonFuel.sqf",_cursorTarget, 0, true, true, "", ""];
 		};

@@ -7,7 +7,40 @@ class ItemCarBomb : CA_Magazine {
 	model = "\ca\weapons\explosive.p3d";
 	picture = "\dzcb_data\icons\carbomb.paa";
 	descriptionShort = "Can be attached to a vehicles engine and then automaticly explode when the engine is turned on!";
-};	
+};
+
+//Fuel Barrel
+class ItemFuelbarrel : CA_Magazine {
+	scope = public;
+	count = 1;
+	type = (8*256);
+	fuelQuantity = 80;
+	emptycan = "ItemFuelbarrelEmpty";
+	displayName = "Fuel Barrel";
+	model = "\ca\misc\Barel5.p3d";
+	picture = "\dzcb_data\icons\ItemFuelbarrel.paa";
+	descriptionShort = "Large 80L Barrel filled with Fuel. Can be used to refuel vehicles. Another Option is to deploy a burning barrel.";
+	class ItemActions {
+		class Build {
+			text = "Deploy Burning Barrel";
+			script = "spawn player_build; r_action_count = r_action_count + 1;";
+			require = "ItemToolbox";
+			create = "Barrel_burning_CBDZ";
+		};
+	};
+};
+
+class ItemFuelbarrelEmpty : ItemFuelbarrel {
+	scope = public;
+	count = 1;
+	type = (8*256);
+	fuelQuantity = 0;
+	fullcan = "ItemFuelbarrel";
+	displayName = "Fuel Barrel (Empty)";
+	model = "\ca\misc\Barel5.p3d";
+	picture = "\dzcb_data\icons\ItemFuelbarrelEmpty.paa";
+	descriptionShort = "Empty 80L Barrel. Can be used to refuel vehicles.";
+};
 
 //Bloodbag
 class ItemBloodbag: CA_Magazine {

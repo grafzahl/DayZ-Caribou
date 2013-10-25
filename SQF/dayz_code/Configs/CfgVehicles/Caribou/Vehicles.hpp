@@ -15,6 +15,21 @@ class WeaponHolder_ItemGeocache : WeaponHolderBase {
 		init = "[(_this select 0),'cfgMagazines','ItemGeocache'] execVM '\z\addons\dayz_code\init\object_pickupAction.sqf';";
 	};
 };
+
+class WeaponHolder_ItemFuelbarrel : WeaponHolderBase {
+	scope = public;
+	displayName = "Fuel Barrel";
+	model = "\ca\misc\Barel5.p3d";
+	class eventHandlers {
+		init = "[(_this select 0),'cfgMagazines','ItemFuelbarrel'] execVM '\z\addons\dayz_code\init\object_pickupAction.sqf';";
+	};
+};
+
+class Land_Fire_barrel_burning;
+class Barrel_burning_CBDZ : Land_Fire_barrel_burning {
+	displayname = "Deployed Barrel (Burning)";
+}
+
 /*
 class WeaponHolder_ItemDomeTent : WeaponHolderBase {
 	scope = public;
