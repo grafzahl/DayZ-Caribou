@@ -1,8 +1,12 @@
-private ["_charID","_newmodel","_old","_updates","_humanity","_medical","_worldspace","_zombieKills","_headShots","_humanKills","_banditKills","_fractures","_wpnType","_ismelee"];
+private ["_repairLegs","_charID","_newmodel","_old","_updates","_humanity","_medical","_worldspace","_zombieKills","_headShots","_humanKills","_banditKills","_fractures","_wpnType","_ismelee"];
 //_playerUID = _this select 0;
 _charID = _this select 1;
 _model = _this select 2;
-
+if !(r_fracture_legs) then {
+	_repairLegs = true;
+} else {
+	_repairLegs = false;
+};
 _old = player;
 player allowDamage false;
 
@@ -90,4 +94,15 @@ call dayz_meleeMagazineCheck;
 sleep 0.1;
 if !(isNull _old) then {deleteVehicle _old;}; 
 
-
+sleep 2;
+//Make sure to repair legs if broken after morph
+if(_repairLegs && r_fracture_legs) then {
+	private ["_display","_control"];
+	r_fracture_legs = false;
+	player setHit["legs",0];
+	//Ensure Control is invisible
+	_display = uiNamespace getVariable 'DAYZ_GUI_display';
+	_control = _display displayCtrl 1203;
+	_control ctrlShow false;
+	player setVariable ["hit_legs",0,true];
+};
