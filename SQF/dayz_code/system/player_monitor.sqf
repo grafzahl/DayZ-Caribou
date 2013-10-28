@@ -79,8 +79,10 @@ _id = [] execFSM "\z\addons\dayz_code\system\player_monitor.fsm";
 [] execVM "\z\addons\dayz_code\caribou\fn_limitThirdPersonView.sqf";
 [] execVM "\z\addons\dayz_code\caribou\fn_dustash.sqf";
 [] execVM "\z\addons\dayz_code\caribou\fn_carryMonitor.sqf";
-[] execVM "\z\addons\dayz_code\caribou\fn_hideMarker.sqf";
-[] execVM "\z\addons\dayz_code\caribou\fn_skaronametags.sqf";
+//[] execVM "\z\addons\dayz_code\caribou\fn_hideMarker.sqf";
+if(dayZ_nameTags != false) then {
+	[] execVM "\z\addons\dayz_code\caribou\fn_skaronametags.sqf";
+}
 
 waituntil {!isnil "BIS_Effects_Burn"};
 {
