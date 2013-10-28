@@ -10,6 +10,7 @@ _hero = 5000; //Player Humanity for a Hero
 
 //Other Stuff do not change!
 _humanity = 2500; //Don't change this! It's only a failsave if getVariable failed
+_blood = 12000;
 _targetControl = _display displayCtrl 1199;
 _string = "";
 dayz_humanitytarget = "";
@@ -20,7 +21,9 @@ while {true} do {
 			_distance = (player distance _humanityTarget);
 		if (_distance < _maxRange) then {
 			_size = (1-(floor(_distance/5)*0.1)) max 0.1;
-			_humanity = _humanityTarget getVariable ["humanity",0];
+			_humanity = _humanityTarget getVariable ["humanity",2500];
+			_blood = _humanityTarget getVariable ["USEC_BloodQty",12000];
+			_blood = (round(_blood / 120)) max 1;
 			if (_humanitycheck) then {
 				_color = "color='#ffffff'";
 				if(_humanity <= _bandit) then {
@@ -33,7 +36,7 @@ while {true} do {
 			} else {
 			_color = "color='#ffffff'";
 			};
-			_string = format["<t %2 align='center' size='%3'>%1</t>",(name _humanityTarget),_color,_size];
+			_string = format["<t %2 align='center' size='%3'>%1 (%4%5)</t>",(name _humanityTarget),_color,_size,_blood,"%"];
 		};
 	};
 
