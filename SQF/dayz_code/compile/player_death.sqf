@@ -1,4 +1,4 @@
-private ["_display","_body","_playerID","_array","_source","_method","_canHitFree","_isBandit","_punishment","_humanityHit","_myKills","_humanity","_kills","_killsV","_myGroup"];
+private ["_myKills2","_display","_body","_playerID","_array","_source","_method","_canHitFree","_isBandit","_punishment","_humanityHit","_myKills","_humanity","_kills","_killsV","_myGroup"];
 disableSerialization;
 if (deathHandled) exitWith {};
 
@@ -58,31 +58,36 @@ if (count _array > 0) then {
 		_humanityHit = 0;
 		//Bandit
 		if(_isBandit) then {
-			_myKills = ((player getVariable ["humanKills",0]) / 30) * 1000;
+			_myKills = (player getVariable ["humanKills",0]) * 50;
+			_myKills = _myKills + ((player getVariable ["headShots",0]) * 50);
 			//Give Plus-Humanity
-			_humanityHit = -(2000 - _myKills);
+			_humanityHit = 200 + _myKills;
 			_kills = _source getVariable ["banditKills",0];
 			_source setVariable ["banditKills",(_kills + 1),true];
-			PVDZ_send = [_source,"Humanity",[_source,_humanityHit,300]];
-			publicVariableServer "PVDZ_send";
 		};
 		//Hero
 		if(_Hero) then {
-			_myKills = ((player getVariable ["banditKills",0]) / 30) * 1000;
-			//Give Heavy Minus-Humanity
-			_humanityHit = -(2000 - _myKills);
+			_myKills = (player getVariable ["banditKills",0]) * 50;
+			//Give Plus-Humanity
+			_humanityHit = -(200 + _myKills);
 			_kills = _source getVariable ["headShots",0];
 			_source setVariable ["headShots",(_kills + 1),true];
-			PVDZ_send = [_source,"Humanity",[_source,_humanityHit,300]];
-			publicVariableServer "PVDZ_send";
 		};
 		//Survivor
 		if(_isSurvivor) then {
-			_myKills = ((player getVariable ["banditKills",0]) / 30) * 1000;
+			_myKills = player getVariable ["humanKills",0];
+			_myKills = _myKills + ((player getVariable ["headShots",0]) * 2);
+			_myKills2 = player getVariable ["banditKills",0];
 			//Give Minus-Humanity
-			_humanityHit = -(2000 - _myKills);
-			_kills = _source getVariable ["banditKills",0];
-			_source setVariable ["banditKills",(_kills + 1),true];
+			if(_myKills2 >= _myKills) then {
+				_humanityHit = -100;
+			} else {
+				_humanityHit = 100;
+			};
+			_kills = _source getVariable ["humanKills",0];
+			_source setVariable ["humanKills",(_kills + 1),true];
+		};
+		if(_humanityHit != 0) then {
 			PVDZ_send = [_source,"Humanity",[_source,_humanityHit,300]];
 			publicVariableServer "PVDZ_send";
 		};
