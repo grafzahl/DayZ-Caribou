@@ -80,7 +80,9 @@ _id = [] execFSM "\z\addons\dayz_code\system\player_monitor.fsm";
 [] execVM "\z\addons\dayz_code\caribou\fn_dustash.sqf";
 [] execVM "\z\addons\dayz_code\caribou\fn_carryMonitor.sqf";
 [] execVM "\z\addons\dayz_code\caribou\fn_makeHoles.sqf";
-if(dayZ_nameTags != false) then {
+[] execVM "\z\addons\dayz_code\caribou\fn_gpsMarker.sqf";
+
+if(dayZ_nameTags) then {
 	[] execVM "\z\addons\dayz_code\caribou\fn_skaronametags.sqf";
 };
 
