@@ -1,4 +1,4 @@
-private ["_maxRange","_humanitycheck","_humanity","_skaroTag","_cursorTarget","_bandit","_hero","_color","_string","_targetControl"];
+private ["_blood","_maxRange","_humanitycheck","_humanityTarget","_humanity","_skaroTag","_cursorTarget","_bandit","_hero","_color","_string","_targetControl"];
 //Created by Skaronator - http://www.skaronator.com - Version 1.3
 Waituntil{!isNull player};
 
@@ -29,12 +29,12 @@ while {true} do {
 				if(_humanity <= _bandit) then {
 					_color = "color='#ff0000'";
 				} else {
-					if(_humanity => _hero) then {
+					if(_humanity >= _hero) then {
 						_color = "color='#3333ff'";
 					};
 				};
 			} else {
-			_color = "color='#ffffff'";
+				_color = "color='#ffffff'";
 			};
 			_string = format["<t %2 align='center' size='%3'>%1 (%4%5)</t>",(name _humanityTarget),_color,_size,_blood,"%"];
 		};
