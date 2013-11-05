@@ -70,4 +70,42 @@ if (!isDedicated) then {
 		dayz_tickTimeOffset = _offset;
 		//diag_log format["SERVER TIME: %1    OFFSET: %2    PLAYER TIME: %3    COMPUTED TIME: %4", _serverTickTime, _offset, diag_tickTime, (diag_tickTime + _offset)];
 	};
+
+	tag_req = [];
+	tag_rec = [];
+	tag_friendlies = [];
+	"PVCDZ_tagFriend" addPublicVariableEventHandler {
+		_uid = ((_this select 1) select 0);
+		_name = ((_this select 1) select 1);
+		_oid = ((_this select 1) select 2);
+		if (_uid in tag_friendlies) then {
+			titleText [format["%1 has tagged you again",_name], "PLAIN DOWN", 3];
+			_myoid = ((_this select 1) select 3);
+			PVCDZ_tagFriend = [(getPlayerUID player), (name player), _myoid];
+			_oid publicVariableClient "PVCDZ_tagFriend";
+		}
+		else {
+			if (_uid in tag_req) then {
+				titleText [format["%1 is now tagged as friend",_name], "PLAIN DOWN", 3];
+				tag_friendlies = tag_friendlies + [_uid];
+			} else {
+				titleText [format["%1 wants to tag you as friend",_name], "PLAIN DOWN", 3];
+				tag_rec = tag_rec + [_uid];
+			};
+		};
+	};
+
+	[] spawn {
+		setGroupIconsVisible [true, true];
+		while{true} do {
+			{
+				clearGroupIcons group _x;
+				if (((getPlayerUID _x) in tag_friendlies)) then {
+					group _x addGroupIcon ["x_art"];
+					group _x setGroupIconParams [[1, 0, 1 , 1], format ["%1", name _x], 0.7, true];
+				};
+			} forEach entities "AllVehicles";
+			sleep 1;
+		};
+	};
 };

@@ -89,6 +89,7 @@ if (!isNull _cursorTarget and !_inVehicle and (player distance _cursorTarget < 4
 	_canmove = canmove _cursorTarget;
 	_text = getText (configFile >> "CfgVehicles" >> typeOf _cursorTarget >> "displayName");
 	_isPlant = typeOf _cursorTarget in Dayz_plants;
+	_isTagbar = ((isPlayer cursorTarget) && !((getPlayerUID cursorTarget) in tag_friendlies) && !((getPlayerUID cursorTarget) in tag_req) && (alive cursorTarget) && (side cursorTarget == side player));
 	if (_hasFuelE20 or _hasFuelE5) then {
 		_isFuel = typeOf _cursorTarget in ["Land_Ind_TankSmall","Land_fuel_tank_big","Land_fuel_tank_stairs","Land_wagon_tanker","Land_fuelstation","Land_fuelstation_army"];
 	};
@@ -313,6 +314,15 @@ if (!isNull _cursorTarget and !_inVehicle and (player distance _cursorTarget < 4
 		player removeAction s_player_ignite_storage;
 		s_player_ignite_storage = -1;
 	};
+
+	if (_isTagbar) then {
+		if (s_tagfriendly < 0) then {
+			s_tagfriendly = player addAction [("<t color=""#FF00FF"">" + ("Tag as Friend") + "</t>"), "actions\player_tagFriendly.sqf",cursorTarget, 1, false, true, "",""];
+		};
+	} else {
+		player removeAction s_tagfriendly;
+		s_tagfriendly = -1;
+	};
 } else {
 	player removeAction s_player_bikepack;
 	s_player_bikepack = -1;
@@ -359,4 +369,6 @@ if (!isNull _cursorTarget and !_inVehicle and (player distance _cursorTarget < 4
 	//Allow player to gather
 	player removeAction s_player_gather;
 	s_player_gather = -1;
+	player removeAction s_tagfriendly;
+	s_tagfriendly = -1;
 };
